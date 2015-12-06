@@ -1,0 +1,123 @@
+body {
+    font-family: "Roboto";
+    font-weight: 300;
+}
+
+.mdl-layout__content {
+    background-color: #eee;
+}
+
+#drawer-user-name {
+    padding-top: 16px;
+    line-height: 36px;
+}
+
+#drawer-user-email {
+    padding-left: 16px;
+}
+
+.mdl-navigation {
+    position: relative;
+    height: calc(100% - 72px);
+}
+
+#drawer-spacer {
+    padding-bottom: 130px;
+}
+
+#drawer-footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.drawer-footer-link {
+    background-color: #fafafa;
+}
+
+#drawer-settings-link {
+    box-shadow: 0 -3px 3px -3px #aaa;
+}
+
+.mdl-navigation__link span {
+    position: relative;
+    top: -3px;
+    padding-left: 24px;
+}
+
+.mdl-navigation__link i {
+    position: relative;
+    top: 3px;
+}
+
+.mdl-navigation__link.active {
+    background-color: #e5e5e5;
+}
+
+/* CARD */
+
+.two-to-one.mdl-card {
+    margin: 8px;
+    width: calc(100% - 16px);
+    min-height: 150px;
+    overflow: auto;
+}
+
+.two-to-one.mdl-card .card-content-container {
+    width: calc(60% - 32px);
+}
+
+.two-to-one.mdl-card .card-time {
+    padding: 12px 16px 4px;
+}
+
+.two-to-one.mdl-card .card-time span {
+    position: relative;
+    top: -7px;
+    padding-left: 16px;
+    font-size: 12px;
+}
+
+.two-to-one.mdl-card .mdl-card__title, .two-to-one.mdl-card .mdl-card__supporting-text {
+    padding: 0px 8px 8px 16px;
+}
+
+.two-to-one.mdl-card .mdl-card__title-text {
+    font-size: 18px;
+}
+
+.two-to-one.mdl-card .mdl-card__actions {
+    position: absolute;
+    bottom: 0;
+}
+
+.two-to-one.mdl-card .card-image-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+}
+
+.two-to-one.mdl-card .card-image {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+
+.two-to-one.mdl-card .mdl-card__actions {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+
+
+
+
+
+
+
+
+
