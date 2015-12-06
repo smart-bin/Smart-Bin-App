@@ -519,6 +519,30 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "www/test.html",
+			"settings":
+			{
+				"buffer_size": 1339,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/index.html",
+			"settings":
+			{
+				"buffer_size": 1048,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<snippet>\n    <content><![CDATA[<script src=\"\"></script>]]></content>\n    <!-- Optional: Tab trigger to activate the snippet -->\n    <tabTrigger>jquery</tabTrigger>\n    <!-- Optional: Scope the tab trigger will be active in -->\n    <scope>source.html</scope>\n    <!-- Optional: Description to show in the menu -->\n    <description>Add Google jQuery library</description>\n</snippet>",
+			"settings":
+			{
+				"buffer_size": 381,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -528,7 +552,7 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "dis",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -725,7 +749,8 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin"
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin",
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www"
 	],
 	"file_history":
 	[
@@ -1040,8 +1065,100 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "www/test.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1339,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								770,
+								458
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "www/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1010,
+								1010
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 381,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45,
+								45
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"default_dir": "/Users/ianwensink/Library/Application Support/Sublime Text 3/Packages/User",
+							"default_extension": "sublime-snippet",
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1107,9 +1224,13 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "restful",
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"~/www/RESTful/RESTful-week-2/RESTful-week-2.sublime-project"
+			],
 			[
 				"restful",
 				"~/www/RESTful/RESTful-week-2/RESTful-week-2.sublime-project"
