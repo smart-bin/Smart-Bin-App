@@ -11,7 +11,7 @@ function getTimelineCards() {
             subtitle: "Glas",
             image: "img/types/glass_square.png",
             imageColor: "#82ba73",
-            link: "glassbin.html",
+            link: "bin.html?id=1",
             type: "warning",
             icon: "warning",
             accentColor: "orange"
@@ -35,19 +35,19 @@ function getTimelineCards() {
             subtitle: "Papier",
             image: "img/types/paper_square.png",
             imageColor: "#eb5151",
-            link: "paperbin.html",
+            link: "bin.html?id=2",
             type: "added",
             icon: "add_circle",
             accentColor: "green"
         },
         {
-            id: 3,
+            id: 4,
             time: "28 dagen geleden",
             title: "Bin toegevoegd",
             subtitle: "Restafval",
             image: "img/types/waste_square.png",
             imageColor: "#efc51e",
-            link: "wastebin.html",
+            link: "bin.html?id=3",
             type: "added",
             icon: "add_circle",
             accentColor: "green"
