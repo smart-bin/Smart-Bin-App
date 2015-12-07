@@ -112,6 +112,15 @@ body {
     padding-bottom: 4px;
 }
 
+/* HEADER */
+.mdl-layout__drawer-button i {
+    margin-top: 12px;
+}
+
+.mdl-layout__header-row .mdl-textfield {
+    padding: 23px 0 20px;
+}
+
 
 
 
