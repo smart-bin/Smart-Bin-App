@@ -48,7 +48,6 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="cordova-plugin-whitelist" spec="1.2.0" />
-    <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
@@ -59,7 +58,6 @@
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="www/res/screen/android/screen-hdpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
     <access origin="*" />
-    <access origin="http://timfalken.com/hr/internetfornature/*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
