@@ -58,6 +58,7 @@
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <access origin="*" />
+    <access origin="http://timfalken.com/hr/internetfornature/*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />

@@ -53,6 +53,7 @@
     <plugin name="cordova-plugin-whitelist" version="1" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <access origin="*" />
+    <access origin="http://timfalken.com/hr/internetfornature/*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -62,7 +63,6 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
-        <access origin="*" />
         <allow-intent href="market:*" />
     </platform>
     <engine name="android" spec="~4.1.1" />
