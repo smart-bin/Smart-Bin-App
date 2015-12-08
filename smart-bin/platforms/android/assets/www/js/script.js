@@ -1,6 +1,7 @@
 var user;
 
 function initApp() {
+    $.support.cors = true;
     API.getUser(getUserId(), "info", saveUser);
     // $(".mdl-layout__drawer").on("scroll", drawerScroll);
 }
