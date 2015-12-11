@@ -528,18 +528,34 @@
 			}
 		},
 		{
-			"file": "www/index.html",
+			"file": "www/js/script.js",
 			"settings":
 			{
-				"buffer_size": 1048,
+				"buffer_size": 785,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "<snippet>\n    <content><![CDATA[<script src=\"\"></script>]]></content>\n    <!-- Optional: Tab trigger to activate the snippet -->\n    <tabTrigger>jquery</tabTrigger>\n    <!-- Optional: Scope the tab trigger will be active in -->\n    <scope>source.html</scope>\n    <!-- Optional: Description to show in the menu -->\n    <description>Add Google jQuery library</description>\n</snippet>",
+			"file": "www/js/timeline.js",
 			"settings":
 			{
-				"buffer_size": 381,
+				"buffer_size": 3602,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/js/APIFunctions.js",
+			"settings":
+			{
+				"buffer_size": 2726,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/index.html",
+			"settings":
+			{
+				"buffer_size": 3515,
 				"line_ending": "Unix"
 			}
 		}
@@ -749,8 +765,8 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin",
-		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www"
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www",
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/js"
 	],
 	"file_history":
 	[
@@ -1065,7 +1081,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1081,8 +1097,8 @@
 						"selection":
 						[
 							[
-								770,
-								458
+								1300,
+								1283
 							]
 						],
 						"settings":
@@ -1101,62 +1117,126 @@
 				},
 				{
 					"buffer": 1,
-					"file": "www/index.html",
+					"file": "www/js/script.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1048,
+						"buffer_size": 785,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1010,
-								1010
+								53,
+								53
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "www/js/timeline.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 381,
+						"buffer_size": 3602,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								45,
-								45
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"default_dir": "/Users/ianwensink/Library/Application Support/Sublime Text 3/Packages/User",
-							"default_extension": "sublime-snippet",
-							"syntax": "Packages/XML/XML.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "www/js/APIFunctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2726,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								595,
+								595
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "www/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3515,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								644,
+								644
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
