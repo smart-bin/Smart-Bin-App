@@ -11,7 +11,7 @@ function getTimelineCards() {
             subtitle: "Glas",
             image: "img/types/glass_square.png",
             imageColor: "#82ba73",
-            link: "bin.html?id=1",
+            link: "bin.html?id=5",
             type: "warning",
             icon: "warning",
             accentColor: "orange"

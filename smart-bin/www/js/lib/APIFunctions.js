@@ -1,7 +1,15 @@
 var API = 
 {
 	apiBaseUrl: "http://timfalken.com/hr/internetfornature/",
-
+	
+	login: function(email, password, onSuccess)
+	{
+		$.post(this.apiBaseUrl + "login.php", {Email:email, Password:password}).done(function(data){
+			if (typeof onSuccess === "function")
+				onSuccess(data);
+		});
+	},
+	
 	registerNewUser: function (name, email, password, onSuccess)
 	{
 		$.post(this.apiBaseUrl + "users.php", {newUser:{Name:name, Email:email, Password:password}}).done(function(data){
@@ -66,7 +74,7 @@ var API =
 			dataType: "JSON",
 			method:"GET",
 			url: this.apiBaseUrl + "bins.php?id=" + binId,
-			success: function(data)
+			complete: function(data)
 			{
 				if (typeof onSuccess === "function")
 					onSuccess(data);
@@ -111,9 +119,33 @@ var API =
 		});
 	},
 	
-	awardPoints: function(id, pointObject, onSuccess)
+	awardPoints: function(id, pointObject, tokenStr, onSuccess)
 	{
-		$.post(this.apiBaseUrl + "awardPoints.php", {userId: id, points: pointObject}).done(function(data){
+		$.post(this.apiBaseUrl + "awardPoints.php", {userId: id, points: pointObject, token: tokenStr}).done(function(data){
+			if (typeof onSuccess === "function")
+				onSuccess(data);
+		});
+	},
+	
+	consumePoints: function(id, pointObject, tokenStr, onSuccess)
+	{
+		$.post(this.apiBaseUrl + "consumePoints.php", {userId: id, points: pointObject, token: tokenStr}).done(function(data){
+			if (typeof onSuccess === "function")
+				onSuccess(data);
+		});
+	},
+	
+	editWeight: function(binId, weight, tokenStr, onSuccess)
+	{
+		$.post(this.apiBaseUrl + "updateBinWeight.php", {binId: binId, newWeight: weight, token: tokenStr}).done(function(data){
+			if (typeof onSuccess === "function")
+				onSuccess(data);
+		});
+	},
+	
+	editCharge: function(binId, charge, tokenStr, onSuccess)
+	{
+		$.post(this.apiBaseUrl + "updateBinCharge.php", {binId: binId, newCharge: charge, token: tokenStr}).done(function(data){
 			if (typeof onSuccess === "function")
 				onSuccess(data);
 		});

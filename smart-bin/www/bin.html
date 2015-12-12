@@ -14,59 +14,53 @@
     <meta name="theme-color" content="black">
     <link rel="icon" href="icon.png">
 
-    <link rel="stylesheet" href="css/material.pink-blue.min.css" />
-    <link rel="stylesheet" href="css/material-icons.css">
-    <link rel="stylesheet" href="css/roboto.css" type="text/css">
+    <link rel="stylesheet" href="css/lib/material.pink-blue.min.css" />
+    <link rel="stylesheet" href="css/lib/material-icons.css">
+    <link rel="stylesheet" href="css/lib/roboto.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bin.css">
 </head>
-<body>
+<body id="bin-detail" class="scroll">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
+        <header class="mdl-layout__header mdl-layout__header--seamed">
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Smart Bin</span>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <span class="mdl-layout-title"></span>
                 <div class="mdl-layout-spacer"></div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-                    <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-                        <i class="material-icons">search</i>
-                    </label>
-                    <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
-                    </div>
-                </div>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">delete</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">edit</i>
+                </button>
             </div>
         </header>
-        <div class="mdl-layout__drawer dis-visible">
-            <span class="mdl-layout-title" id="drawer-user-name"></span>
-            <span id="drawer-user-email"></span>
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link active" href="index.html"><i class="material-icons">access_time</i><span>Tijdlijn</span></a>
-                <a class="mdl-navigation__link" href="bins.html"><i class="material-icons">delete</i><span>Jouw Bins</span></a>
-                <a class="mdl-navigation__link" href="app-store.html"><i class="material-icons">shopping_cart</i><span>App Store</span></a>
-                <a class="mdl-navigation__link" href="statistics.html"><i class="material-icons">insert_chart</i><span>Mijn Statistieken</span></a>
-                <a class="mdl-navigation__link" href="achievements.html"><i class="material-icons">done_all</i><span>Mijn Achievements</span></a>
-                <!-- <div id="drawer-spacer"></div> -->
-                <div id="drawer-footer">
-                    <a class="mdl-navigation__link drawer-footer-link" id="drawer-settings-link" href="settings.html"><i class="material-icons">settings</i><span>Instellingen</span></a>
-                    <a class="mdl-navigation__link drawer-footer-link" id="drawer-help-link" href="help.html"><i class="material-icons">help</i><span>Help &amp; feedback</span></a>
-                </div>
-            </nav>
-        </div>
+        <section id="bin-header">
+            <h1 class="mdl-layout-title"></h1>
+        </section>
         <main class="mdl-layout__content">
             <div class="page-content">
-                <div id="timeline-cards">
-                    
+                <div id="bin">
+                    <section id="battery-level">
+                        <h2>Battery Level</h2>
+                        <span id="battery-status"></span>
+                    </section>
+                    <section id="graph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.</section>
+                    <section id="statistics"></section>
                 </div>
             </div>
         </main>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/material.min.js"></script>
-    <script src="js/APIFunctions.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/material.min.js"></script>
+    <script src="js/lib/APIFunctions.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/timeline.js"></script>
+    <script src="js/bin.js"></script>
     <script>
         $(initApp);
-        alert(getURLParameter("id"));
+        $(initBinDetails);
     </script>
 </body>
 </html>
