@@ -1,11 +1,19 @@
 function initBinDetails() {
-    API.getBin(getURLParameter("id"), printBinInfo);
-    $("*").on("scroll", checkFixedHeader);
+    var binId = getURLParameter("id");
+    API.getBin(binId, processBin);
+    var now = new Date();
+    API.getHistory(binId, now.setMonth(now.getMonth() - 5) / 1000, new Date().getTime() / 1000, processGraph);
+    $(".mdl-layout__content").on("scroll", checkFixedHeader);
+    $(".back-button").on("click", function () {
+        window.history.back();
+    });
+}
+
+function processBin(bin) {
+    printBinInfo(bin);
 }
 
 function printBinInfo(bin) {
-    bin = bin.responseJSON;
-    console.log(bin);
     $("#bin-header h1").text(bin.Name);
     var batteryImage = "";
     var batteryStatus = "";
@@ -32,7 +40,7 @@ function printBinInfo(bin) {
         batteryStatus = "High";
     }
     $("#bin-header").css({
-        "background-image": "url(img/" + bin.ImageUrl + ")",
+        "background-image": "url(img/types/glass_360x180.png)",
         "background-color": "#82ba73"
     });
     $("#battery-level").css("background-image", "url(img/battery/battery_square_" + batteryImage + ".png)");
@@ -41,9 +49,7 @@ function printBinInfo(bin) {
 
 function checkFixedHeader(e) {
     var el = $(".mdl-layout__content");
-    // if ($("body").hasClass("fixed")) el = $(".mdl-layout__content");
     var scroll = el.scrollTop();
-    console.log(scroll);
     if ($("body").hasClass("scroll") && scroll > 140) {
         $("body").addClass("fixed").removeClass("scroll");
         $(".mdl-layout__header").removeClass("mdl-layout__header--seamed");
@@ -53,6 +59,33 @@ function checkFixedHeader(e) {
         el.scrollTop(140);
     }
 }
+
+function processGraph(data) {
+    var dataByMonth = [];
+    var currentMonth = -1;
+    $.each(data, function () {
+        var timestamp = new Date(this.UnixTimestamp * 1000);
+        var month = timestamp.getMonth() + 1;
+        if (month !== currentMonth) {
+            currentMonth = month;
+            dataByMonth.push([]);
+        }
+        dataByMonth[dataByMonth.length - 1].push(this);
+    });
+    console.log(dataByMonth);
+}
+
+function printGraph(graph) {
+
+}
+
+
+
+
+
+
+
+
 
 
 

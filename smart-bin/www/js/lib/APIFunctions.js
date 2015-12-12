@@ -74,7 +74,7 @@ var API =
 			dataType: "JSON",
 			method:"GET",
 			url: this.apiBaseUrl + "bins.php?id=" + binId,
-			complete: function(data)
+			success: function(data)
 			{
 				if (typeof onSuccess === "function")
 					onSuccess(data);
