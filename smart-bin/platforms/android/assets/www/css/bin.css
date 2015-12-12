@@ -5,13 +5,18 @@
     background-repeat: no-repeat;
     background-position: 0 100%;
     width: 100%;
-    transition: background-color 0.6s;
+    /*transition: background-color 0.6s;*/
+}
+
+#bin-detail.fixed #bin {
+    padding-top: 200px;
 }
 
 #bin-detail.fixed #bin-header {
     background-image: none !important;
     height: 56px;
     transition: background-color 0.6s;
+    position: fixed;
 }
 
 #bin-detail.fixed #bin-header h1 {
@@ -30,20 +35,15 @@
     letter-spacing: .02em;
     font-weight: 400;
     padding-left: 72px;
-    padding-top: 140px;
+    padding-top: 160px;
     padding-bottom: 20px;
     color: #fff;
+    margin: 0;
 }
 
 #bin-detail .mdl-layout__header {
     position: fixed;
     background-color: transparent;
-}
-
-@media screen and (max-width: 1024px) {
-    #bin-detail.scroll .mdl-layout__content {
-        flex-shrink: 0;
-    }
 }
 
 #bin-detail .mdl-layout__drawer-button {

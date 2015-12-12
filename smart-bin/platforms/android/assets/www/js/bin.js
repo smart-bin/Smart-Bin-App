@@ -40,18 +40,17 @@ function printBinInfo(bin) {
 }
 
 function checkFixedHeader(e) {
-    var el = $(".mdl-layout");
-    if ($("body").hasClass("fixed")) el = $(".mdl-layout__content");
+    var el = $(".mdl-layout__content");
+    // if ($("body").hasClass("fixed")) el = $(".mdl-layout__content");
     var scroll = el.scrollTop();
     console.log(scroll);
-    if ($("body").hasClass("scroll") && scroll > 145) {
+    if ($("body").hasClass("scroll") && scroll > 140) {
         $("body").addClass("fixed").removeClass("scroll");
         $(".mdl-layout__header").removeClass("mdl-layout__header--seamed");
-        $(".mdl-layout__content").scrollTop(1);
-    } else if ($("body").hasClass("fixed") && scroll == 0) {
+    } else if ($("body").hasClass("fixed") && scroll <= 140) {
         $("body").addClass("scroll").removeClass("fixed");
         $(".mdl-layout__header").addClass("mdl-layout__header--seamed");
-        $(".mdl-layout").scrollTop(145);
+        el.scrollTop(140);
     }
 }
 
