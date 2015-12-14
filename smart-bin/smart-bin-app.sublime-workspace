@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"data",
+				"dataByMonth"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"battery",
+				"batteryStatusColor"
+			],
+			[
+				"batter",
+				"BatteryLevel"
+			],
+			[
+				"Bat",
+				"batteryLevelRounded"
+			],
+			[
 				"cha",
 				"changeNoteState"
 			],
@@ -494,39 +514,11 @@
 			[
 				"cli",
 				"clientsInfo"
-			],
-			[
-				"be",
-				"bearingMargin"
-			],
-			[
-				"bear",
-				"bearingToPlayer"
-			],
-			[
-				"currenl",
-				"currentLocationLat"
-			],
-			[
-				"upda",
-				"updateMarker"
-			],
-			[
-				"markert",
-				"markerToUpdate"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "www/test.html",
-			"settings":
-			{
-				"buffer_size": 1339,
-				"line_ending": "Unix"
-			}
-		},
 		{
 			"file": "www/js/script.js",
 			"settings":
@@ -544,10 +536,34 @@
 			}
 		},
 		{
-			"file": "www/js/APIFunctions.js",
+			"file": "www/bin.html",
 			"settings":
 			{
-				"buffer_size": 2726,
+				"buffer_size": 2550,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/css/bin.css",
+			"settings":
+			{
+				"buffer_size": 1342,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/js/bin.js",
+			"settings":
+			{
+				"buffer_size": 2901,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/js/lib/APIFunctions.js",
+			"settings":
+			{
+				"buffer_size": 3744,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +571,7 @@
 			"file": "www/index.html",
 			"settings":
 			{
-				"buffer_size": 3515,
+				"buffer_size": 3522,
 				"line_ending": "Unix"
 			}
 		}
@@ -766,10 +782,15 @@
 	"expanded_folders":
 	[
 		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www",
-		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/js"
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/css",
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/js",
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/res"
 	],
 	"file_history":
 	[
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/js/lib/APIFunctions.js",
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/js/APIFunctions.js",
+		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/test.html",
 		"/Users/ianwensink/Desktop/desktop.ini",
 		"/Users/ianwensink/mentos/www.mentos.com/webroot/.htaccess",
 		"/private/var/folders/60/y7gl27lj1wg51nzqv2c4_5pr0000gp/T/b19b4b3d-1188-40eb-93be-d75161b9d11d/home/yes2web/html/mentos/www.mentos.com/webroot/.htaccess",
@@ -894,14 +915,11 @@
 		"/Users/ianwensink/www/UIE/css/general.css",
 		"/Users/ianwensink/www/UIE/includes/initialize-test.php",
 		"/Users/ianwensink/djangotest2/mysite/polls/templates/index.html",
-		"/Users/ianwensink/djangotest2/mysite/templates/admin/index.html",
-		"/Users/ianwensink/djangotest2/mysite/templates/admin/base.html",
-		"/Users/ianwensink/djangotest2/mysite/templates/admin/css/dashboard.css",
-		"/Users/ianwensink/djangotest2/mysite/templates/admin/base_site.html"
+		"/Users/ianwensink/djangotest2/mysite/templates/admin/index.html"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -924,6 +942,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"main",
+			"\".mdl-layout\"",
+			"__content",
+			"relative",
+			"checkFixedHeader",
+			"255",
+			"batteryStatusColor",
 			"deleteNote",
 			"getAuthor",
 			"attr",
@@ -1044,14 +1069,7 @@
 			"content",
 			";",
 			"var",
-			"totalPauseDuration",
-			"pauseDuration",
-			"duration",
-			"2000",
-			"new Date().getTime()",
-			"seconds",
-			"startTime",
-			"timerSeconds"
+			"totalPauseDuration"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1081,42 +1099,11 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "www/test.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1339,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1300,
-								1283
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "www/js/script.js",
 					"semi_transient": false,
 					"settings":
@@ -1143,11 +1130,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "www/js/timeline.js",
 					"semi_transient": false,
 					"settings":
@@ -1159,14 +1146,76 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								340,
+								340
 							]
 						],
 						"settings":
 						{
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "www/bin.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2550,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2550,
+								2550
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 324.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "www/css/bin.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								188,
+								188
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/CSS3/CSS3.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1178,20 +1227,51 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "www/js/APIFunctions.js",
+					"buffer": 4,
+					"file": "www/js/bin.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2726,
+						"buffer_size": 2901,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								595,
-								595
+								2886,
+								2886
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 555.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "www/js/lib/APIFunctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3744,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2275,
+								2331
 							]
 						],
 						"settings":
@@ -1201,27 +1281,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1265.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "www/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3515,
+						"buffer_size": 3522,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								644,
-								644
+								2520,
+								2520
 							]
 						],
 						"settings":
@@ -1233,10 +1313,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 460.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

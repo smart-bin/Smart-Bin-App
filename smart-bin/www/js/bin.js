@@ -2,7 +2,7 @@ function initBinDetails() {
     var binId = getURLParameter("id");
     API.getBin(binId, processBin);
     var now = new Date();
-    API.getHistory(binId, now.setMonth(now.getMonth() - 5) / 1000, new Date().getTime() / 1000, processGraph);
+    API.getHistory(binId, now.setMonth(now.getMonth() - 5) / 1000, new Date().getTime() / 1000, processBinHistory);
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
     $(".back-button").on("click", function () {
         window.history.back();
@@ -60,23 +60,49 @@ function checkFixedHeader(e) {
     }
 }
 
+function processBinHistory(data) {
+    var passedMonths = [];
+    var now = new Date();
+    var minUnix = now.setMonth(now.getMonth() - 5) / 1000;
+    $.each(data, function () {
+        if (this.UnixTimestamp > minUnix) {
+            passedMonths.push(this);
+        }
+    })
+    processGraph(passedMonths);
+}
+
 function processGraph(data) {
+    var graph = {};
     var dataByMonth = [];
+    graph.X = [];
+    graph.Y = [];
     var currentMonth = -1;
     $.each(data, function () {
         var timestamp = new Date(this.UnixTimestamp * 1000);
         var month = timestamp.getMonth() + 1;
         if (month !== currentMonth) {
             currentMonth = month;
-            dataByMonth.push([]);
+            dataByMonth.push(0);
+            graph.X.push(getNameMonth(currentMonth));
         }
-        dataByMonth[dataByMonth.length - 1].push(this);
+        dataByMonth[dataByMonth.length - 1] += this.Weight;
     });
-    console.log(dataByMonth);
+    graph.data = dataByMonth;
+    var min = Math.min.apply(Math, graph.data);
+    var max = Math.max.apply(Math, graph.data);
+    var margin = (max - min) / 5;
+    min -= margin;
+    max += margin;
+    if (min < 0) min = 0;
+    for (var i = min; i <= max; i += margin) {
+        graph.Y.push(i);
+    }
+    printGraph(graph);
 }
 
 function printGraph(graph) {
-
+    console.log(graph);
 }
 
 
