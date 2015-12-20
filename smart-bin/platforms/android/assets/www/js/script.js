@@ -13,7 +13,7 @@ function saveUser(output) {
 }
 
 function getUserId() {
-    return 7;
+    return 2;
 }
 
 function truncateText(t, l) {
@@ -27,5 +27,107 @@ function drawerScroll(e) {
 
 function getURLParameter(name) {
   return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
-} //Bron: http://davidmles.com/blog/
+} //Source: http://davidmles.com/blog/
 
+function checkFixedHeader(e) {
+    var el = $(".mdl-layout__content");
+    var scroll = el.scrollTop();
+    if ($("body").hasClass("scroll") && scroll > 140) {
+        $("body").addClass("fixed").removeClass("scroll");
+        $(".mdl-layout__header").removeClass("mdl-layout__header--seamed");
+    } else if ($("body").hasClass("fixed") && scroll <= 140) {
+        $("body").addClass("scroll").removeClass("fixed");
+        $(".mdl-layout__header").addClass("mdl-layout__header--seamed");
+        el.scrollTop(140);
+    }
+}
+
+function formatCard(card) {
+    var defaultCard = {
+        button1: true,
+        button1Text: "Details",
+        button1Link: "#",
+        button2: true,
+        button2Text: "Klaar",
+        button2Link: "#",
+        accentColor: "grey-600",
+        type: "default"
+    };
+    card = $.extend(defaultCard, card);
+    var html = "<div id=\"card-" + card.id + "\" class=\"two-to-one card-" + card.type + " mdl-card mdl-shadow--2dp\">" +
+            "<div class=\"card-content-container\">";
+    if (card.type == "timeline") {
+        html += "<div class=\"card-time card-content\">" +
+                    "<i class=\"material-icons mdl-color-text--" + card.accentColor + "\">" + card.icon + "</i>" +
+                    "<span class=\"mdl-color-text--grey-400\">" + card.time + "</span>" +
+                "</div>";
+    }
+    html += "<div class=\"mdl-card__title card-content\">" +
+                "<h2 class=\"mdl-card__title-text\">" + card.title + "</h2>" +
+            "</div>";
+    if (card.type == "timeline") {
+        html += "<div class=\"mdl-card__supporting-text card-content\">" + truncateText(card.subtitle, 20) + "</div>";
+    } else if (card.type == "bin") {
+        html += "<div class=\"mdl-card__supporting-text supporting-text1 card-content\">" + card.subtitle1 + "</div>" +
+                "<div class=\"mdl-card__supporting-text supporting-text2 card-content\">" + card.subtitle2 + "</div>";
+    }
+    html += "<div class=\"mdl-card__actions mdl-card--border card-content\">" +
+                (card.button1?"<a href=\"" + card.button1Link + "\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--" + card.accentColor + " action1-button\">" + card.button1Text + "</a>":"") +
+                (card.button2?"<a href=\"" + card.button2Link + "\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--grey-600 action2-button\">" + card.button2Text + "</a>":"") +
+            "</div>" +
+        "</div>" +
+        "<div style=\"background-color: " + card.imageColor + ";\" class=\"card-image-container\">" +
+            "<div style=\"background-image: url(" + card.image + ");\" class=\"card-image\">" +
+            "</div>" +
+        "</div>" +
+    "</div>";
+    return html;
+}
+
+function back() {
+    window.history.back();
+}
+
+function getNameMonth(monthInt) {
+    switch (monthInt) {
+        case 1:
+            return "Januari";
+            break;
+        case 2:
+            return "Februari";
+            break;
+        case 3:
+            return "Maart";
+            break;
+        case 4:
+            return "April";
+            break;
+        case 5:
+            return "Mei";
+            break;
+        case 6:
+            return "Juni";
+            break;
+        case 7:
+            return "Juli";
+            break;
+        case 8:
+            return "Augustus";
+            break;
+        case 9:
+            return "September";
+            break;
+        case 10:
+            return "Oktober";
+            break;
+        case 11:
+            return "November";
+            break;
+        case 12:
+            return "December";
+            break;
+        default:
+            return "";
+            break;
+    }
+}

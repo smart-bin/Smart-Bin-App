@@ -24,15 +24,15 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header mdl-layout__header--seamed">
             <div class="mdl-layout__header-row">
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                <button class="back-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons">arrow_back</i>
                 </button>
                 <span class="mdl-layout-title"></span>
                 <div class="mdl-layout-spacer"></div>
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                <button class="delete-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons">delete</i>
                 </button>
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                <button class="edit-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons">edit</i>
                 </button>
             </div>
@@ -47,14 +47,22 @@
                         <h2>Battery Level</h2>
                         <span id="battery-status"></span>
                     </section>
-                    <section id="graph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo hic cupiditate nam alias sunt quaerat eaque velit, magnam aliquid necessitatibus, vel, sed ad fugiat tempora totam. Eius nisi, provident quia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa inventore numquam distinctio optio excepturi est. Nihil ipsa quae id minus aperiam, at nulla tenetur placeat asperiores, non iure inventore.</section>
-                    <section id="statistics"></section>
+                    <section id="graph">
+                        <canvas></canvas>
+                    </section>
+                    <section id="statistics">
+                        <h2></h2>
+                        <span id="total-weight"></span>
+                        <span id="average-weight"></span>
+                    </section>
                 </div>
             </div>
         </main>
     </div>
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/material.min.js"></script>
+    <script src="js/lib/Chart.min.js"></script>
+    <script src="js/lib/chart-settings.js"></script>
     <script src="js/lib/APIFunctions.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bin.js"></script>

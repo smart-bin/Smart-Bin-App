@@ -121,6 +121,11 @@ body {
     padding: 23px 0 20px;
 }
 
+.mdl-button--fab {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+}
 
 
 

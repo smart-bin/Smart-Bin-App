@@ -1,8 +1,4 @@
-function initBinDetails() {
-    var binId = getURLParameter("id");
-    API.getBin(binId, processBinAPI);
-    var now = new Date();
-    API.getHistory(binId, null, null, processBinHistory);
+function initAddBin() {
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
     $(".back-button").on("click", back);
 }
