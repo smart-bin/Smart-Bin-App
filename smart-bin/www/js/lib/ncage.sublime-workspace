@@ -520,67 +520,42 @@
 	"buffers":
 	[
 		{
-			"file": "www/js/script.js",
+			"file": "/Users/ianwensink/www/extensie/extensie/options.html",
 			"settings":
 			{
-				"buffer_size": 2210,
+				"buffer_size": 2595,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "www/js/timeline.js",
+			"file": "/Users/ianwensink/www/extensie/extensie/js/options.js",
 			"settings":
 			{
-				"buffer_size": 3602,
+				"buffer_size": 8733,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "www/bin.html",
+			"file": "/Users/ianwensink/www/extensie/extensie/css/style.css",
 			"settings":
 			{
-				"buffer_size": 2883,
+				"buffer_size": 6049,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "www/css/bin.css",
+			"file": "/Users/ianwensink/www/extensie/extensie/custom-data.json",
 			"settings":
 			{
-				"buffer_size": 1408,
+				"buffer_size": 4194,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "www/js/bin.js",
+			"file": "/Users/ianwensink/www/extensie/extensie/js/scripts.js",
 			"settings":
 			{
-				"buffer_size": 4042,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/js/lib/chart-settings.js",
-			"settings":
-			{
-				"buffer_size": 4492,
-				"line_ending": "Unix",
-				"name": "Chart.defaults.global = {"
-			}
-		},
-		{
-			"file": "www/js/lib/APIFunctions.js",
-			"settings":
-			{
-				"buffer_size": 3744,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "www/index.html",
-			"settings":
-			{
-				"buffer_size": 3522,
+				"buffer_size": 4583,
 				"line_ending": "Unix"
 			}
 		}
@@ -790,10 +765,9 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www",
-		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/css",
-		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/js",
-		"/Users/ianwensink/www/Smart Bin/Smart-Bin-App/smart-bin/www/res"
+		"/Users/ianwensink/www/extensie/extensie",
+		"/Users/ianwensink/www/extensie/extensie/css",
+		"/Users/ianwensink/www/extensie/extensie/js"
 	],
 	"file_history":
 	[
@@ -951,6 +925,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"initAddGallery",
 			"processStatistics",
 			"ctx",
 			"data",
@@ -1077,8 +1052,7 @@
 			"images",
 			"'",
 			"else",
-			"class",
-			"html"
+			"class"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1108,86 +1082,24 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "www/js/script.js",
+					"file": "/Users/ianwensink/www/extensie/extensie/options.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2210,
+						"buffer_size": 2595,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1309,
-								1309
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 246.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "www/js/timeline.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3602,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3600,
-								3600
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "www/bin.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2883,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2355,
-								2355
+								392,
+								392
 							]
 						],
 						"settings":
@@ -1198,27 +1110,58 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 417.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "www/css/bin.css",
+					"buffer": 1,
+					"file": "/Users/ianwensink/www/extensie/extensie/js/options.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1408,
+						"buffer_size": 8733,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1376,
-								1376
+								7582,
+								7582
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3128.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/ianwensink/www/extensie/extensie/css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1229,135 +1172,72 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 701.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "www/js/bin.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4042,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1466,
-								1466
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 232.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "www/js/lib/chart-settings.js",
+					"buffer": 3,
+					"file": "/Users/ianwensink/www/extensie/extensie/custom-data.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4492,
+						"buffer_size": 4194,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2124,
-								2151
+								3619,
+								3619
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Chart.defaults.global = {",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 234.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/ianwensink/www/extensie/extensie/js/scripts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4583,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1949,
+								1949
+							]
+						],
+						"settings":
+						{
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 690.0,
+						"translation.y": 519.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "www/js/lib/APIFunctions.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3744,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2275,
-								2331
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 69.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "www/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3522,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2520,
-								2520
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 460.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1407,7 +1287,7 @@
 		"height": 136.0
 	},
 	"pinned_build_system": "",
-	"project": "smart-bin-app.sublime-project",
+	"project": "ncage.sublime-project",
 	"replace":
 	{
 		"height": 46.0
@@ -1456,7 +1336,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 161.0,
+	"side_bar_width": 203.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

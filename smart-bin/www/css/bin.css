@@ -70,3 +70,18 @@
     font-size: 18px;
     font-weight: 400;
 }
+
+#graph canvas {
+    width: 100%;
+    height: 200px;
+}
+
+
+
+
+
+
+
+
+
+

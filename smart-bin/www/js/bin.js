@@ -1,15 +1,13 @@
 function initBinDetails() {
     var binId = getURLParameter("id");
-    API.getBin(binId, processBin);
+    API.getBin(binId, processBinAPI);
     var now = new Date();
-    API.getHistory(binId, now.setMonth(now.getMonth() - 5) / 1000, new Date().getTime() / 1000, processBinHistory);
+    API.getHistory(binId, null, null, processBinHistory);
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
-    $(".back-button").on("click", function () {
-        window.history.back();
-    });
+    $(".back-button").on("click", back);
 }
 
-function processBin(bin) {
+function processBinAPI(bin) {
     printBinInfo(bin);
 }
 
@@ -18,24 +16,23 @@ function printBinInfo(bin) {
     var batteryImage = "";
     var batteryStatus = "";
     var batteryStatusColor = "rgb(0, 0, 0)";
-    var batteryLevelRounded = Math.floor(bin.BatteryLevel / 10) * 10;
-    if (batteryLevelRounded <= 10) {
+    if (bin.BatteryLevel <= 10) {
         batteryImage = "5";
         batteryStatus = "Critical";
         batteryStatusColor = "rgb(255, 0, 0)";
-    } else if (batteryLevelRounded > 10 && batteryLevelRounded <= 25) {
+    } else if (bin.BatteryLevel > 10 && bin.BatteryLevel <= 25) {
         batteryImage = "20";
         batteryStatus = "Low";
-    } else if (batteryLevelRounded > 25 && batteryLevelRounded <= 40) {
+    } else if (bin.BatteryLevel > 25 && bin.BatteryLevel <= 40) {
         batteryImage = "30";
         batteryStatus = "Moderate";
-    } else if (batteryLevelRounded > 40 && batteryLevelRounded <= 60) {
+    } else if (bin.BatteryLevel > 40 && bin.BatteryLevel <= 60) {
         batteryImage = "50";
         batteryStatus = "Fine";
-    } else if (batteryLevelRounded > 60 && batteryLevelRounded <= 85) {
+    } else if (bin.BatteryLevel > 60 && bin.BatteryLevel <= 85) {
         batteryImage = "70";
         batteryStatus = "Good";
-    } else if (batteryLevelRounded > 85 && batteryLevelRounded <= 100) {
+    } else if (bin.BatteryLevel > 85) {
         batteryImage = "100";
         batteryStatus = "High";
     }
@@ -47,62 +44,74 @@ function printBinInfo(bin) {
     $("#battery-level #battery-status").text(batteryStatus + " (" + Math.round(bin.BatteryLevel) + "%)").css("color", batteryStatusColor);
 }
 
-function checkFixedHeader(e) {
-    var el = $(".mdl-layout__content");
-    var scroll = el.scrollTop();
-    if ($("body").hasClass("scroll") && scroll > 140) {
-        $("body").addClass("fixed").removeClass("scroll");
-        $(".mdl-layout__header").removeClass("mdl-layout__header--seamed");
-    } else if ($("body").hasClass("fixed") && scroll <= 140) {
-        $("body").addClass("scroll").removeClass("fixed");
-        $(".mdl-layout__header").addClass("mdl-layout__header--seamed");
-        el.scrollTop(140);
-    }
-}
-
-function processBinHistory(data) {
+function processBinHistory(history) {
     var passedMonths = [];
     var now = new Date();
-    var minUnix = now.setMonth(now.getMonth() - 5) / 1000;
-    $.each(data, function () {
+    var minUnix = now.setMonth(now.getMonth() - 6) / 1000;
+    $.each(history, function () {
         if (this.UnixTimestamp > minUnix) {
             passedMonths.push(this);
         }
     })
     processGraph(passedMonths);
+    processStatistics(history);
 }
 
-function processGraph(data) {
+function processGraph(history) {
     var graph = {};
-    var dataByMonth = [];
-    graph.X = [];
-    graph.Y = [];
-    var currentMonth = -1;
-    $.each(data, function () {
+    var dataByMonth = {};
+    graph.labels = [];
+    graph.data = [];
+    $.each(history, function () {
         var timestamp = new Date(this.UnixTimestamp * 1000);
         var month = timestamp.getMonth() + 1;
-        if (month !== currentMonth) {
-            currentMonth = month;
-            dataByMonth.push(0);
-            graph.X.push(getNameMonth(currentMonth));
+        var nameMonth = getNameMonth(month);
+        if (!dataByMonth.hasOwnProperty(month)) {
+            dataByMonth[month] = {
+                name: nameMonth,
+                month: month,
+                weight: 0
+            };
+            graph.labels.push(month);
         }
-        dataByMonth[dataByMonth.length - 1] += this.Weight;
+        dataByMonth[month].weight += this.Weight;
     });
-    graph.data = dataByMonth;
-    var min = Math.min.apply(Math, graph.data);
-    var max = Math.max.apply(Math, graph.data);
-    var margin = (max - min) / 5;
-    min -= margin;
-    max += margin;
-    if (min < 0) min = 0;
-    for (var i = min; i <= max; i += margin) {
-        graph.Y.push(i);
+    graph.datasets = [{
+        label: "Bin graph",
+        fillColor: "rgba(169,170,166,0.5)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)"
+    }];
+    $.each(dataByMonth, function () {
+        graph.data.push(this.weight);
+    });
+    graph.datasets[0].data = graph.data;
+    graph.labels = graph.labels.sort(function(a,b){return a - b});
+    for (var i = 0, l = graph.labels.length; i < l; i++) {
+        graph.labels[i] = getNameMonth(graph.labels[i]);
     }
     printGraph(graph);
 }
 
 function printGraph(graph) {
-    console.log(graph);
+    var graphEl = $("#graph canvas")[0].getContext("2d");
+    var myLineChart = new Chart(graphEl).Line(graph);
+}
+
+function processStatistics(history) {
+    var totalWeight = 0;
+    var firstTimestamp = new Date().getTime();
+    $.each(history, function () {
+        var timestamp = new Date(this.UnixTimestamp * 1000);
+        if (timestamp < firstTimestamp) firstTimestamp = timestamp;
+        totalWeight += this.Weight;
+    });
+    var averageWeight = totalWeight / ((new Date().getTime() - firstTimestamp) / 2635200000);
+    $("#total-weight").text("Totaal: " + totalWeight + " kg");
+    $("#average-weight").text("Gemiddeld: " + Math.round(averageWeight) + " kg/m");
 }
 
 
