@@ -1,6 +1,42 @@
 function initAddBin() {
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
     $(".back-button").on("click", back);
+    initSnackbar(showSnackbar);
+    $(".save-bin").on("click", function () {
+        saveSnackbar({
+            message: "Bin saved"
+        });
+    });
+    printBinTypes([
+        {
+            name: "Restafval",
+            key: 0
+        },
+        {
+            name: "Plastic",
+            key: 1
+        },
+        {
+            name: "Glas",
+            key: 2
+        },
+        {
+            name: "Organisch",
+            key: 3
+        },
+        {
+            name: "Tin",
+            key: 4
+        },
+        {
+            name: "Papier",
+            key: 5
+        },
+        {
+            name: "Chemisch",
+            key: 6
+        }
+    ]);
 }
 
 function processBinAPI(bin) {
@@ -108,6 +144,19 @@ function processStatistics(history) {
     var averageWeight = totalWeight / ((new Date().getTime() - firstTimestamp) / 2635200000);
     $("#total-weight").text("Totaal: " + totalWeight + " kg");
     $("#average-weight").text("Gemiddeld: " + Math.round(averageWeight) + " kg/m");
+}
+
+function printBinTypes(bins) {
+    var bintypes = "";
+    var first = true;
+    $.each(bins, function () {
+        bintypes += "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect form-item\" for=\"option-" + this.key + "\">" +
+                        "<input type=\"radio\" id=\"option-" + this.key + "\" class=\"mdl-radio__button\" name=\"bintype\" value=\"" + this.key + "\"" + (first?" checked":"") + ">" +
+                        "<span class=\"mdl-radio__label\">" + this.name + "</span>" +
+                    "</label>";
+        if (first) first = false;
+    });
+    $(".main-form").append(bintypes);
 }
 
 
