@@ -3,7 +3,6 @@ var user;
 function initApp() {
     $.support.cors = true;
     API.getUser(getUserId(), "info", saveUser);
-    // $(".mdl-layout__drawer").on("scroll", drawerScroll);
 }
 
 function saveUser(output) {
@@ -32,13 +31,14 @@ function getURLParameter(name) {
 function checkFixedHeader(e) {
     var el = $(".mdl-layout__content");
     var scroll = el.scrollTop();
-    if ($("body").hasClass("scroll") && scroll > 140) {
+    var limit = 142;
+    if ($("body").hasClass("scroll") && scroll > limit) {
         $("body").addClass("fixed").removeClass("scroll");
         $(".mdl-layout__header").removeClass("mdl-layout__header--seamed");
-    } else if ($("body").hasClass("fixed") && scroll <= 140) {
+    } else if ($("body").hasClass("fixed") && scroll <= limit) {
         $("body").addClass("scroll").removeClass("fixed");
         $(".mdl-layout__header").addClass("mdl-layout__header--seamed");
-        el.scrollTop(140);
+        el.scrollTop(limit);
     }
 }
 
@@ -131,3 +131,19 @@ function getNameMonth(monthInt) {
             break;
     }
 }
+
+function showSnackbar(data) {
+    if (typeof data === typeof undefined && typeof localStorage.snackbar !== typeof undefined) data = JSON.parse(localStorage.snackbar);
+    if (typeof data !== typeof undefined) {
+        $(".mdl-js-snackbar")[0].MaterialSnackbar.showSnackbar(data);
+        localStorage.removeItem("snackbar");
+    }
+}
+
+function saveSnackbar(data) {
+    localStorage.snackbar = JSON.stringify(data);
+}
+
+
+
+
