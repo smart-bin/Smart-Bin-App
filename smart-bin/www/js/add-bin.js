@@ -10,9 +10,9 @@ function printBinTypes(bins) {
     var bintypes = "";
     var first = true;
     $.each(bins, function (k, v) {
-        bintypes += "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect form-item\" for=\"option-" + k + "\">" +
-                        "<input type=\"radio\" id=\"option-" + k + "\" class=\"mdl-radio__button\" name=\"bintype\" value=\"" + k + "\"" + (first?" checked=\"checked\"":"") + ">" +
-                        "<span class=\"mdl-radio__label\">" + v + "</span>" +
+        bintypes += "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect form-item\" for=\"option-" + v.TypeId + "\">" +
+                        "<input type=\"radio\" id=\"option-" + v.TypeId + "\" class=\"mdl-radio__button\" name=\"bintype\" value=\"" + v.TypeId + "\"" + (first?" checked=\"checked\"":"") + ">" +
+                        "<span class=\"mdl-radio__label\">" + v.TypeName + "</span>" +
                     "</label>";
         if (first) first = false;
     });
@@ -32,15 +32,16 @@ function saveBin() {
 
 function createBin(bin, name, type) {
     console.log(bin);
-    console.log(name + " " + type);
     binSuccess(bin.BinId);
 }
 
 function binSuccess(binId) {
     saveSnackbar({
-        message: "<i class=\"material-icons mdl-color-text--green valign\">check_circle</i><span>Bin saved</span>"
+        message: "<i class=\"material-icons mdl-color-text--green valign\">check_circle</i><span>Bin succesvol toegevoegd</span>"
     });
-    //location.href = "bin.html?id=" + binId;
+    var stateObj = { foo: "bar" };
+    history.pushState(stateObj, "page 2", "bins.html");
+    location.href = "bin.html?id=" + binId;
 }
 
 function initSelectPicture() {
