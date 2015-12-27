@@ -13,7 +13,7 @@ var API =
 	
 	registerNewUser: function (name, email, password, onSuccess)
 	{
-		$.post(this.apiBaseUrl + "users.php" + "?lang=" + this.language, {newUser:{Name:name, Email:email, Password:password}}).done(function(data){
+		$.post(this.apiBaseUrl + "users.php" + "?lang=" + this.language, {newUser:{Name:name, Email:email, Password:password}}, null, "JSON").done(function(data){
 			if (typeof onSuccess === "function")
 				onSuccess(data);
 		});
@@ -29,7 +29,7 @@ var API =
 	
 	registerNewBin: function (ownerId, name, type, onSuccess)
 	{
-		$.post(this.apiBaseUrl + "bins.php" + "?lang=" + this.language, {newBin:{Name:name, OwnerId:ownerId, Type:type}}).done(function(data){
+		$.post(this.apiBaseUrl + "bins.php" + "?lang=" + this.language, {newBin:{Name:name, OwnerId:ownerId, Type:type}}, null, "JSON").done(function(data){
 			if (typeof onSuccess === "function")
 				onSuccess(data);
 		});
