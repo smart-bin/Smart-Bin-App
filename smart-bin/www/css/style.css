@@ -257,6 +257,12 @@ body.form.full-width .page-content {
     position: fixed;
     bottom: 16px;
     right: 16px;
+    transition: bottom 0.2s ease-in-out;
+    z-index: 99999999;
+}
+
+.snackbar-visible .mdl-button--fab {
+    bottom: 64px;
 }
 
 .form-item {
@@ -270,28 +276,23 @@ body.form.full-width .page-content {
 /* SNACKBAR */
 
 .mdl-snackbar {
-  position: fixed;
-  bottom: 0;
-  width: 936px;
-  margin: 0 auto;
-  cursor: default;
-  background-color: #323232;
-  z-index: 10000;
-  max-height: 0;
-  border-radius: 2px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  will-change: transform;
-  -webkit-transform: translate3d(0, -50px, 0) rotateZ(0deg);
-          transform: translate3d(0, -50px, 0) rotateZ(0deg); 
-}
-@media (max-width: 479px) {
-    .mdl-snackbar {
-        min-height: 48px;
-        max-height: 80px; 
-    }
+    position: fixed;
+    bottom: 0;
+    width: 936px;
+    margin: 0 auto;
+    cursor: default;
+    background-color: #323232;
+    z-index: 10000;
+    border-radius: 2px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    will-change: transform;
+    -webkit-transform: translate3d(0, 50px, 0) rotateZ(0deg);
+    transform: translate3d(0, 50px, 0) rotateZ(0deg);
+    transition: all 0.2s ease-in-out;
+    min-height: 48px;
+    max-height: 80px;
 }
 
 .mdl-snackbar.is-active {
@@ -301,9 +302,20 @@ body.form.full-width .page-content {
 }
 
 .mdl-snackbar__text {
-  padding: 14px 33px;
-  vertical-align: middle;
-  color: white;
+    padding: 14px 33px;
+    vertical-align: middle;
+    color: white;
+}
+
+.mdl-snackbar__text i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 24px;
+}
+
+.mdl-snackbar__text.has-icon span {
+    padding-left: 24px;
 }
 
 .mdl-snackbar__action {
