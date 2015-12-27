@@ -100,7 +100,7 @@ body.white-background .mdl-layout__content {
 }
 
 .two-to-one.mdl-card .card-content-container {
-    width: calc(60% - 32px);
+    width: calc(60% - 16px);
 }
 
 .two-to-one.mdl-card .card-time {
@@ -115,16 +115,34 @@ body.white-background .mdl-layout__content {
 }
 
 .two-to-one.mdl-card .mdl-card__title, .two-to-one.mdl-card .mdl-card__supporting-text {
-    padding: 0px 8px 8px 16px;
+    padding: 0 16px 8px 16px;
 }
 
 .two-to-one.mdl-card .mdl-card__title-text {
-    font-size: 18px;
+    font-size: 16px;
+}
+
+.two-to-one.mdl-card.two-supporting-texts .mdl-card__title-text {
+    padding-top: 16px;
+}
+
+.two-to-one.mdl-card .mdl-card__supporting-text i {
+    position: absolute;
+}
+
+.two-to-one.mdl-card.two-supporting-texts .mdl-card__supporting-text span {
+    padding-left: 32px;
+    line-height: 24px;
 }
 
 .two-to-one.mdl-card .mdl-card__actions {
     position: absolute;
     bottom: 0;
+    width: 60%;
+}
+
+.two-to-one.mdl-card .mdl-card__actions .mdl-button {
+    padding: 0 14px;
 }
 
 .two-to-one.mdl-card .card-image-container {
@@ -285,10 +303,6 @@ body.white-background .mdl-layout__content {
     display: block;
 }
 
-.mdl-layout__header-row {
-    /*background-color: rgb(130, 186, 115);*/
-}
-
 /* MDL CORE ELEMENTS */
 /* SNACKBAR */
 .mdl-snackbar__text i {
@@ -339,30 +353,37 @@ body.form.full-width .main-form .form-item:first-child {
 /* BIN TYPES -> GENERIC */
 .bin-type--waste .scroll-header-container, .bin-type--waste .header-position-container, .bin-type--waste .card-image-container {
     background-color: rgba(239, 197, 30, 1);
+    /*background-color: rgba(209, 167, 0, 1);*/
 }
 
 .bin-type--plastic .scroll-header-container, .bin-type--plastic .header-position-container, .bin-type--plastic .card-image-container  {
     background-color: rgba(130, 186, 115, 1);
+    /*background-color: rgba(100, 156, 85, 1);*/
 }
 
 .bin-type--glass .scroll-header-container, .bin-type--glass .header-position-container, .bin-type--glass .card-image-container  {
     background-color: rgba(130, 186, 115, 1);
+    /*background-color: rgba(100, 156, 85, 1);*/
 }
 
 .bin-type--organic .scroll-header-container, .bin-type--organic .header-position-container, .bin-type--organic .card-image-container  {
     background-color: rgba(130, 186, 115, 1);
+    /*background-color: rgba(100, 156, 85, 1);*/
 }
 
 .bin-type--tin .scroll-header-container, .bin-type--tin .header-position-container, .bin-type--tin .card-image-container  {
     background-color: rgba(130, 186, 115, 1);
+    /*background-color: rgba(100, 156, 85, 1);*/
 }
 
 .bin-type--paper .scroll-header-container, .bin-type--paper .header-position-container, .bin-type--paper .card-image-container  {
     background-color: rgba(235, 81, 81, 1);
+    /*background-color: rgba(235, 51, 51, 1);*/
 }
 
 .bin-type--chemical .scroll-header-container, .bin-type--chemical .header-position-container, .bin-type--chemical .card-image-container  {
-    background-color: rgba(235, 81, 81, 1);
+    background-color: rgba(130, 186, 115, 1);
+    /*background-color: rgba(100, 156, 85, 1);*/
 }
 
 /* BIN TYPES -> DETAIL */
