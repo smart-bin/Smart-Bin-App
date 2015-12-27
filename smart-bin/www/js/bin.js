@@ -8,8 +8,7 @@ function initBinDetails() {
 }
 
 function processBinAPI(bin) {
-    console.log(bin);
-    bin.BinTypeClass = convertBinTypeToClass(bin.TypeId);
+    bin.BinTypeClass = convertBinTypeToClass(bin.Type.TypeId);
     printBinInfo(bin);
 }
 
@@ -51,16 +50,24 @@ function processBinHistory(history) {
         if (this.UnixTimestamp > minUnix) {
             passedMonths.push(this);
         }
-    })
+    });
     processGraph(passedMonths);
     processStatistics(history);
 }
 
 function processGraph(history) {
+    // TODO: Months of previous year are thought of as months of this year (e.g. when current month is march, he will show Januari, Februari, March, October, November, December instead of October, November, December, Januari, Februari, March
     var graph = {};
     var dataByMonth = {};
     graph.labels = [];
-    graph.data = [];
+    var currentMonth = 6;
+    for (var i = 0; i < 7; i++) {
+        var month = currentMonth - i;
+        if (month < 1) month += 12;
+        graph.labels.push(month);
+    }
+    console.log(graph.labels);
+    graph.data = [0];
     $.each(history, function () {
         var timestamp = new Date(this.UnixTimestamp * 1000);
         var month = timestamp.getMonth() + 1;
@@ -96,6 +103,7 @@ function processGraph(history) {
 }
 
 function printGraph(graph) {
+    console.log(graph);
     var graphEl = $("#graph canvas")[0].getContext("2d");
     var myLineChart = new Chart(graphEl).Line(graph);
 }
