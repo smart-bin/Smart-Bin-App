@@ -29,7 +29,6 @@ var API =
 	
 	registerNewBin: function (ownerId, name, type, onSuccess)
 	{
-        console.log({newBin:{Name:name, OwnerId:ownerId, Type:type}});
 		$.post(this.apiBaseUrl + "bins.php" + "?lang=" + this.language, {newBin:{Name:name, OwnerId:ownerId, Type:type}}).done(function(data){
 			if (typeof onSuccess === "function")
 				onSuccess(data);
