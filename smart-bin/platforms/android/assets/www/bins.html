@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title></title>
+    <title>Mijn bins</title>
     <meta name="description" content="">
 
     <!-- Mobile -->
@@ -14,14 +14,14 @@
     <meta name="theme-color" content="black">
     <link rel="icon" href="icon.png">
 
-    <link rel="stylesheet" href="css/lib/material.pink-blue.min.css" />
+    <link rel="stylesheet" href="css/lib/material.color.min.css" />
     <link rel="stylesheet" href="css/lib/material-icons.css">
     <link rel="stylesheet" href="css/lib/roboto.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="cards">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
+        <header class="mdl-layout__header fixed-header">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">Mijn bins</span>
                 <div class="mdl-layout-spacer"></div>
@@ -57,10 +57,15 @@
                     
                 </div>
             </div>
+            <a href="add-bin.html" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--primary">
+                <i class="material-icons">add</i>
+            </a>
+            <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
         </main>
     </div>
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/material.min.js"></script>
+    <script src="js/lib/snackbar.js"></script>
     <script src="js/lib/APIFunctions.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bins.js"></script>

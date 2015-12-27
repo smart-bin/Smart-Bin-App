@@ -1,5 +1,6 @@
 var API = 
 {
+	language: "en",
 	apiBaseUrl: "http://timfalken.com/hr/internetfornature/",
 	
 	login: function(email, password, onSuccess)
@@ -12,7 +13,7 @@ var API =
 	
 	registerNewUser: function (name, email, password, onSuccess)
 	{
-		$.post(this.apiBaseUrl + "users.php", {newUser:{Name:name, Email:email, Password:password}}).done(function(data){
+		$.post(this.apiBaseUrl + "users.php" + "?lang=" + this.language, {newUser:{Name:name, Email:email, Password:password}}).done(function(data){
 			if (typeof onSuccess === "function")
 				onSuccess(data);
 		});
@@ -28,7 +29,8 @@ var API =
 	
 	registerNewBin: function (ownerId, name, type, onSuccess)
 	{
-		$.post(this.apiBaseUrl + "bins.php", {newBin:{Name:name, OwnerId:ownerId, Type:type}}).done(function(data){
+        console.log({newBin:{Name:name, OwnerId:ownerId, Type:type}});
+		$.post(this.apiBaseUrl + "bins.php" + "?lang=" + this.language, {newBin:{Name:name, OwnerId:ownerId, Type:type}}).done(function(data){
 			if (typeof onSuccess === "function")
 				onSuccess(data);
 		});
@@ -42,7 +44,21 @@ var API =
 		return $.ajax({
 			dataType: "JSON",
 			method:"GET",
-			url: this.apiBaseUrl + "users.php?id=" + userId + "&type=" + type,
+			url: this.apiBaseUrl + "users.php?id=" + userId + "&type=" + type + "&lang=" + this.language,
+			success: function(data)
+			{
+				if (typeof onSuccess === "function")
+					onSuccess(data);
+			}	
+		});
+	},
+	
+	getBinTypes: function(onSuccess)
+	{
+		return $.ajax({
+			dataType: "JSON",
+			method:"GET",
+			url: this.apiBaseUrl + "getTypes.php" + "?lang=" + this.language,
 			success: function(data)
 			{
 				if (typeof onSuccess === "function")
@@ -59,7 +75,7 @@ var API =
 		return $.ajax({
 			dataType: "JSON",
 			method:"GET",
-			url: this.apiBaseUrl + "users.php" + "?type=" + type,
+			url: this.apiBaseUrl + "users.php" + "?type=" + type + "&lang=" + this.language,
 			success: function(data)
 			{
 				if (typeof onSuccess === "function")
@@ -73,7 +89,7 @@ var API =
 		return $.ajax({
 			dataType: "JSON",
 			method:"GET",
-			url: this.apiBaseUrl + "bins.php?id=" + binId,
+			url: this.apiBaseUrl + "bins.php?id=" + binId + "&lang=" + this.language,
 			success: function(data)
 			{
 				if (typeof onSuccess === "function")
@@ -87,13 +103,18 @@ var API =
 		return $.ajax({
 			dataType: "JSON",
 			method:"GET",
-			url: this.apiBaseUrl + "bins.php",
+			url: this.apiBaseUrl + "bins.php" + "?lang=" + this.language,
 			success: function(data)
 			{
 				if (typeof onSuccess === "function")
 					onSuccess(data);
 			}	
 		});
+	},
+	
+	getEntireHistory: function(binId, onSuccess)
+	{
+		return this.getHistory(binId, null, null, onSuccess);
 	},
 	
 	getHistory: function(binId, unixFrom, unixTo, onSuccess)

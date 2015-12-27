@@ -2,14 +2,17 @@ var user;
 
 function initApp() {
     $.support.cors = true;
+    initSnackbar(showSnackbar);
+    API.language = "en";
     API.getUser(getUserId(), "info", saveUser);
-    // $(".mdl-layout__drawer").on("scroll", drawerScroll);
 }
 
 function saveUser(output) {
     user = output;
-    $("#drawer-user-name").text(user.Name);
-    $("#drawer-user-email").text(user.Email);
+    if ($(".mdl-layout__drawer").length > 0) {
+        $("#drawer-user-name").text(user.Name);
+        $("#drawer-user-email").text(user.Email);
+    }
 }
 
 function getUserId() {
@@ -32,13 +35,23 @@ function getURLParameter(name) {
 function checkFixedHeader(e) {
     var el = $(".mdl-layout__content");
     var scroll = el.scrollTop();
-    if ($("body").hasClass("scroll") && scroll > 140) {
+    var limit = 142;
+    var opacity = scroll / limit;
+    opacity *= 1.2;
+    if (opacity > 1) opacity = 1;
+    var bgColor = $(".scroll-header-container").css("background-color");
+    if (bgColor) {
+        var bg = $(".header-position-container");
+        var newColor = convertColor(bgColor, opacity);
+        bg.css("background-color", newColor);
+    }
+    if ($("body").hasClass("scroll") && scroll > limit) {
         $("body").addClass("fixed").removeClass("scroll");
         $(".mdl-layout__header").removeClass("mdl-layout__header--seamed");
-    } else if ($("body").hasClass("fixed") && scroll <= 140) {
+    } else if ($("body").hasClass("fixed") && scroll <= limit) {
         $("body").addClass("scroll").removeClass("fixed");
         $(".mdl-layout__header").addClass("mdl-layout__header--seamed");
-        el.scrollTop(140);
+        el.scrollTop(limit);
     }
 }
 
@@ -131,3 +144,37 @@ function getNameMonth(monthInt) {
             break;
     }
 }
+
+function showSnackbar(data) {
+    if (typeof data === typeof undefined && typeof localStorage.snackbar !== typeof undefined) data = JSON.parse(localStorage.snackbar);
+    if (typeof data !== typeof undefined) {
+        $(".mdl-js-snackbar")[0].MaterialSnackbar.showSnackbar(data);
+        localStorage.removeItem("snackbar");
+    }
+}
+
+function saveSnackbar(data) {
+    localStorage.snackbar = JSON.stringify(data);
+};
+
+function convertColor(color, opacity) {
+    var r, g, b;
+    if (color.length == 7) {
+        var hex = color.replace('#','');
+        r = parseInt(hex.substring(0,2), 16);
+        g = parseInt(hex.substring(2,4), 16);
+        b = parseInt(hex.substring(4,6), 16);
+    } else if (color.length > 7) {
+        var rgb = color.replace(/^(rgb|rgba)\(/,'').replace(/\)$/,'').replace(/\s/g,'').split(',');
+        r = rgb[0];
+        g = rgb[1];
+        b = rgb[2];
+    }
+    return "rgba(" + r + "," + g + "," + b + "," + opacity + ")";
+}
+
+
+
+
+
+
