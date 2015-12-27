@@ -37,6 +37,10 @@ body.form.full-width .page-content {
     /*margin-top: 56px;*/
 }
 
+body.white-background .mdl-layout__content {
+    background-color: #fff;
+}
+
 /* DRAWER */
 
 #drawer-user-name {
@@ -160,7 +164,7 @@ body.form.full-width .page-content {
     background-repeat: no-repeat;
     background-position: 0 100%;
     width: 100%;
-    /*transition: background-color 0.6s;*/
+    position: relative;
 }
 
 .scroll-header.fixed .fixed-header {
@@ -183,6 +187,14 @@ body.form.full-width .page-content {
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 19px;
+}
+
+.scroll-header .scroll-header-container > i {
+
+}
+
+.scroll-header.fixed .scroll-header-container > i {
+    display: none;
 }
 
 .scroll-header .mdl-layout__header-row {
@@ -346,8 +358,21 @@ body.form.full-width .page-content {
 /* FORMS */
 body.form.full-width .main-form .form-item {
     padding-left: 36px;
+    height: 56px;
 }
 
+.valign {
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+}
+
+.centerab {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
 
 
 
