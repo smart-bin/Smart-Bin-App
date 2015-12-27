@@ -37,7 +37,7 @@ function checkFixedHeader(e) {
     var scroll = el.scrollTop();
     var limit = 142;
     var opacity = scroll / limit;
-    opacity *= 1.2;
+    opacity += 0.2;
     if (opacity > 1) opacity = 1;
     var bgColor = $(".scroll-header-container").css("background-color");
     if (bgColor) {
@@ -172,6 +172,36 @@ function convertColor(color, opacity) {
     }
     return "rgba(" + r + "," + g + "," + b + "," + opacity + ")";
 }
+
+function convertBinTypeToClass(type) {
+    switch (type) {
+        case 0:
+            return "waste";
+            break;
+        case 1:
+            return "plastic";
+            break;
+        case 2:
+            return "glass";
+            break;
+        case 3:
+            return "organic";
+            break;
+        case 4:
+            return "tin";
+            break;
+        case 5:
+            return "paper";
+            break;
+        case 6:
+            return "chemical";
+            break;
+        default:
+            return "none";
+            break;
+    }
+}
+
 
 
 

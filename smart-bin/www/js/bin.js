@@ -8,6 +8,8 @@ function initBinDetails() {
 }
 
 function processBinAPI(bin) {
+    console.log(bin);
+    bin.BinTypeClass = convertBinTypeToClass(bin.TypeId);
     printBinInfo(bin);
 }
 
@@ -36,10 +38,7 @@ function printBinInfo(bin) {
         batteryImage = "100";
         batteryStatus = "High";
     }
-    $("#bin-header").css({
-        "background-image": "url(img/types/glass_360x180.png)",
-        "background-color": "#82ba73"
-    });
+    $("body").addClass("bin-type--" + bin.BinTypeClass);
     $("#battery-level").css("background-image", "url(img/battery/battery_square_" + batteryImage + ".png)");
     $("#battery-level #battery-status").text(batteryStatus + " (" + Math.round(bin.BatteryLevel) + "%)").css("color", batteryStatusColor);
 }
