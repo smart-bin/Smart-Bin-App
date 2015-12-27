@@ -25,6 +25,23 @@
 }
 
 /* ADD BIN */
+#select-picture-click {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.bin-type-image img {
+    width: 50px;
+}
+
+.bin-type-image i {
+    display: none;
+}
+
+.bin-type-image.selected i {
+    display: initial;
+}
 
 
 

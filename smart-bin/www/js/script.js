@@ -3,7 +3,7 @@ var user;
 function initApp() {
     $.support.cors = true;
     initSnackbar(showSnackbar);
-    API.language = "en";
+    API.language = "nl";
     API.getUser(getUserId(), "info", saveUser);
 }
 

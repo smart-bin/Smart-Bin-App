@@ -285,6 +285,20 @@ body.white-background .mdl-layout__content {
     /*background-color: rgb(130, 186, 115);*/
 }
 
+/* MDL CORE ELEMENTS */
+/* SNACKBAR */
+.mdl-snackbar__text i {
+    left: 24px;
+    position: absolute;
+}
+
+.mdl-snackbar__text.has-icon span {
+    padding-left: 24px;
+}
+
+/* DIALOG */
+/*.mdl-js-dialog*/
+
 /* FORMS */
 body.form.full-width .main-form .form-item {
     padding-left: 36px;
@@ -302,6 +316,15 @@ body.form.full-width .main-form .form-item {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+}
+
+.no-bullets {
+    margin: 0;
+    padding: 0;
+}
+
+.no-bullets li {
+    list-style: none outside none;
 }
 
 
