@@ -11,9 +11,8 @@ function processBins(output) {
             title: this.Name,
             subtitle1: "<i class=\"material-icons\">battery_full</i><span>" + this.BatteryLevel + "% batterij</span>",
             subtitle2: "<i class=\"material-icons\">assessment</i><span>" + "" + " kg deze maand</span>",
-            image: "img/types/glass_square.png",
-            imageColor: "#82ba73",
-            button1Link: "bin.html?id=5",
+            button1Link: "bin.html?id=" + this.BinId,
+            cardClasses: "bin-type-card bin-type--" + convertBinTypeToClass(this.Type.TypeId),
             type: "bin",
             button2: false
         };

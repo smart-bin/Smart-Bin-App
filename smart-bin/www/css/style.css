@@ -273,6 +273,10 @@ body.white-background .mdl-layout__content {
     z-index: 99999999;
 }
 
+.snackbar-visible .page-content {
+    padding-bottom: 56px;
+}
+
 .snackbar-visible .mdl-button--fab {
     bottom: 64px;
 }
@@ -332,73 +336,108 @@ body.form.full-width .main-form .form-item:first-child {
 }
 
 /* BIN TYPES */
-.bin-type. .scroll-header-container {
-
+/* BIN TYPES -> GENERIC */
+.bin-type--waste .scroll-header-container, .bin-type--waste .header-position-container, .bin-type--waste .card-image-container {
+    background-color: rgba(239, 197, 30, 1);
 }
 
-.bin-type.bin-type--waste .scroll-header-container {
-    background-color: rgba(239, 197, 30, 1);
+.bin-type--plastic .scroll-header-container, .bin-type--plastic .header-position-container, .bin-type--plastic .card-image-container  {
+    background-color: rgba(130, 186, 115, 1);
+}
+
+.bin-type--glass .scroll-header-container, .bin-type--glass .header-position-container, .bin-type--glass .card-image-container  {
+    background-color: rgba(130, 186, 115, 1);
+}
+
+.bin-type--organic .scroll-header-container, .bin-type--organic .header-position-container, .bin-type--organic .card-image-container  {
+    background-color: rgba(130, 186, 115, 1);
+}
+
+.bin-type--tin .scroll-header-container, .bin-type--tin .header-position-container, .bin-type--tin .card-image-container  {
+    background-color: rgba(130, 186, 115, 1);
+}
+
+.bin-type--paper .scroll-header-container, .bin-type--paper .header-position-container, .bin-type--paper .card-image-container  {
+    background-color: rgba(235, 81, 81, 1);
+}
+
+.bin-type--chemical .scroll-header-container, .bin-type--chemical .header-position-container, .bin-type--chemical .card-image-container  {
+    background-color: rgba(235, 81, 81, 1);
+}
+
+/* BIN TYPES -> DETAIL */
+.bin-type-detail.bin-type--waste .scroll-header-container {
     background-image: url("/img/types/waste_360x180.png");
 }
 
-.bin-type.bin-type--waste .header-position-container {
-    background-color: rgba(239, 197, 30, 0.2);
-}
-
-.bin-type.bin-type--plastic .scroll-header-container {
-    background-color: rgba(130, 186, 115, 1);
+.bin-type-detail.bin-type--plastic .scroll-header-container {
     background-image: url("/img/types/plastic_360x180.png");
 }
 
-.bin-type.bin-type--plastic .header-position-container {
-    background-color: rgba(130, 186, 115, 0.2);
-}
-
-.bin-type.bin-type--glass .scroll-header-container {
-    background-color: rgba(130, 186, 115, 1);
+.bin-type-detail.bin-type--glass .scroll-header-container {
     background-image: url("/img/types/glass_360x180.png");
 }
 
-.bin-type.bin-type--glass .header-position-container {
-    background-color: rgba(130, 186, 115, 0.2);
-}
-
-.bin-type.bin-type--organic .scroll-header-container {
-    background-color: rgba(130, 186, 115, 1);
+.bin-type-detail.bin-type--organic .scroll-header-container {
     background-image: url("/img/types/organic_360x180.png");
 }
 
-.bin-type.bin-type--organic .header-position-container {
-    background-color: rgba(130, 186, 115, 0.2);
-}
-
-.bin-type.bin-type--tin .scroll-header-container {
-    background-color: rgba(130, 186, 115, 1);
+.bin-type-detail.bin-type--tin .scroll-header-container {
     background-image: url("/img/types/tin_360x180.png");
 }
 
-.bin-type.bin-type--tin .header-position-container {
-    background-color: rgba(130, 186, 115, 0.2);
-}
-
-.bin-type.bin-type--paper .scroll-header-container {
-    background-color: rgba(235, 81, 81, 1);
+.bin-type-detail.bin-type--paper .scroll-header-container {
     background-image: url("/img/types/paper_360x180.png");
 }
 
-.bin-type.bin-type--paper .header-position-container {
-    background-color: rgba(235, 81, 81, 0.2);
+.bin-type-detail.bin-type--chemical .scroll-header-container {
+    background-image: url("/img/types/chemical_360x180.png");
 }
 
-.bin-type.bin-type--none .scroll-header-container {
-    background-color: auto;
+.bin-type-detail.bin-type--none .scroll-header-container {
     background-image: none;
 }
 
-.bin-type.bin-type--chemical .header-position-container {
+.bin-type-detail.bin-type--none .header-position-container {
     background-color: initial;
 }
 
+.bin-type--none .scroll-header-container  {
+    background-color: auto;
+}
+
+/* BIN TYPES -> CARD */
+.bin-type-card.bin-type--waste .card-image {
+    background-image: url("/img/types/waste_square.png");
+}
+
+.bin-type-card.bin-type--plastic .card-image {
+    background-image: url("/img/types/plastic_square.png");
+}
+
+.bin-type-card.bin-type--glass .card-image {
+    background-image: url("/img/types/glass_square.png");
+}
+
+.bin-type-card.bin-type--organic .card-image {
+    background-image: url("/img/types/organic_square.png");
+}
+
+.bin-type-card.bin-type--tin .card-image {
+    background-image: url("/img/types/tin_square.png");
+}
+
+.bin-type-card.bin-type--paper .card-image {
+    background-image: url("/img/types/paper_square.png");
+}
+
+.bin-type-card.bin-type--chemical .card-image {
+    background-image: url("/img/types/chemical_square.png");
+}
+
+.bin-type-card.bin-type--none .card-image {
+    background-image: none;
+}
 
 
 

@@ -65,10 +65,13 @@ function formatCard(card) {
         button2Text: "Klaar",
         button2Link: "#",
         accentColor: "grey-600",
-        type: "default"
+        type: "default",
+        cardClasses: "",
+        imageColor: "",
+        image: ""
     };
     card = $.extend(defaultCard, card);
-    var html = "<div id=\"card-" + card.id + "\" class=\"two-to-one card-" + card.type + " mdl-card mdl-shadow--2dp\">" +
+    var html = "<div id=\"card-" + card.id + "\" class=\"two-to-one card-" + card.type + " " + card.cardClasses + " mdl-card mdl-shadow--2dp\">" +
             "<div class=\"card-content-container\">";
     if (card.type == "timeline") {
         html += "<div class=\"card-time card-content\">" +
@@ -90,8 +93,8 @@ function formatCard(card) {
                 (card.button2?"<a href=\"" + card.button2Link + "\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--grey-600 action2-button\">" + card.button2Text + "</a>":"") +
             "</div>" +
         "</div>" +
-        "<div style=\"background-color: " + card.imageColor + ";\" class=\"card-image-container\">" +
-            "<div style=\"background-image: url(" + card.image + ");\" class=\"card-image\">" +
+        "<div " + card.imageColor + " class=\"card-image-container\">" +
+            "<div " + card.image + " class=\"card-image\">" +
             "</div>" +
         "</div>" +
     "</div>";
