@@ -1,7 +1,7 @@
 function initAddBin() {
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
     $(".back-button").on("click", back);
-    $("#select-picture-click").on("click", initSelectPicture);
+    //$("#select-picture-click").on("click", initSelectPicture);
     $(".save-bin").on("click", saveBin);
     API.getBinTypes(printBinTypes);
 }
@@ -38,14 +38,18 @@ function createBin(bin, name, type) {
 
 function binSuccess(binId) {
     saveSnackbar({
-        message: "<i class=\"material-icons mdl-color-text--green\">check_circle</i><span>Bin saved</span>"
+        message: "<i class=\"material-icons mdl-color-text--green valign\">check_circle</i><span>Bin saved</span>"
     });
     //location.href = "bin.html?id=" + binId;
 }
 
 function initSelectPicture() {
     console.log("pick photo");
-
+    (function() {
+        'use strict';
+        var dialog = document.querySelector('#select-picture-dialog');
+        dialog.MaterialDialog.show(true);
+    }());
 }
 
 

@@ -40,6 +40,12 @@
     bottom: 0 !important;
 }
 
+.mdl-dialog.mdl-dialog-bottomsheet h3 {
+    font-size: 20px;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.7);
+}
+
 .mdl-dialog:not([open]) {
     display: none;
 }
