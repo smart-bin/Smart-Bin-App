@@ -460,6 +460,11 @@ body.form.full-width .main-form .form-item:first-child {
     background-image: none;
 }
 
+.spinner {
+    text-align: center;
+    padding-top: 20px;
+}
+
 
 
 
