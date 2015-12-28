@@ -63,14 +63,8 @@ function processGraph(history) {
     var dataByMonth = {};
     graph.labels = [];
     var currentMonth = 6;
-    for (var i = 0; i < 7; i++) {
-        var month = currentMonth - i;
-        if (month < 1) month += 12;
-        graph.labels.push(month);
-    }
-    console.log(graph.labels);
     graph.data = [0];
-    $.each(history, function () {
+    $.each(history.History, function () {
         var timestamp = new Date(this.UnixTimestamp * 1000);
         var month = timestamp.getMonth() + 1;
         var nameMonth = getNameMonth(month);
@@ -97,6 +91,13 @@ function processGraph(history) {
         graph.data.push(this.weight);
     });
     graph.datasets[0].data = graph.data;
+    if (graph.labels.length == 0) {
+        for (var i = 0; i < 7; i++) {
+            var month = currentMonth - i;
+            if (month < 1) month += 12;
+            graph.labels.push(month);
+        }
+    }
     graph.labels = graph.labels.sort(function(a,b){return a - b});
     for (var i = 0, l = graph.labels.length; i < l; i++) {
         graph.labels[i] = getNameMonth(graph.labels[i]);
@@ -105,7 +106,6 @@ function processGraph(history) {
 }
 
 function printGraph(graph) {
-    console.log(graph);
     var graphEl = $("#graph canvas")[0].getContext("2d");
     var myLineChart = new Chart(graphEl).Line(graph);
 }
@@ -113,7 +113,7 @@ function printGraph(graph) {
 function processStatistics(history) {
     var totalWeight = 0;
     var firstTimestamp = new Date().getTime();
-    $.each(history, function () {
+    $.each(history.History, function () {
         var timestamp = new Date(this.UnixTimestamp * 1000);
         if (timestamp < firstTimestamp) firstTimestamp = timestamp;
         totalWeight += this.Weight;
