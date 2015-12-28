@@ -1,4 +1,5 @@
 var user;
+var reload = true;
 
 function initApp() {
     $.support.cors = true;
@@ -223,19 +224,21 @@ function autoreload() {
         }
 
         function checkForReload() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('get', url, true);
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            xhr.onreadystatechange = function() {
-                if (this.readyState === 4 && /^[2]/.test(this.status)) {
-                    var response = JSON.parse(this.responseText);
-                    if (response.content.outdated) {
-                        postStatus();
-                        window.location.reload();
+            if (reload) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', url, true);
+                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                xhr.onreadystatechange = function () {
+                    if (this.readyState === 4 && /^[2]/.test(this.status)) {
+                        var response = JSON.parse(this.responseText);
+                        if (response.content.outdated) {
+                            postStatus();
+                            window.location.reload();
+                        }
                     }
                 }
+                xhr.send();
             }
-            xhr.send();
         }
 
         setInterval(checkForReload, 100);

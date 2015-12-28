@@ -57,9 +57,16 @@ function getTimelineCards() {
             type: "timeline"
         },
     ];
+    printTimelineCards(cards);
+}
+
+function printTimelineCards(cards) {
+    $("#loader.spinner").hide();
+    var cardsHTML = "";
     $.each(cards, function (k, card) {
-        $("#timeline-cards").append(formatCard(card));
+        cardsHTML += formatCard(card);
     });
+    $("#timeline-cards").append(cardsHTML);
 }
 
 
