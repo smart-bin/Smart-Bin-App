@@ -38,17 +38,19 @@ function printBinInfo(bin) {
         batteryStatus = "High";
     }
     $("body").addClass("bin-type--" + bin.BinTypeClass);
+    $(".scroll-header-container").css("background-color", convertColor($(".scroll-header-container").css("background-color"), 1));
     $("#battery-level").css("background-image", "url(img/battery/battery_square_" + batteryImage + ".png)");
     $("#battery-level #battery-status").text(batteryStatus + " (" + Math.round(bin.BatteryLevel) + "%)").css("color", batteryStatusColor);
 }
 
 function processBinHistory(history) {
-    var passedMonths = [];
+    var passedMonths = {};
+    passedMonths.History = [];
     var now = new Date();
     var minUnix = now.setMonth(now.getMonth() - 6) / 1000;
-    $.each(history, function () {
+    $.each(history.History, function () {
         if (this.UnixTimestamp > minUnix) {
-            passedMonths.push(this);
+            passedMonths.History.push(this);
         }
     });
     processGraph(passedMonths);
