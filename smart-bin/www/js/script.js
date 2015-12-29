@@ -207,6 +207,35 @@ function convertBinTypeToClass(type) {
     }
 }
 
+function getBatteryStatus(batteryLevel) {
+    var battery = {};
+    battery.batteryStatusColor = "rgb(0, 0, 0)";
+    if (batteryLevel <= 10) {
+        battery.batteryImage = "5";
+        battery.batteryStatus = "Critical";
+        battery.batteryStatusColor = "rgb(255, 0, 0)";
+    } else if (batteryLevel > 10 && batteryLevel <= 25) {
+        battery.batteryImage = "20";
+        battery.batteryStatus = "Low";
+    } else if (batteryLevel > 25 && batteryLevel <= 40) {
+        battery.batteryImage = "30";
+        battery.batteryStatus = "Moderate";
+    } else if (batteryLevel > 40 && batteryLevel <= 60) {
+        battery.batteryImage = "50";
+        battery.batteryStatus = "Fine";
+    } else if (batteryLevel > 60 && batteryLevel <= 85) {
+        battery.batteryImage = "70";
+        battery.batteryStatus = "Good";
+    } else if (batteryLevel > 85) {
+        battery.batteryImage = "100";
+        battery.batteryStatus = "High";
+    } else {
+        battery.batterImage = "100";
+        battery.BatteryStatus = "High";
+    }
+    return battery;
+}
+
 
 function autoreload() {
 

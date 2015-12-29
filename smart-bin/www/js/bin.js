@@ -14,32 +14,10 @@ function processBinAPI(bin) {
 
 function printBinInfo(bin) {
     $("#bin-header h1").text(bin.Name);
-    var batteryImage = "";
-    var batteryStatus = "";
-    var batteryStatusColor = "rgb(0, 0, 0)";
-    if (bin.BatteryLevel <= 10) {
-        batteryImage = "5";
-        batteryStatus = "Critical";
-        batteryStatusColor = "rgb(255, 0, 0)";
-    } else if (bin.BatteryLevel > 10 && bin.BatteryLevel <= 25) {
-        batteryImage = "20";
-        batteryStatus = "Low";
-    } else if (bin.BatteryLevel > 25 && bin.BatteryLevel <= 40) {
-        batteryImage = "30";
-        batteryStatus = "Moderate";
-    } else if (bin.BatteryLevel > 40 && bin.BatteryLevel <= 60) {
-        batteryImage = "50";
-        batteryStatus = "Fine";
-    } else if (bin.BatteryLevel > 60 && bin.BatteryLevel <= 85) {
-        batteryImage = "70";
-        batteryStatus = "Good";
-    } else if (bin.BatteryLevel > 85) {
-        batteryImage = "100";
-        batteryStatus = "High";
-    }
+    var battery = getBatteryStatus(bin.BatteryLevel);
     $("body").addClass("bin-type--" + bin.BinTypeClass);
-    $("#battery-level").css("background-image", "url(img/battery/battery_square_" + batteryImage + ".png)");
-    $("#battery-level #battery-status").text(batteryStatus + " (" + Math.round(bin.BatteryLevel) + "%)").css("color", batteryStatusColor);
+    $("#battery-level").css("background-image", "url(img/battery/battery_square_" + battery.batteryImage + ".png)");
+    $("#battery-level #battery-status").text(battery.batteryStatus + " (" + Math.round(bin.BatteryLevel) + "%)").css("color", battery.batteryStatusColor);
 }
 
 function processBinHistory(history) {
