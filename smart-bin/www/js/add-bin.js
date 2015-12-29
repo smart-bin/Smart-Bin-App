@@ -4,7 +4,6 @@ function initAddBin() {
     //$("#select-picture-click").on("click", initSelectPicture);
     $(".save-bin").on("click", saveBin);
     API.getBinTypes(printBinTypes);
-    $(".scroll-header-container").css("background-color", convertColor($(".header-position-container").css("background-color"), 1));
     $(".main-form").on("change", "input[type=radio]", changeBinTypeClass);
 }
 
@@ -60,7 +59,6 @@ function changeBinTypeClass() {
     $("body").removeClass(function (index, css) {
         return (css.match (/(^|\s)bin-type--\S+/g) || []).join(' ');
     }).addClass("bin-type--" + el.data("bintypeclass"));
-    $(".scroll-header-container").css("background-color", convertColor($(".header-position-container").css("background-color"), 1));
 }
 
 

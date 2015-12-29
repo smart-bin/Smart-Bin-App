@@ -38,7 +38,6 @@ function printBinInfo(bin) {
         batteryStatus = "High";
     }
     $("body").addClass("bin-type--" + bin.BinTypeClass);
-    $(".scroll-header-container").css("background-color", convertColor($(".scroll-header-container").css("background-color"), 1));
     $("#battery-level").css("background-image", "url(img/battery/battery_square_" + batteryImage + ".png)");
     $("#battery-level #battery-status").text(batteryStatus + " (" + Math.round(bin.BatteryLevel) + "%)").css("color", batteryStatusColor);
 }
