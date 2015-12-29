@@ -4,6 +4,8 @@ function initAddBin() {
     //$("#select-picture-click").on("click", initSelectPicture);
     $(".save-bin").on("click", saveBin);
     API.getBinTypes(printBinTypes);
+    $(".scroll-header-container").css("background-color", convertColor($(".header-position-container").css("background-color"), 1));
+    $(".main-form").on("change", "input[type=radio]", changeBinTypeClass);
 }
 
 function printBinTypes(bins) {
@@ -11,7 +13,7 @@ function printBinTypes(bins) {
     var first = true;
     $.each(bins, function (k, v) {
         bintypes += "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect form-item\" for=\"option-" + v.TypeId + "\">" +
-                        "<input type=\"radio\" id=\"option-" + v.TypeId + "\" class=\"mdl-radio__button\" name=\"bintype\" value=\"" + v.TypeId + "\"" + (first?" checked=\"checked\"":"") + ">" +
+                        "<input data-bintypeclass=\"" + convertBinTypeToClass(v.TypeId) + "\" type=\"radio\" id=\"option-" + v.TypeId + "\" class=\"mdl-radio__button\" name=\"bintype\" value=\"" + v.TypeId + "\"" + (first?" checked=\"checked\"":"") + ">" +
                         "<span class=\"mdl-radio__label\">" + v.TypeName + "</span>" +
                     "</label>";
         if (first) first = false;
@@ -51,6 +53,14 @@ function initSelectPicture() {
         var dialog = document.querySelector('#select-picture-dialog');
         dialog.MaterialDialog.show(true);
     }());
+}
+
+function changeBinTypeClass() {
+    var el = $(this);
+    $("body").removeClass(function (index, css) {
+        return (css.match (/(^|\s)bin-type--\S+/g) || []).join(' ');
+    }).addClass("bin-type--" + el.data("bintypeclass"));
+    $(".scroll-header-container").css("background-color", convertColor($(".header-position-container").css("background-color"), 1));
 }
 
 
