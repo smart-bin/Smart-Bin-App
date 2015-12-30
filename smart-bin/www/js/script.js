@@ -35,8 +35,8 @@ function getURLParameter(name) {
 } //Source: http://davidmles.com/blog/
 
 function checkFixedHeader(e) {
-    var el = $(".mdl-layout__content");
-    var scroll = el.scrollTop();
+    var content = $(".mdl-layout__content");
+    var scroll = content.scrollTop();
     var limit = 143;
     var margin = 1.2;
     var percentage = scroll / limit;
@@ -50,7 +50,9 @@ function checkFixedHeader(e) {
         bg.css("background-color", newColor);
     }
     var heading = $(".scroll-header .scroll-header-container h1");
-    if (heading.length > 0) {
+    var form = $(".scroll-header .scroll-header-container form");
+    var headerEl = heading.length > 0 ? heading : form;
+    if (headerEl.length > 0) {
         var marginLeft = 16;
         var maxLeft = 56;
         var resultWidth = 58;
@@ -59,7 +61,7 @@ function checkFixedHeader(e) {
         var width = initWidth - ((initWidth - resultWidth) * percentage);
         if (left > maxLeft) left = maxLeft;
         if (width < resultWidth) width = resultWidth;
-        heading.css({
+        headerEl.css({
             width: width + "%",
             left: left + "px"
         });
@@ -70,7 +72,7 @@ function checkFixedHeader(e) {
     } else if ($("body").hasClass("fixed") && scroll <= limit) {
         $("body").addClass("scroll").removeClass("fixed");
         $(".mdl-layout__header").addClass("mdl-layout__header--seamed");
-        el.scrollTop(limit);
+        content.scrollTop(limit);
     }
 }
 
@@ -98,7 +100,7 @@ function formatCard(card) {
                 "</div>";
     }
     html += "<div class=\"mdl-card__title card-content\">" +
-                "<h2 class=\"mdl-card__title-text\">" + card.title + "</h2>" +
+                "<h2 class=\"mdl-card__title-text ellipsis\">" + card.title + "</h2>" +
             "</div>";
     if (card.type == "timeline") {
         html += "<div class=\"mdl-card__supporting-text card-content\">" + truncateText(card.subtitle, 20) + "</div>";
