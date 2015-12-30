@@ -220,6 +220,7 @@ body.white-background .mdl-layout__content {
 }
 
 .scroll-header .scroll-header-container h1 {
+    position: absolute;
     font-size: 20px;
     line-height: 1;
     letter-spacing: .02em;
@@ -227,7 +228,11 @@ body.white-background .mdl-layout__content {
     color: #fff;
     margin: 0;
     bottom: 17px;
-    left: 72px;
+    left: 16px;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .scroll-header .scroll-header-container .form-item {

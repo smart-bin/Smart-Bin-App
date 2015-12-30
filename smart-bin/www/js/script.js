@@ -37,15 +37,32 @@ function getURLParameter(name) {
 function checkFixedHeader(e) {
     var el = $(".mdl-layout__content");
     var scroll = el.scrollTop();
-    var limit = 142;
-    var opacity = scroll / limit;
-    opacity += 0.2;
+    var limit = 143;
+    var margin = 1.2;
+    var percentage = scroll / limit;
+    percentage *= margin;
+    var opacity = percentage;
     if (opacity > 1) opacity = 1;
     var bgColor = $(".scroll-header-container").css("background-color");
     if (bgColor) {
         var bg = $(".header-position-container");
         var newColor = convertColor(bgColor, opacity);
         bg.css("background-color", newColor);
+    }
+    var heading = $(".scroll-header .scroll-header-container h1");
+    if (heading.length > 0) {
+        var marginLeft = 16;
+        var maxLeft = 56;
+        var resultWidth = 58;
+        var initWidth = 90;
+        var left = (maxLeft - marginLeft) * percentage + marginLeft;
+        var width = initWidth - ((initWidth - resultWidth) * percentage);
+        if (left > maxLeft) left = maxLeft;
+        if (width < resultWidth) width = resultWidth;
+        heading.css({
+            width: width + "%",
+            left: left + "px"
+        });
     }
     if ($("body").hasClass("scroll") && scroll > limit) {
         $("body").addClass("fixed").removeClass("scroll");
