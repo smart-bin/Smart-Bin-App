@@ -9,7 +9,7 @@ function processBins(output) {
         var card = {
             id: this.BinId,
             time: "Nu net",
-            title: truncateText(this.Name, 25),
+            title: this.Name,
             subtitle1: "<i class=\"material-icons\">battery_full</i><span>" + this.BatteryLevel + "% batterij</span>",
             subtitle2: "<i class=\"material-icons\">assessment</i><span><span class=\"weight-this-month\">?</span> kg deze maand</span>",
             button1Link: "bin.html?id=" + this.BinId,
@@ -39,7 +39,6 @@ function processTotalWeightThisMonth(history) {
         var timestamp = new Date(this.UnixTimestamp * 1000).getTime();
         if (timestamp > thisMonth) totalWeight += this.Weight;
     });
-    console.log(totalWeight);
     $("#card-" + history.BinId + " .weight-this-month").text(totalWeight);
 }
 

@@ -100,7 +100,7 @@ body.white-background .mdl-layout__content {
 }
 
 .two-to-one.mdl-card .card-content-container {
-    width: calc(60% - 16px);
+    width: 60%;
 }
 
 .two-to-one.mdl-card .card-time {
@@ -230,9 +230,6 @@ body.white-background .mdl-layout__content {
     bottom: 17px;
     left: 16px;
     width: 90%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .scroll-header .scroll-header-container .form-item {
@@ -240,8 +237,8 @@ body.white-background .mdl-layout__content {
 }
 
 .scroll-header .scroll-header-container form {
-    width: 60%;
-    left: 60px;
+    width: 90%;
+    left: 16px;
     bottom: -7px;
     position: absolute;
 }
@@ -352,6 +349,13 @@ body.form.full-width .main-form .form-item:first-child {
 
 .no-bullets li {
     list-style: none outside none;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 /* BIN TYPES */
