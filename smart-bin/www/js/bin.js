@@ -95,7 +95,8 @@ function processStatistics(history) {
         if (timestamp < firstTimestamp) firstTimestamp = timestamp;
         totalWeight += this.Weight;
     });
-    var averageWeight = totalWeight / Math.ceil(((new Date().getTime() - firstTimestamp) / 2635200000));
+    var averageWeight = 0;
+    if (totalWeight > 0 ) averageWeight = totalWeight / Math.ceil(((new Date().getTime() - firstTimestamp) / 2635200000)); // total weight / ms since first weight / ms in one month
     $("#total-weight").text("Totaal: " + totalWeight + " kg");
     $("#average-weight").text("Gemiddeld: " + Math.round(averageWeight) + " kg/m");
 }
