@@ -22,8 +22,8 @@ function getUserId() {
 }
 
 function truncateText(t, l) {
-    if (t.length < l) return t;
-    return t.substring(0, l) + "...";
+    if (t.length > l) return t.substring(0, l) + "...";
+    return t;
 }
 
 function drawerScroll(e) {
