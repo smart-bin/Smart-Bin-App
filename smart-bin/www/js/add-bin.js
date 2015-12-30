@@ -40,8 +40,7 @@ function binSuccess(binId) {
     saveSnackbar({
         message: "<i class=\"material-icons mdl-color-text--green valign\">check_circle</i><span>Bin succesvol toegevoegd</span>"
     });
-    var stateObj = { foo: "bar" };
-    history.pushState(stateObj, "page 2", "bins.html");
+    history.pushState({}, "bins", "bins.html");
     location.href = "bin.html?id=" + binId;
 }
 

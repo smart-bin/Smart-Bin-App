@@ -127,43 +127,30 @@ function getNameMonth(monthInt) {
     switch (monthInt) {
         case 1:
             return "Januari";
-            break;
         case 2:
             return "Februari";
-            break;
         case 3:
             return "Maart";
-            break;
         case 4:
             return "April";
-            break;
         case 5:
             return "Mei";
-            break;
         case 6:
             return "Juni";
-            break;
         case 7:
             return "Juli";
-            break;
         case 8:
             return "Augustus";
-            break;
         case 9:
             return "September";
-            break;
         case 10:
             return "Oktober";
-            break;
         case 11:
             return "November";
-            break;
         case 12:
             return "December";
-            break;
         default:
             return "";
-            break;
     }
 }
 
@@ -177,7 +164,7 @@ function showSnackbar(data) {
 
 function saveSnackbar(data) {
     localStorage.snackbar = JSON.stringify(data);
-};
+}
 
 function convertColor(color, opacity) {
     var r, g, b;
@@ -199,38 +186,30 @@ function convertBinTypeToClass(type) {
     switch (type) {
         case 0:
             return "waste";
-            break;
         case 1:
             return "plastic";
-            break;
         case 2:
             return "glass";
-            break;
         case 3:
             return "organic";
-            break;
         case 4:
             return "tin";
-            break;
         case 5:
             return "paper";
-            break;
         case 6:
             return "chemical";
-            break;
         default:
             return "none";
-            break;
     }
 }
 
 function getBatteryStatus(batteryLevel) {
     var battery = {};
-    battery.batteryStatusColor = "rgb(0, 0, 0)";
+    battery.batteryStatusColor = "rgba(255, 255, 255, 1)";
     if (batteryLevel <= 10) {
         battery.batteryImage = "5";
         battery.batteryStatus = "Critical";
-        battery.batteryStatusColor = "rgb(255, 0, 0)";
+        battery.batteryStatusColor = "rgba(255, 0, 0, 1)";
     } else if (batteryLevel > 10 && batteryLevel <= 25) {
         battery.batteryImage = "20";
         battery.batteryStatus = "Low";
