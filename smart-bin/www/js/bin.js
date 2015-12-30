@@ -57,9 +57,9 @@ function processGraph(history) {
     });
     graph.datasets = [{
         label: "Bin graph",
-        fillColor: "rgba(169,170,166,0.5)",
-        strokeColor: "rgba(220,220,220,1)",
-        pointColor: "rgba(220,220,220,1)",
+        fillColor: "rgba(43, 39, 87, 1)",
+        strokeColor: "rgba(220, 220, 220, 1)",
+        pointColor: "rgba(220, 220, 220, 1)",
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220,220,220,1)"
@@ -68,12 +68,16 @@ function processGraph(history) {
         graph.data.push(this.weight);
     });
     graph.datasets[0].data = graph.data;
-    if (graph.labels.length == 0) {
+    if (graph.labels.length === 0) {
         for (var i = 0; i < 7; i++) {
             var month = currentMonth - i;
             if (month < 1) month += 12;
             graph.labels.push(month);
         }
+    } else if (graph.labels.length === 1) {
+        var month = graph.labels[0] - 1;
+        if (month < 1) month += 12;
+        graph.labels.unshift(month);
     }
     graph.labels = graph.labels.sort(function(a,b){return a - b});
     for (var i = 0, l = graph.labels.length; i < l; i++) {
@@ -84,7 +88,9 @@ function processGraph(history) {
 
 function printGraph(graph) {
     var graphEl = $("#graph canvas")[0].getContext("2d");
-    var myLineChart = new Chart(graphEl).Line(graph);
+    var myLineChart = new Chart(graphEl).Line(graph, {
+        scaleFontColor: "rgba(255, 255, 255, 0.6)"
+    });
 }
 
 function processStatistics(history) {
