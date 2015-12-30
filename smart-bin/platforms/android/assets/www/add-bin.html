@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Bin toevoegen</title>
+    <meta name="description" content="">
+
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Chrome / Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="black">
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="css/lib/material.color.min.css">
+    <link rel="stylesheet" href="css/lib/material.min.css">
+    <link rel="stylesheet" href="css/lib/material-icons.css">
+    <link rel="stylesheet" href="css/lib/roboto.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bin.css">
+</head>
+<body id="add-bin" class="scroll-header scroll form full-width white-background bin-type-detail bin-type--waste">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--seamed fixed-header">
+            <div class="mdl-layout__header-row">
+                <button class="back-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">clear</i>
+                </button>
+                <div class="mdl-layout-spacer"></div>
+                <button class="save-bin mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+                    <span>Save</span>
+                </button>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <header id="add-bin-header" class="scroll-header-container mdl-layout__header mdl-layout__header--seamed">
+                <!--<i class="material-icons md-60 md-light md-faded centerab" id="select-picture">insert_photo</i>-->
+                <div class="header-position-container">
+                    <div class="mdl-layout__header-row header-position">
+                        <button class="back-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon scroll-header-item">
+                            <i class="material-icons">clear</i>
+                        </button>
+                        <form action="#">
+                            <div id="name-field" class="mdl-textfield mdl-js-textfield form-item">
+                                <div id="name-field-container">
+                                    <input class="mdl-textfield__input mdl-layout-title mdl-color-text--white" type="text" id="name">
+                                    <label class="mdl-textfield__label" for="name">Naam bin</label>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="mdl-layout-spacer"></div>
+                        <button class="save-bin mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white scroll-header-item">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                    <div id="select-picture-click" class="centerab"></div>
+                </div>
+            </header>
+            <div class="page-content">
+                <div id="bin">
+                    <section id="add-bin-form">
+                        <form class="main-form" action="#">
+
+                        </form>
+                    </section>
+                    <section id="select-bin">
+                        <div id="wifi-loader" class="spinner">
+                            <div>
+                                <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
+        </main>
+    </div>
+    <div>
+        <!--<div class="mdl-dialog mdl-js-dialog mdl-dialog-bottomsheet" id="select-picture-dialog">
+            <div class="mdl-dialog__title">
+                <h3>Kies een foto</h3>
+            </div>
+            <div class="mdl-dialog__content">
+                <ul class="no-bullets">
+                    <li class="bin-type-image selected">
+                        <img src="img/types/waste_square.png" alt="">
+                        <span>Restafval</span>
+                        <i class="material-icons mdl-color-text--green md-18">check_circle</i>
+                    </li>
+                    <li class="bin-type-image">
+                        <img src="img/types/plastic_square.png" alt="">
+                        <span>Plastic</span>
+                        <i class="material-icons mdl-color-text--green md-18">check_circle</i>
+                    </li>
+                    <li class="bin-type-image">
+                        <img src="img/types/glass_square.png" alt="">
+                        <span>Glas</span>
+                        <i class="material-icons mdl-color-text--green md-18">check_circle</i>
+                    </li>
+                    <li class="bin-type-image">
+                        <img src="img/types/organic_square.png" alt="">
+                        <span>GFT</span>
+                        <i class="material-icons mdl-color-text--green md-18">check_circle</i>
+                    </li>
+                    <li class="bin-type-image">
+                        <img src="img/types/tin_square.png" alt="">
+                        <span>Blik</span>
+                        <i class="material-icons mdl-color-text--green md-18">check_circle</i>
+                    </li>
+                    <li class="bin-type-image">
+                        <img src="img/types/paper_square.png" alt="">
+                        <span>Papier</span>
+                        <i class="material-icons mdl-color-text--green md-18">check_circle</i>
+                    </li>
+                    <li class="bin-type-image">
+                        <img src="img/types/chemical_square.png" alt="">
+                        <span>Chemisch</span>
+                        <i class="material-icons mdl-color-text--green md-18">check_circle</i>
+                    </li>
+                </ul>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button type="button" class="mdl-button">Close</button>
+            </div>
+        </div>-->
+    </div>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/material.min.js"></script>
+    <script src="js/lib/material.add.min.js"></script>
+    <script src="js/lib/APIFunctions.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/add-bin.js"></script>
+    <script>
+        $(initApp);
+        $(initAddBin);
+    </script>
+</body>
+</html>

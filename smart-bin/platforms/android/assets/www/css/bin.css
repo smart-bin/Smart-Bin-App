@@ -1,0 +1,97 @@
+section.padding-section {
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: 100% 100%;
+    height: 200px;
+    /*padding: 56px;*/
+    box-sizing: border-box;
+    position: relative;
+}
+
+section.padding-section > div {
+    width: calc(100% - 112px);
+}
+
+#battery-level {
+    background-color: #89c0c7;
+}
+
+#graph {
+    background-color: rgb(97, 64, 199);
+    /*background-color: rgb(43, 39, 87); /* fill color:; /* */
+    position: relative;
+}
+
+#statistics {
+    background-color: #788f9d;
+    background-image: url("/img/types/recycle_square.png");
+}
+
+h2.section-header {
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+}
+
+#graph h2.section-header {
+    position: absolute;
+    left: 56px;
+    top: 30px;
+}
+
+#battery-level span {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+#graph canvas {
+    width: 100%;
+    height: 200px;
+}
+
+#statistics .bin-statistic {
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 200;
+}
+
+/* ADD BIN */
+#select-picture-click {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.bin-type-image {
+    margin-bottom: 24px;
+}
+
+.bin-type-image img {
+    width: 50px;
+}
+
+.bin-type-image span {
+    padding-left: 24px;
+}
+
+.bin-type-image i {
+    display: none;
+    left: 4px;
+    bottom: -4px;
+    position: relative;
+}
+
+.bin-type-image.selected i {
+    display: initial;
+}
+
+
+
+
+
+
+
+
+
