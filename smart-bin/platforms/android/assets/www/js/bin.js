@@ -13,6 +13,7 @@ function processBinAPI(bin) {
 }
 
 function printBinInfo(bin) {
+    $("#loader.spinner").hide();
     $("#bin-header h1").text(bin.Name);
     var battery = getBatteryStatus(bin.BatteryLevel);
     $("body").addClass("bin-type--" + bin.BinTypeClass);

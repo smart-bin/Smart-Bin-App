@@ -3,6 +3,10 @@ body {
     font-weight: 300;
 }
 
+.mdl-layout {
+    transform: translate3d(0, 0, 0);
+}
+
 .mdl-layout__content {
     background-color: #eee;
 }
@@ -431,31 +435,31 @@ body.form.full-width .main-form .form-item:first-child {
 
 /* BIN TYPES -> DETAIL */
 .bin-type-detail.bin-type--waste .scroll-header-container {
-    background-image: url("/img/types/waste_360x180.png");
+    background-image: url("../img/types/waste_360x180.png");
 }
 
 .bin-type-detail.bin-type--plastic .scroll-header-container {
-    background-image: url("/img/types/plastic_360x180.png");
+    background-image: url("../img/types/plastic_360x180.png");
 }
 
 .bin-type-detail.bin-type--glass .scroll-header-container {
-    background-image: url("/img/types/glass_360x180.png");
+    background-image: url("../img/types/glass_360x180.png");
 }
 
 .bin-type-detail.bin-type--organic .scroll-header-container {
-    background-image: url("/img/types/organic_360x180.png");
+    background-image: url("../img/types/organic_360x180.png");
 }
 
 .bin-type-detail.bin-type--tin .scroll-header-container {
-    background-image: url("/img/types/tin_360x180.png");
+    background-image: url("../img/types/tin_360x180.png");
 }
 
 .bin-type-detail.bin-type--paper .scroll-header-container {
-    background-image: url("/img/types/paper_360x180.png");
+    background-image: url("../img/types/paper_360x180.png");
 }
 
 .bin-type-detail.bin-type--chemical .scroll-header-container {
-    background-image: url("/img/types/chemical_360x180.png");
+    background-image: url("../img/types/chemical_360x180.png");
 }
 
 .bin-type-detail.bin-type--none .scroll-header-container {
@@ -472,31 +476,31 @@ body.form.full-width .main-form .form-item:first-child {
 
 /* BIN TYPES -> CARD */
 .bin-type-card.bin-type--waste .card-image {
-    background-image: url("/img/types/waste_square.png");
+    background-image: url("../img/types/waste_square.png");
 }
 
 .bin-type-card.bin-type--plastic .card-image {
-    background-image: url("/img/types/plastic_square.png");
+    background-image: url("../img/types/plastic_square.png");
 }
 
 .bin-type-card.bin-type--glass .card-image {
-    background-image: url("/img/types/glass_square.png");
+    background-image: url("../img/types/glass_square.png");
 }
 
 .bin-type-card.bin-type--organic .card-image {
-    background-image: url("/img/types/organic_square.png");
+    background-image: url("../img/types/organic_square.png");
 }
 
 .bin-type-card.bin-type--tin .card-image {
-    background-image: url("/img/types/tin_square.png");
+    background-image: url("../img/types/tin_square.png");
 }
 
 .bin-type-card.bin-type--paper .card-image {
-    background-image: url("/img/types/paper_square.png");
+    background-image: url("../img/types/paper_square.png");
 }
 
 .bin-type-card.bin-type--chemical .card-image {
-    background-image: url("/img/types/chemical_square.png");
+    background-image: url("../img/types/chemical_square.png");
 }
 
 .bin-type-card.bin-type--none .card-image {
