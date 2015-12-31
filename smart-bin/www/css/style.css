@@ -228,7 +228,8 @@ body.white-background .mdl-layout__content {
     color: #fff;
     margin: 0;
     bottom: 17px;
-    left: 16px;
+    left: 0;
+    transform: translate3d(16px, 0, 0);
     width: 90%;
 }
 
@@ -238,7 +239,8 @@ body.white-background .mdl-layout__content {
 
 .scroll-header .scroll-header-container form {
     width: 90%;
-    left: 16px;
+    left: 0;
+    transform: translate3d(16px, 0, 0);
     bottom: -7px;
     position: absolute;
 }

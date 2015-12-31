@@ -63,7 +63,7 @@ function checkFixedHeader(e) {
         if (width < resultWidth) width = resultWidth;
         headerEl.css({
             width: width + "%",
-            left: left + "px"
+            transform: "translate3d(" + left + "px, 0, 0)"
         });
     }
     if ($("body").hasClass("scroll") && scroll > limit) {
