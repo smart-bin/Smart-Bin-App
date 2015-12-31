@@ -360,6 +360,15 @@ body.form.full-width .main-form .form-item:first-child {
     display: block;
 }
 
+.spinner {
+    text-align: center;
+    padding-top: 20px;
+    position: fixed;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* BIN TYPES */
 /* BIN TYPES -> GENERIC */
 /* BIN TYPES -> OPACITY 1 */
@@ -492,11 +501,6 @@ body.form.full-width .main-form .form-item:first-child {
 
 .bin-type-card.bin-type--none .card-image {
     background-image: none;
-}
-
-.spinner {
-    text-align: center;
-    padding-top: 20px;
 }
 
 
