@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title></title>
+    <meta name="description" content="">
+
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Chrome / Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="black">
+    <link rel="icon" href="icon.png">
+
+    <link rel="stylesheet" href="css/lib/material.color.min.css">
+    <link rel="stylesheet" href="css/lib/material.min.css">
+    <link rel="stylesheet" href="css/lib/material-icons.css">
+    <link rel="stylesheet" href="css/lib/roboto.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="cards">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Smart Bin</span>
+                <div class="mdl-layout-spacer"></div>
+                <span class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">clear_all</i>
+                </span>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer dis-visible">
+            <span class="mdl-layout-title" id="drawer-user-name"></span>
+            <span id="drawer-user-email"></span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link active" href="index.html"><i class="material-icons">access_time</i><span>Tijdlijn</span></a>
+                <a class="mdl-navigation__link" href="bins.html"><i class="material-icons">delete</i><span>Mijn Bins</span></a>
+                <a class="mdl-navigation__link" href="app-store.html"><i class="material-icons">shopping_cart</i><span>App Store</span></a>
+                <a class="mdl-navigation__link" href="statistics.html"><i class="material-icons">insert_chart</i><span>Mijn Statistieken</span></a>
+                <a class="mdl-navigation__link" href="achievements.html"><i class="material-icons">done_all</i><span>Mijn Achievements</span></a>
+                <!-- <div id="drawer-spacer"></div> -->
+                <div id="drawer-footer">
+                    <a class="mdl-navigation__link drawer-footer-link" id="drawer-settings-link" href="settings.html"><i class="material-icons">settings</i><span>Instellingen</span></a>
+                    <a class="mdl-navigation__link drawer-footer-link" id="drawer-help-link" href="help.html"><i class="material-icons">help</i><span>Help &amp; feedback</span></a>
+                </div>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div id="timeline-cards">
+                    <div id="loader" class="spinner">
+                        <div>
+                            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
+        </main>
+    </div>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/material.min.js"></script>
+    <script src="js/lib/material.add.min.js"></script>
+    <script src="js/lib/APIFunctions.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/timeline.js"></script>
+    <script>
+        $(initApp);
+        $(initTimeline);
+    </script>
+</body>
+</html>

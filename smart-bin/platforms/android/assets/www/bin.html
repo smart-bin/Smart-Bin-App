@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Bin</title>
+    <meta name="description" content="">
+
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Chrome / Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="black">
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="css/lib/material.color.min.css">
+    <link rel="stylesheet" href="css/lib/material.min.css">
+    <link rel="stylesheet" href="css/lib/material-icons.css">
+    <link rel="stylesheet" href="css/lib/roboto.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bin.css">
+</head>
+<body id="bin-detail" class="scroll-header scroll full-width bin-type-detail">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--seamed fixed-header">
+            <div class="mdl-layout__header-row">
+                <button class="back-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <span class="mdl-layout-title"></span>
+                <div class="mdl-layout-spacer"></div>
+                <button class="delete-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">delete</i>
+                </button>
+                <button class="edit-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">edit</i>
+                </button>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <header id="bin-header" class="scroll-header-container mdl-layout__header mdl-layout__header--seamed image-header">
+                <div class="header-position-container">
+                    <div class="mdl-layout__header-row header-position">
+                        <button class="back-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon scroll-header-item">
+                            <i class="material-icons">arrow_back</i>
+                        </button>
+                        <h1 class="mdl-layout-title ellipsis"></h1>
+                        <div class="mdl-layout-spacer"></div>
+                        <button class="delete-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon scroll-header-item">
+                            <i class="material-icons">delete</i>
+                        </button>
+                        <button class="edit-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon scroll-header-item">
+                            <i class="material-icons">edit</i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <div class="page-content">
+                <div id="bin">
+                    <section id="battery-level" class="padding-section">
+                        <div class="centerab">
+                            <h2 class="section-header">Battery Level</h2>
+                            <span id="battery-status">&nbsp;</span>
+                        </div>
+                    </section>
+                    <section id="graph">
+                        <h2 class="section-header">Grafiek (gram per maand)</h2>
+                        <canvas></canvas>
+                    </section>
+                    <section id="statistics" class="padding-section">
+                        <div class="centerab">
+                            <h2 class="section-header">Statistieken</h2>
+                            <span id="total-weight" class="bin-statistic">&nbsp;</span>
+                            <span id="average-weight" class="bin-statistic">&nbsp;</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
+        </main>
+    </div>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/material.min.js"></script>
+    <script src="js/lib/material.add.min.js"></script>
+    <script src="js/lib/chart.min.js"></script>
+    <script src="js/lib/chart-settings.js"></script>
+    <script src="js/lib/APIFunctions.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/bin.js"></script>
+    <script>
+        $(initApp);
+        $(initBinDetails);
+    </script>
+</body>
+</html>
