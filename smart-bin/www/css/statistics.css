@@ -1,10 +1,42 @@
-#card-date {
+#card-info {
     margin: 8px;
     width: calc(100% - 16px);
 }
 
+#card-info #card-date {
+    position: relative;
+    padding: 8px 16px;
+    width: calc(100% - 32px);
+}
+
+#card-info #card-date > span {
+    position: absolute;
+}
+
+#card-info .action1-button {
+    float: right;
+}
+
+#card-info #view-show-bins {
+    padding: 0 8px 8px;
+}
+
+#card-info #view-show-bins .view-show-bin {
+    display: inline-block;
+    width: 32%;
+    margin-left: 1%;
+}
+
+#card-info #view-show-bins .view-show-bin .bin-type-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
 #filter-statistics-dialog .date-item {
-    width: 48%;
+    width: 49%;
     display: inline-block;
 }
 
@@ -16,3 +48,40 @@
 #filter-statistics-dialog .mdl-checkbox.show-bin:nth-child(odd) {
     margin-right: 2%;
 }
+
+#graph {
+    background-color: rgb(97, 64, 199);
+    position: relative;
+    height: 200px;
+    box-sizing: border-box;
+}
+
+#graph canvas {
+    width: 100%;
+    height: 200px;
+}
+
+#range-defaults {
+    margin-top: -12px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    text-align: center;
+}
+
+#range-defaults button {
+    min-width: 0;
+    width: 23%;
+    padding: 0 0px;
+}
+
+#show-bins-field > div {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+button.mdl-button--raised.mdl-button--disabled {
+    color: initial !important;
+}
+
+

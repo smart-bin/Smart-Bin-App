@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="css/lib/material.color.min.css">
     <link rel="stylesheet" href="css/lib/material.min.css">
     <link rel="stylesheet" href="css/lib/material-icons.css">
-    <!--<link rel="stylesheet" href="css/lib/bootstrap.min.css">-->
     <link rel="stylesheet" href="css/lib/bootstrap-material-datetimepicker.css">
     <link rel="stylesheet" href="css/lib/roboto.css">
     <link rel="stylesheet" href="css/style.css">
@@ -59,13 +58,20 @@
             <div class="page-content">
                 <div id="statistics">
                     <section>
-                        <div id="card-date" class="mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__supporting-text">
-                                Van: <span id="date-range-start"></span>
-                                Tot: <span id="date-range-end"></span>
+                        <div id="card-info" class="mdl-card mdl-shadow--2dp">
+                            <div id="card-date" class="mdl-card__supporting-text">
+                                <span class="valign">
+                                    Van: <span id="date-range-start"></span>
+                                    Tot: <span id="date-range-end"></span>
+                                </span>
                                 <button type="button" class="filter-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect action1-button">Bewerk</button>
                             </div>
+                            <div id="view-show-bins">
+                            </div>
                         </div>
+                    </section>
+                    <section id="graph">
+                        <canvas></canvas>
                     </section>
                 </div>
             </div>
@@ -89,25 +95,38 @@
                     <label class="mdl-textfield__label" for="date-start">Tot</label>
                 </div>
             </div>
-            <div id="show-bins-field"></div>
+            <div id="range-defaults">
+                <button data-range="lastyear" class="mdl-button mdl-js-button"></button>
+                <button data-range="thisyear" class="mdl-button mdl-js-button"></button>
+                <button data-range="thismonth" class="mdl-button mdl-js-button"></button>
+                <button data-range="thisweek" class="mdl-button mdl-js-button"></button>
+            </div>
+            <div id="show-bins-field">
+                <div>
+                    <button type="button" id="show-bin-all" class="mdl-button mdl-js-button show-bin-controller mdl-button--raised mdl-button--disabled">Alle</button>
+                    <button type="button" id="show-bin-none" class="mdl-button mdl-js-button show-bin-controller">Geen</button>
+                </div>
+            </div>
         </div>
         <div class="mdl-dialog__actions">
             <button type="button" id="save-filters-button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Opslaan</button>
             <button type="button" id="reset-filters-button" class="mdl-button mdl-js-button mdl-js-ripple-effect">Reset</button>
         </div>
     </div>
-<script src="js/lib/jquery.min.js"></script>
-<script src="js/lib/material.min.js"></script>
-<script src="js/lib/material.add.min.js"></script>
-<script src="js/lib/moment.min.js"></script>
-<script src="js/lib/moment.nl.js"></script>
-<script src="js/lib/bootstrap-material-datetimepicker.js"></script>
-<script src="js/lib/APIFunctions.js"></script>
-<script src="js/script.js"></script>
-<script src="js/statistics.js"></script>
-<script>
-    $(initApp);
-    $(initStatistics);
-</script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/material.min.js"></script>
+    <script src="js/lib/material.add.min.js"></script>
+    <script src="js/lib/chart.min.js"></script>
+    <script src="js/lib/chart-settings.js"></script>
+    <script src="js/lib/moment.min.js"></script>
+    <script src="js/lib/moment.nl.js"></script>
+    <script src="js/lib/bootstrap-material-datetimepicker.js"></script>
+    <script src="js/lib/APIFunctions.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/statistics.js"></script>
+    <script>
+        $(initApp);
+        $(initStatistics);
+    </script>
 </body>
 </html>
