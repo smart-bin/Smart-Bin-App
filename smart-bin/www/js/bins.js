@@ -20,26 +20,31 @@ function processBins(output) {
         cards += formatCard(card);
     });
     $("#bins").append(cards);
+    var ids = [];
     $.each($(".card-bin"), function () {
         var binId = $(this).attr("id");
-        binId = binId.substr(5, binId.length);
-        API.getEntireHistory(binId, processTotalWeightThisMonth);
+        ids.push(binId.substr(5, binId.length));
     });
+    API.getEntireHistory(ids, processTotalWeightThisMonth);
     hideLoader();
 }
 
 function processTotalWeightThisMonth(history) {
-    var totalWeight = 0;
-    var thisMonth = new Date();
-    thisMonth.setDate(1);
-    thisMonth.setHours(0);
-    thisMonth.setMinutes(0);
-    thisMonth.setSeconds(0);
-    thisMonth = thisMonth.getTime();
-    $.each(history.History, function () {
-        var timestamp = new Date(this.UnixTimestamp * 1000).getTime();
-        if (timestamp > thisMonth) totalWeight += this.Weight;
+    $(".weight-this-month").text(0);
+    console.log(history.BinHistories);
+    $.each(history.BinHistories, function () {
+        var totalWeight = 0;
+        var thisMonth = new Date();
+        thisMonth.setDate(1);
+        thisMonth.setHours(0);
+        thisMonth.setMinutes(0);
+        thisMonth.setSeconds(0);
+        thisMonth = thisMonth.getTime();
+        $.each(this.History, function () {
+            var timestamp = new Date(this.UnixTimestamp * 1000).getTime();
+            if (timestamp > thisMonth) totalWeight += this.Weight;
+        });
+        $("#card-" + this.BinId + " .weight-this-month").text(totalWeight);
     });
-    $("#card-" + history.BinId + " .weight-this-month").text(totalWeight);
 }
 
