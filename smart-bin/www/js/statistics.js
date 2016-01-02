@@ -1,4 +1,5 @@
 function initStatistics() {
+    showLoader();
     initDatepickers();
     API.getUser(getUserId(), "bins", processBins);
     $(".filter-button").on("click", initSetFilters);
@@ -86,6 +87,7 @@ function setRange(e, r) {
 }
 
 function applyFilters() {
+    showLoader();
     var showBins = $(".show-bin:not(.show-bin-controller) input:checked");
     var start = $("#date-start").val();
     var end = $("#date-end").val();
@@ -185,6 +187,7 @@ function processGraph(bins, type) {
         console.log(o);
     });
     return graph;
+    hideLoader();
 }
 
 

@@ -22,6 +22,11 @@
 </head>
 <body id="bin-detail" class="scroll-header scroll full-width bin-type-detail">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div id="loader" class="spinner hidden hide">
+            <div class="mdl-shadow--4dp">
+                <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+            </div>
+        </div>
         <header class="mdl-layout__header mdl-layout__header--seamed fixed-header">
             <div class="mdl-layout__header-row">
                 <button class="back-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -57,11 +62,6 @@
             </header>
             <div class="page-content">
                 <div id="bin">
-                    <div id="loader" class="spinner">
-                        <div>
-                            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
-                        </div>
-                    </div>
                     <section id="battery-level" class="padding-section">
                         <div class="centerab">
                             <h2 class="section-header">Battery Level</h2>

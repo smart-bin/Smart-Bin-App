@@ -1,4 +1,5 @@
 function initBinDetails() {
+    showLoader();
     var binId = getURLParameter("id");
     API.getBin(binId, processBinAPI);
     API.getEntireHistory(binId, processBinHistory);
@@ -12,12 +13,12 @@ function processBinAPI(bin) {
 }
 
 function printBinInfo(bin) {
-    $("#loader.spinner").hide();
     $("#bin-header h1").text(bin.Name);
     var battery = getBatteryStatus(bin.BatteryLevel);
     $("body").addClass("bin-type--" + bin.BinTypeClass);
     $("#battery-level").css("background-image", "url(img/battery/battery_square_" + battery.batteryImage + ".png)");
     $("#battery-level #battery-status").text(battery.batteryStatus + " (" + Math.round(bin.BatteryLevel) + "%)").css("color", battery.batteryStatusColor);
+    hideLoader();
 }
 
 function processBinHistory(history) {

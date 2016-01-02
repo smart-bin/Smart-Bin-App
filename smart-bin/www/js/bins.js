@@ -1,10 +1,10 @@
 function initBins() {
+    showLoader();
     API.getUser(getUserId(), "bins", processBins);
 }
 
 function processBins(output) {
     var cards = "";
-    $("#loader.spinner").hide();
     $.each(output.Bins, function () {
         var card = {
             id: this.BinId,
@@ -25,6 +25,7 @@ function processBins(output) {
         binId = binId.substr(5, binId.length);
         API.getEntireHistory(binId, processTotalWeightThisMonth);
     });
+    hideLoader();
 }
 
 function processTotalWeightThisMonth(history) {

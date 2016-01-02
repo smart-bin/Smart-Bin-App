@@ -1,5 +1,6 @@
 var user;
 var reload = true;
+var loaderTimeout;
 
 function initApp() {
     $.support.cors = true;
@@ -203,6 +204,26 @@ function convertBinTypeToClass(type) {
         default:
             return "none";
     }
+}
+
+function showLoader() {
+    clearTimeout(loaderTimeout);
+    var spinner = $("#loader.spinner");
+    spinner.addClass("show");
+    spinner.removeClass("hidden");
+    loaderTimeout = setTimeout(function () {
+        spinner.removeClass("show");
+        spinner.removeClass("hide");
+    }, 300);
+}
+
+function hideLoader() {
+    clearTimeout(loaderTimeout);
+    var spinner = $("#loader.spinner");
+    spinner.addClass("hide");
+    loaderTimeout = setTimeout(function () {
+        spinner.addClass("hidden");
+    }, 300);
 }
 
 function getBatteryStatus(batteryLevel) {

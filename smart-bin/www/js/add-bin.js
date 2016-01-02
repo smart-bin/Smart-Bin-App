@@ -1,4 +1,5 @@
 function initAddBin() {
+    showLoader();
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
     $(".back-button").on("click", back);
     //$("#select-picture-click").on("click", initSelectPicture);
@@ -19,6 +20,7 @@ function printBinTypes(bins) {
     });
     $(".main-form").append(bintypes);
     componentHandler.upgradeAllRegistered();
+    hideLoader();
 }
 
 function saveBin() {

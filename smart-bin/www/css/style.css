@@ -379,8 +379,13 @@ body.form.full-width .main-form .form-item:first-child {
 #loader.spinner {
     padding-top: 20px;
     position: fixed;
-    top: 72px;
-    z-index: 99999999;
+    z-index: 2;
+    top: 56px;
+    transition: top 0.3s ease-in-out;
+}
+
+#loader.spinner.hide, #loader.spinner.hidden {
+    top: -7px;
 }
 
 #loader.spinner > div {

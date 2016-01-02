@@ -1,4 +1,5 @@
 function initTimeline() {
+    showLoader();
     getTimelineCards();
 }
 
@@ -61,12 +62,12 @@ function getTimelineCards() {
 }
 
 function printTimelineCards(cards) {
-    $("#loader.spinner").hide();
     var cardsHTML = "";
     $.each(cards, function (k, card) {
         cardsHTML += formatCard(card);
     });
     $("#timeline-cards").append(cardsHTML);
+    hideLoader();
 }
 
 
