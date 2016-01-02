@@ -96,6 +96,11 @@ body.white-background .mdl-layout__content {
 
 /* CARD */
 
+.mdl-card {
+    min-height: initial;
+    width: 100%;
+}
+
 .two-to-one.mdl-card {
     margin-bottom: 8px;
     width: 100%;
@@ -366,11 +371,32 @@ body.form.full-width .main-form .form-item:first-child {
 
 .spinner {
     text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+#loader.spinner {
     padding-top: 20px;
     position: fixed;
     top: 72px;
-    left: 50%;
-    transform: translateX(-50%);
+    z-index: 99999999;
+}
+
+#loader.spinner > div {
+    padding: 7px;
+    height: 23px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+#loader.spinner .mdl-spinner {
+    width: 23px;
+    height: 23px;
+}
+
+#loader.spinner .mdl-spinner__circle {
+    border-width: 2px;
 }
 
 /* BIN TYPES */
