@@ -2,7 +2,7 @@ function initBinDetails() {
     showLoader();
     var binId = getURLParameter("id");
     API.getBin(binId, processBinAPI);
-    API.getEntireHistory(binId, processBinHistory);
+    API.getEntireHistory([binId], processBinHistory);
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
     $(".back-button").on("click", back);
 }
@@ -22,6 +22,7 @@ function printBinInfo(bin) {
 }
 
 function processBinHistory(history) {
+    history = history.BinHistories[0];
     var passedMonths = {};
     passedMonths.History = [];
     var now = new Date();
