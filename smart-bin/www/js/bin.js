@@ -1,7 +1,6 @@
 function initBinDetails() {
     var binId = getURLParameter("id");
     API.getBin(binId, processBinAPI);
-    var now = new Date();
     API.getEntireHistory(binId, processBinHistory);
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
     $(".back-button").on("click", back);
@@ -31,17 +30,26 @@ function processBinHistory(history) {
             passedMonths.History.push(this);
         }
     });
-    processGraph(passedMonths);
+    printGraph(processGraph(passedMonths, "rgba(43, 39, 87, 1)", "rgba(220, 220, 220, 1)", "rgba(220, 220, 220, 1)"));
     processStatistics(history);
 }
 
-function processGraph(history) {
+function processGraph(history, fillColor, strokeColor, pointColor) {
     // TODO: Months of previous year are thought of as months of this year (e.g. when current month is march, he will show Januari, Februari, March, October, November, December instead of October, November, December, Januari, Februari, March
     var graph = {};
     var dataByMonth = {};
     graph.labels = [];
     var currentMonth = 6;
     graph.data = [0];
+    graph.datasets = [{
+        label: "Bin graph",
+        fillColor: fillColor,
+        strokeColor: strokeColor,
+        pointColor: pointColor,
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220, 220, 220, 1)"
+    }];
     $.each(history.History, function () {
         var timestamp = new Date(this.UnixTimestamp * 1000);
         var month = timestamp.getMonth() + 1;
@@ -56,15 +64,6 @@ function processGraph(history) {
         }
         dataByMonth[month].weight += this.Weight;
     });
-    graph.datasets = [{
-        label: "Bin graph",
-        fillColor: "rgba(43, 39, 87, 1)",
-        strokeColor: "rgba(220, 220, 220, 1)",
-        pointColor: "rgba(220, 220, 220, 1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)"
-    }];
     $.each(dataByMonth, function () {
         graph.data.push(this.weight);
     });
@@ -84,7 +83,7 @@ function processGraph(history) {
     for (var i = 0, l = graph.labels.length; i < l; i++) {
         graph.labels[i] = getNameMonth(graph.labels[i]);
     }
-    printGraph(graph);
+    return graph;
 }
 
 function printGraph(graph) {
