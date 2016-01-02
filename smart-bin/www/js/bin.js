@@ -8,7 +8,7 @@ function initBinDetails() {
 }
 
 function processBinAPI(bin) {
-    bin.BinTypeClass = convertBinTypeToClass(bin.Type.TypeId);
+    bin.BinTypeClass = convertBinType(bin.Type.TypeId).class;
     printBinInfo(bin);
 }
 

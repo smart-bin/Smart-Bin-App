@@ -13,7 +13,7 @@ function processBins(output) {
             subtitle1: "<i class=\"material-icons\">battery_full</i><span>" + this.BatteryLevel + "% batterij</span>",
             subtitle2: "<i class=\"material-icons\">assessment</i><span><span class=\"weight-this-month\">?</span> kg deze maand</span>",
             button1Link: "bin.html?id=" + this.BinId,
-            cardClasses: "two-supporting-texts bin-type-card bin-type--" + convertBinTypeToClass(this.Type.TypeId),
+            cardClasses: "two-supporting-texts bin-type-card bin-type--" + convertBinType(this.Type.TypeId).class,
             type: "bin",
             button2: false
         };

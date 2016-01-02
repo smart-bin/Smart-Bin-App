@@ -185,24 +185,24 @@ function convertColor(color, opacity) {
     return "rgba(" + r + "," + g + "," + b + "," + opacity + ")";
 }
 
-function convertBinTypeToClass(type) {
+function convertBinType(type) {
     switch (type) {
         case 0:
-            return "waste";
+            return {class: "waste", color: "rgba(239, 197, 30, 1)"};
         case 1:
-            return "plastic";
+            return {class: "plastic", color: "rgba(130, 186, 115, 1)"};
         case 2:
-            return "glass";
+            return {class: "glass", color: "rgba(130, 186, 115, 1)"};
         case 3:
-            return "organic";
+            return {class: "organic", color: "rgba(130, 186, 115, 1)"};
         case 4:
-            return "tin";
+            return {class: "tin", color: "rgba(130, 186, 115, 1)"};
         case 5:
-            return "paper";
+            return {class: "paper", color: "rgba(235, 81, 81, 1)"};
         case 6:
-            return "chemical";
+            return {class: "chemical", color: "rgba(235, 81, 81, 1)"};
         default:
-            return "none";
+            return {class: "none", color: "transparent"};
     }
 }
 
