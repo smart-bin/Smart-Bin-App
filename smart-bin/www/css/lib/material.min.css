@@ -7,7 +7,7 @@
  */
 .mdl-dialog {
     display: block;
-    width: 280px;
+    width: 85%;
     margin: 0 auto;
     background: #fff;
     position: fixed;
@@ -40,14 +40,19 @@
     bottom: 0 !important;
 }
 
-.mdl-dialog.mdl-dialog-bottomsheet h3 {
+.mdl-dialog h3 {
     font-size: 20px;
+    line-height: 1;
     margin: 0;
     color: rgba(0, 0, 0, 0.7);
 }
 
 .mdl-dialog:not([open]) {
     display: none;
+}
+
+.mdl-dialog:not(.mdl-dialog-bottomsheet) {
+    bottom: initial !important;
 }
 
 .mdl-dialog::-webkit-backdrop {
@@ -68,6 +73,12 @@
     z-index: 10;
     height: 100%;
     width: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.mdl-dialog-backdrop.visible {
+    opacity: 1;
 }
 
 .mdl-dialog__title {
