@@ -407,31 +407,31 @@ body.form.full-width .main-form .form-item:first-child {
 /* BIN TYPES */
 /* BIN TYPES -> GENERIC */
 /* BIN TYPES -> OPACITY 1 */
-.bin-type--waste .scroll-header-container, .bin-type--waste .card-image-container {
+.bin-type--waste .scroll-header-container, .bin-type--waste .card-image-container, .bin-type--waste.bin-type-el {
     background-color: rgba(239, 197, 30, 1);
 }
 
-.bin-type--plastic .scroll-header-container, .bin-type--plastic .card-image-container  {
+.bin-type--plastic .scroll-header-container, .bin-type--plastic .card-image-container, .bin-type--plastic.bin-type-el  {
     background-color: rgba(130, 186, 115, 1);
 }
 
-.bin-type--glass .scroll-header-container, .bin-type--glass .card-image-container  {
+.bin-type--glass .scroll-header-container, .bin-type--glass .card-image-container, .bin-type--glass.bin-type-el  {
     background-color: rgba(130, 186, 115, 1);
 }
 
-.bin-type--organic .scroll-header-container, .bin-type--organic .card-image-container  {
+.bin-type--organic .scroll-header-container, .bin-type--organic .card-image-container, .bin-type--organic.bin-type-el  {
     background-color: rgba(130, 186, 115, 1);
 }
 
-.bin-type--tin .scroll-header-container, .bin-type--tin .card-image-container  {
+.bin-type--tin .scroll-header-container, .bin-type--tin .card-image-container, .bin-type--tin.bin-type-el  {
     background-color: rgba(130, 186, 115, 1);
 }
 
-.bin-type--paper .scroll-header-container, .bin-type--paper .card-image-container  {
+.bin-type--paper .scroll-header-container, .bin-type--paper .card-image-container, .bin-type--paper.bin-type-el  {
     background-color: rgba(235, 81, 81, 1);
 }
 
-.bin-type--chemical .scroll-header-container, .bin-type--chemical .card-image-container  {
+.bin-type--chemical .scroll-header-container, .bin-type--chemical .card-image-container, .bin-type--chemical.bin-type-el  {
     background-color: rgba(130, 186, 115, 1);
 }
 
