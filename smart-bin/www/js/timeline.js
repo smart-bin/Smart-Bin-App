@@ -9,13 +9,12 @@ function getTimelineCards() {
             id: 1,
             time: "Nu net",
             title: "Batterij leeg",
-            subtitle: "Glas",
-            image: "style=\"background-image: url(img/types/glass_square.png)\"",
-            imageColor: "style=\"background-color: #82ba73\"",
-            type: "warning",
+            subtitle: "GFT bak",
+            notificationType: "warning",
             icon: "warning",
             accentColor: "orange",
-            button1Link: "bin.html?id=5",
+            button1Link: "bin.html?id=9",
+            cardClasses: "bin-type-card bin-type--organic",
             type: "timeline"
         },
         {
@@ -25,7 +24,7 @@ function getTimelineCards() {
             subtitle: "Recycle minstens 35% van al je afval",
             image: "style=\"background-image: url(img/types/trophy_square.png)\"",
             imageColor: "style=\"background-color: #99d5dd\"",
-            type: "achievement",
+            notificationType: "achievement",
             icon: "check_circle",
             accentColor: "green",
             button1Link: "achievements.html",
@@ -35,13 +34,12 @@ function getTimelineCards() {
             id: 3,
             time: "10 dagen geleden",
             title: "Bin toegevoegd",
-            subtitle: "Papier",
-            image: "style=\"background-image: url(img/types/paper_square.png)\"",
-            imageColor: "style=\"background-color: #eb5151\"",
-            type: "added",
+            subtitle: "Papierbak",
+            notificationType: "added",
             icon: "add_circle",
             accentColor: "green",
-            button1Link: "bin.html?id=2",
+            button1Link: "bin.html?id=11",
+            cardClasses: "bin-type-card bin-type--paper",
             type: "timeline"
         },
         {
@@ -49,14 +47,13 @@ function getTimelineCards() {
             time: "28 dagen geleden",
             title: "Bin toegevoegd",
             subtitle: "Restafval",
-            image: "style=\"background-image: url(img/types/waste_square.png)\"",
-            imageColor: "style=\"background-color: #efc51e\"",
-            type: "added",
+            notificationType: "added",
             icon: "add_circle",
             accentColor: "green",
             button1Link: "bin.html?id=3",
+            cardClasses: "bin-type-card bin-type--waste",
             type: "timeline"
-        },
+        }
     ];
     printTimelineCards(cards);
 }

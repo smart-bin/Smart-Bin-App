@@ -440,36 +440,16 @@ body.form.full-width .main-form .form-item:first-child {
     background-image: url("../img/types/plastic_360x180.png");
 }
 
-.bin-type-detail.bin-type--glass .scroll-header-container {
-    background-image: url("../img/types/glass_360x180.png");
-}
-
 .bin-type-detail.bin-type--organic .scroll-header-container {
     background-image: url("../img/types/organic_360x180.png");
-}
-
-.bin-type-detail.bin-type--tin .scroll-header-container {
-    background-image: url("../img/types/tin_360x180.png");
 }
 
 .bin-type-detail.bin-type--paper .scroll-header-container {
     background-image: url("../img/types/paper_360x180.png");
 }
 
-.bin-type-detail.bin-type--chemical .scroll-header-container {
-    background-image: url("../img/types/chemical_360x180.png");
-}
-
-.bin-type-detail.bin-type--none .scroll-header-container {
-    background-image: none;
-}
-
-.bin-type-detail.bin-type--none .header-position-container {
+.bin-type-detail.bin-type--none .header-position-container, .bin-type--none .scroll-header-container, .bin-type-card.bin-type--none .card-image {
     background-color: initial;
-}
-
-.bin-type--none .scroll-header-container  {
-    background-color: auto;
 }
 
 /* BIN TYPES -> CARD */
@@ -481,30 +461,13 @@ body.form.full-width .main-form .form-item:first-child {
     background-image: url("../img/types/plastic_square.png");
 }
 
-.bin-type-card.bin-type--glass .card-image {
-    background-image: url("../img/types/glass_square.png");
-}
-
 .bin-type-card.bin-type--organic .card-image {
     background-image: url("../img/types/organic_square.png");
-}
-
-.bin-type-card.bin-type--tin .card-image {
-    background-image: url("../img/types/tin_square.png");
 }
 
 .bin-type-card.bin-type--paper .card-image {
     background-image: url("../img/types/paper_square.png");
 }
-
-.bin-type-card.bin-type--chemical .card-image {
-    background-image: url("../img/types/chemical_square.png");
-}
-
-.bin-type-card.bin-type--none .card-image {
-    background-image: none;
-}
-
 
 
 
