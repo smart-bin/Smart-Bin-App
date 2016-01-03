@@ -21,9 +21,16 @@ function printBinInfo(bin) {
     hideLoader();
 }
 
-function processBinHistory(history) {
-    history = history.BinHistories[0];
+function processBinHistory(output) {
+    var history = output.BinHistories[0];
+    if (typeof history === typeof undefined) {
+        history = {};
+        history.BinId = output.IdsRequested[0];
+        history.History = [];
+    }
+    console.log(history);
     var passedMonths = {};
+    passedMonths.BindId = history.BinId;
     passedMonths.History = [];
     var now = new Date();
     var minUnix = now.setMonth(now.getMonth() - 6) / 1000;
@@ -32,60 +39,54 @@ function processBinHistory(history) {
             passedMonths.History.push(this);
         }
     });
-    printGraph(processGraph(passedMonths, "rgba(43, 39, 87, 1)", "rgba(220, 220, 220, 1)", "rgba(220, 220, 220, 1)"));
+    processGraph(passedMonths);
     processStatistics(history);
 }
 
-function processGraph(history, fillColor, strokeColor, pointColor) {
-    // TODO: Months of previous year are thought of as months of this year (e.g. when current month is march, he will show Januari, Februari, March, October, November, December instead of October, November, December, Januari, Februari, March
+function processGraph(history) {
     var graph = {};
-    var dataByMonth = {};
+    var dataByType = {};
     graph.labels = [];
-    var currentMonth = 6;
     graph.data = [0];
     graph.datasets = [{
         label: "Bin graph",
-        fillColor: fillColor,
-        strokeColor: strokeColor,
-        pointColor: pointColor,
+        fillColor: "rgba(43, 39, 87, 1)",
+        strokeColor: "rgba(220, 220, 220, 1)",
+        pointColor: "rgba(220, 220, 220, 1)",
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(220, 220, 220, 1)"
     }];
-    $.each(history.History, function () {
-        var timestamp = new Date(this.UnixTimestamp * 1000);
-        var month = timestamp.getMonth() + 1;
-        var nameMonth = getNameMonth(month);
-        if (!dataByMonth.hasOwnProperty(month)) {
-            dataByMonth[month] = {
-                name: nameMonth,
-                month: month,
-                weight: 0
-            };
-            graph.labels.push(month);
+    var daysInType = 30.5;
+    history.UnixFrom = moment(new Date()).add(-6, "months").unix();
+    history.UnixTo = moment(new Date()).unix();
+    var margin = (history.UnixTo - history.UnixFrom) / 4;
+    if ((history.UnixTo - history.UnixFrom) / 3600 / 24 / daysInType < 4) margin = 3600 * 24 * daysInType;
+    for (var i = history.UnixFrom - margin; i <= history.UnixTo; i += margin) {
+        var timestamp = moment(new Date(i * 1000));
+        var label;
+        if (i == history.UnixFrom || i == history.UnixTo) {
+            label = timestamp.format("D") + "/" + (timestamp.month() + 1) + "/" + timestamp.format("YY");
+        } else {
+            label = timestamp.date(1).format("D") + "/" + (timestamp.month() + 1) + "/" + timestamp.format("YY");
         }
-        dataByMonth[month].weight += this.Weight;
+        graph.labels.push(label);
+    }
+    $.each(history.History, function (k, v) {
+        console.log(v);
+        for (var i = 0, l = graph.labels.length; i < l; i++) {
+            var unixStart = moment(graph.labels[i], "D/M/YY").unix();
+            if (v.UnixTimestamp >= unixStart && v.UnixTimestamp < unixStart + margin) {
+                if (!dataByType.hasOwnProperty(graph.labels[i])) dataByType[graph.labels[i]] = 0;
+                dataByType[graph.labels[i]] += v.Weight;
+            }
+        }
     });
-    $.each(dataByMonth, function () {
-        graph.data.push(this.weight);
+    $.each(dataByType, function (k, v) {
+        graph.data.push(v);
     });
     graph.datasets[0].data = graph.data;
-    if (graph.labels.length === 0) {
-        for (var i = 0; i < 7; i++) {
-            var month = currentMonth - i;
-            if (month < 1) month += 12;
-            graph.labels.push(month);
-        }
-    } else if (graph.labels.length === 1) {
-        var month = graph.labels[0] - 1;
-        if (month < 1) month += 12;
-        graph.labels.unshift(month);
-    }
-    graph.labels = graph.labels.sort(function(a,b){return a - b});
-    for (var i = 0, l = graph.labels.length; i < l; i++) {
-        graph.labels[i] = getNameMonth(graph.labels[i]);
-    }
-    return graph;
+    printGraph(graph);
 }
 
 function printGraph(graph) {
