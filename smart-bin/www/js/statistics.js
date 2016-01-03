@@ -1,5 +1,5 @@
 function initStatistics() {
-    showLoader();
+    showLoader(2);
     initDatepickers();
     API.getUser(getUserId(), "bins", processBins);
     $(".filter-button").on("click", initSetFilters);
@@ -64,13 +64,6 @@ function processBins(bins) {
 function initSetFilters(dialog) {
     var dialog = $('#filter-statistics-dialog')[0];
     dialog.MaterialDialog.show(true);
-}
-
-function printGraph(graph) {
-    var graphEl = $("#graph canvas")[0].getContext("2d");
-    var myLineChart = new Chart(graphEl).Line(graph, {
-        scaleFontColor: "rgba(255, 255, 255, 0.6)"
-    });
 }
 
 function initDatepickers() {
@@ -141,7 +134,7 @@ function resetFilters() {
 }
 
 function applyFilters() {
-    showLoader();
+    showLoader(2);
     var showBins = $(".show-bin:not(.show-bin-controller) input:checked");
     var start = $("#date-start").val();
     var end = $("#date-end").val();
@@ -171,6 +164,7 @@ function applyFilters() {
             type = "years";
         }
         processGraph(history, type);
+        processPieTypes(history);
     });
 }
 
@@ -180,20 +174,26 @@ function processGraph(history, type) {
     var graph = {};
     graph.labels = [];
     var daysInType;
+    var perText = "";
     switch (type) {
         case "days":
             daysInType = 1;
+            perText = "dag";
             break;
         case "weeks":
             daysInType = 7;
+            perText = "week";
             break;
         case "months":
             daysInType = 30.5;
+            perText = "maand";
             break;
         case "years":
             daysInType = 366;
+            perText = "jaar";
             break;
     }
+    $("#per-text").html("&nbsp;" + perText);
     var margin = (history.UnixTo - history.UnixFrom) / 4;
     if ((history.UnixTo - history.UnixFrom) / 3600 / 24 / daysInType < 4) margin = 3600 * 24 * daysInType;
     for (var i = history.UnixFrom - margin; i <= history.UnixTo; i += margin) {
@@ -232,6 +232,7 @@ function processGraph(history, type) {
         var binTypeColor = convertBinType($("#checkbox-" + binId).data("bin-type")).color;
         graph.datasets[n].strokeColor = binTypeColor;
         graph.datasets[n].pointColor = binTypeColor;
+        //graph.datasets[n].fillColor = convertColor(binTypeColor, 0.1);
         graph.datasets[n].data = [0];
         for (var i = 0, lb = history.BinHistories.length; i < lb; i++) {
             var bin = history.BinHistories[i];
@@ -241,6 +242,7 @@ function processGraph(history, type) {
                 $.each(bin.History, function (k, v) {
                     for (var i = 0, l = graph.labels.length; i < l; i++) {
                         var unixStart = moment(graph.labels[i], "D/M/YY").unix();
+                        if (graph.labels[i].toString().length == 4) unixStart = moment(graph.labels[i], "YYYY").unix();
                         if (v.UnixTimestamp >= unixStart && v.UnixTimestamp < unixStart + margin) {
                             if (!dataByType.hasOwnProperty(graph.labels[i])) dataByType[graph.labels[i]] = 0;
                             dataByType[graph.labels[i]] += v.Weight;
@@ -250,14 +252,36 @@ function processGraph(history, type) {
                 $.each(dataByType, function (k, v) {
                     graph.data.push(v);
                 });
+                //graph.data.push(0);
                 graph.datasets[n].data = graph.data;
             }
         }
     }
-    processBinsHistory(graph);
+    printGraph(graph);
 }
 
-function processBinsHistory(graph) {
+function processPieTypes(history) {
+    var pie = [];
+    for (var i = 0, lb = history.BinHistories.length; i < lb; i++) {
+        var totalWeight = 0;
+        var bin = history.BinHistories[i];
+        $.each(bin.History, function (k, v) {
+            totalWeight += v.Weight;
+        });
+        var binTypeEl = $("#checkbox-" + bin.BinId);
+        var binColor = convertBinType(binTypeEl.data("bin-type")).color;
+        var binName = binTypeEl.siblings(".mdl-checkbox__label").text();
+        pie.push({
+            value: totalWeight,
+            color: binColor,
+            highlight: binColor,
+            label: binName
+        });
+    }
+    printPieTypes(pie);
+}
+
+function printGraph(graph) {
     console.log(graph);
     var graphEl = $("#graph canvas")[0].getContext("2d");
     var myLineChart = new Chart(graphEl).Line(graph, {
@@ -266,7 +290,12 @@ function processBinsHistory(graph) {
     hideLoader();
 }
 
-
+function printPieTypes(pie) {
+    console.log(pie);
+    var pieEl = $("#pie-types canvas")[0].getContext("2d");
+    var myDoughnutChart = new Chart(pieEl).Doughnut(pie);
+    hideLoader();
+}
 
 
 

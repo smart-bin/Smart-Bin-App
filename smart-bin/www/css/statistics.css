@@ -1,4 +1,4 @@
-#card-info {
+#statistics .mdl-card  {
     margin: 8px;
     width: calc(100% - 16px);
 }
@@ -50,16 +50,26 @@
     margin-right: 2%;
 }
 
-#graph {
-    background-color: rgb(97, 64, 199);
+.statistic-card {
     position: relative;
-    height: 200px;
+    min-height: 200px;
     box-sizing: border-box;
 }
 
-#graph canvas {
-    width: 100%;
-    height: 200px;
+.statistic-card-inner {
+    padding: 8px;
+}
+
+#graph .statistic-card-inner {
+    background-color: rgb(97, 64, 199);
+}
+
+.statistic-card .mdl-card__title {
+    padding: 16px;
+}
+
+.statistic-card .mdl-card__title-text {
+    font-size: 18px;
 }
 
 #range-defaults {
