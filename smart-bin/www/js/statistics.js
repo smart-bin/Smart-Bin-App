@@ -177,7 +177,6 @@ function applyFilters() {
 function processGraph(history, type) {
     history.UnixFrom = moment($("#date-start").val(), "DD/MM/YYYY").unix();
     history.UnixTo = moment($("#date-end").val(), "DD/MM/YYYY").unix();
-    // TODO: Months of previous year are thought of as months of this year (e.g. when current month is march, he will show Januari, Februari, March, October, November, December instead of October, November, December, Januari, Februari, March
     var graph = {};
     graph.labels = [];
     var daysInType;
@@ -218,13 +217,10 @@ function processGraph(history, type) {
         if (type == "years") label = timestamp.year();
         graph.labels.push(label);
     }
-    //console.log(graph.labels);
     graph.datasets = [];
-    for (var i = 0, l = history.BinHistories.length; i < l; i++) {
-        var bin = history.BinHistories[i];
-        graph.data = [0];
-        var dataByType = {};
-        graph.datasets[i] = {
+    for (var n = 0, li = history.IdsRequested.length; n < li; n++) {
+        var binId = history.IdsRequested[n];
+        graph.datasets[n] = {
             label: "Bin graph",
             fillColor: "transparent",
             strokeColor: "rgba(220, 220, 220, 1)",
@@ -233,23 +229,30 @@ function processGraph(history, type) {
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220, 220, 220, 1)"
         };
-        $.each(bin.History, function (k, v) {
-            console.log(v);
-            for (var i = 0, l = graph.labels.length; i < l; i++) {
-                var unixStart = moment(graph.labels[i], "D/M/YY").unix();
-                if (v.UnixTimestamp >= unixStart && v.UnixTimestamp < unixStart + margin) {
-                    if (!dataByType.hasOwnProperty(graph.labels[i])) dataByType[graph.labels[i]] = 0;
-                    dataByType[graph.labels[i]] += v.Weight;
-                }
+        var binTypeColor = convertBinType($("#checkbox-" + binId).data("bin-type")).color;
+        graph.datasets[n].strokeColor = binTypeColor;
+        graph.datasets[n].pointColor = binTypeColor;
+        graph.datasets[n].data = [0];
+        for (var i = 0, lb = history.BinHistories.length; i < lb; i++) {
+            var bin = history.BinHistories[i];
+            if (bin.BinId == binId) {
+                graph.data = [0];
+                var dataByType = {};
+                $.each(bin.History, function (k, v) {
+                    for (var i = 0, l = graph.labels.length; i < l; i++) {
+                        var unixStart = moment(graph.labels[i], "D/M/YY").unix();
+                        if (v.UnixTimestamp >= unixStart && v.UnixTimestamp < unixStart + margin) {
+                            if (!dataByType.hasOwnProperty(graph.labels[i])) dataByType[graph.labels[i]] = 0;
+                            dataByType[graph.labels[i]] += v.Weight;
+                        }
+                    }
+                });
+                $.each(dataByType, function (k, v) {
+                    graph.data.push(v);
+                });
+                graph.datasets[n].data = graph.data;
             }
-        });
-        $.each(dataByType, function (k, v) {
-            graph.data.push(v);
-        });
-        graph.datasets[i].data = graph.data;
-        var binTypeColor = convertBinType($("#checkbox-" + bin.BinId).data("bin-type")).color;
-        graph.datasets[i].strokeColor = binTypeColor;
-        graph.datasets[i].pointColor = binTypeColor;
+        }
     }
     processBinsHistory(graph);
 }

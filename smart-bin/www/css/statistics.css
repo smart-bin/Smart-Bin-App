@@ -18,13 +18,13 @@
 }
 
 #card-info #view-show-bins {
-    padding: 0 8px 8px;
+    padding: 0 16px 8px;
 }
 
 #card-info #view-show-bins .view-show-bin {
     display: inline-block;
-    width: 32%;
-    margin-left: 1%;
+    width: 30%;
+    margin-right: 2%;
     font-size: 13px;
 }
 
