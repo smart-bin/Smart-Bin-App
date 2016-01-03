@@ -206,7 +206,7 @@
 		},
 		initTemplate: function()
 		{
-			this.template = '<div class="dtp hidden" id="' + this.name + '">' +
+			this.template = '<div class="dtp hidden hide" id="' + this.name + '">' +
 								'<div class="dtp-content">' +
 									'<div class="dtp-date-view">' +
 				                        (this.showHeader ? ('<header class="dtp-header">' +
@@ -842,7 +842,7 @@
 		},
 		_onFocus: function()
 		{
-            if ($) $(".is-focused").removeClass("is-focused");
+            $(".is-focused").removeClass("is-focused");
 			this.currentView = 0;
 			this.$element.blur();
 
@@ -852,7 +852,8 @@
 
 			if(this.params.date)
 			{
-				this.$dtpElement.find('.dtp-date').removeClass('hidden');
+				var el = this.$dtpElement.find('.dtp-date');
+				el.removeClass("hidden");
 				this.initDate();
 			}
 			else
@@ -1036,12 +1037,22 @@
 		},
 		show: function()
 		{			
-			this.$dtpElement.removeClass('hidden');
+            var el = this.$dtpElement;
+            el.addClass("show");
+            el.removeClass("hidden");
+            setTimeout(function () {
+                el.removeClass("show");
+                el.removeClass("hide");
+            }, 200);
 			this._centerBox();
 		},
 		hide: function()
 		{
-			this.$dtpElement.addClass('hidden');
+            var el = this.$dtpElement;
+            el.addClass("hide");
+            setTimeout(function () {
+                el.addClass("hidden");
+            }, 300);
 		},
 		resetDate: function()
 		{
