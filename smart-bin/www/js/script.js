@@ -1,6 +1,7 @@
 var user;
 var reload = true;
 var loaderTimeout;
+var loaderCount = 0;
 
 function initApp() {
     $.support.cors = true;
@@ -190,24 +191,20 @@ function convertBinType(type) {
         case 0:
             return {class: "waste", color: "rgba(239, 197, 30, 1)"};
         case 1:
-            return {class: "plastic", color: "rgba(130, 186, 115, 1)"};
-        case 2:
-            return {class: "glass", color: "rgba(130, 186, 115, 1)"};
+            return {class: "plastic", color: "rgba(33, 150, 243, 1)"};
         case 3:
             return {class: "organic", color: "rgba(130, 186, 115, 1)"};
-        case 4:
-            return {class: "tin", color: "rgba(130, 186, 115, 1)"};
         case 5:
             return {class: "paper", color: "rgba(235, 81, 81, 1)"};
-        case 6:
-            return {class: "chemical", color: "rgba(235, 81, 81, 1)"};
         default:
             return {class: "none", color: "transparent"};
     }
 }
 
-function showLoader() {
+function showLoader(count) {
     clearTimeout(loaderTimeout);
+    if (typeof count === typeof undefined) count = 1;
+    loaderCount = count;
     var spinner = $("#loader.spinner");
     spinner.addClass("show");
     spinner.removeClass("hidden");
@@ -218,12 +215,16 @@ function showLoader() {
 }
 
 function hideLoader() {
-    clearTimeout(loaderTimeout);
-    var spinner = $("#loader.spinner");
-    spinner.addClass("hide");
-    loaderTimeout = setTimeout(function () {
-        spinner.addClass("hidden");
-    }, 300);
+    if (loaderCount === 1) {
+        clearTimeout(loaderTimeout);
+        var spinner = $("#loader.spinner");
+        spinner.addClass("hide");
+        loaderTimeout = setTimeout(function () {
+            spinner.addClass("hidden");
+        }, 300);
+    } else {
+        loaderCount--;
+    }
 }
 
 function getBatteryStatus(batteryLevel) {
