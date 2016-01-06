@@ -1,0 +1,55 @@
+#achievements .mdl-card  {
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.card-achievement {
+    position: relative;
+    min-height: 200px;
+    box-sizing: border-box;
+}
+
+.card-content-container {
+    position: absolute;
+}
+
+#achievements .mdl-card__supporting-text {
+    display: -webkit-box;
+    /* Fallback for non-webkit */
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 0;
+}
+
+#achievements .value-text {
+    font-size: 13px;
+}
+
+/*.achievement-card .mdl-card__title {*/
+    /*padding: 16px;*/
+/*}*/
+
+/*.achievement-card .mdl-card__title-text {*/
+    /*font-size: 18px;*/
+/*}*/
+
+.card-achievement-graph-container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(15%);
+    width: 60%;
+}
+
+.card-achievement-graph-inner {
+}
+
+#achievements canvas {
+    position: absolute;
+}
+
+.hallo-legend {
+
+}
