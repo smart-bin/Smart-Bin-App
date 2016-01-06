@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bin.css">
 </head>
-<body id="bin-detail" class="scroll-header scroll full-width bin-type-detail">
+<body id="bin-detail" class="scroll-header scroll cards bin-type-detail">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <div id="loader" class="spinner hidden hide">
             <div class="mdl-shadow--4dp">
@@ -62,21 +62,35 @@
             </header>
             <div class="page-content">
                 <div id="bin">
-                    <section id="battery-level" class="padding-section">
-                        <div class="centerab">
-                            <h2 class="section-header">Battery Level</h2>
-                            <span id="battery-status">&nbsp;</span>
+                    <section id="battery-level" class="mdl-card mdl-shadow--2dp bin-card bin-card-content">
+                        <div class="bin-card-inner">
+                            <div class="centerab">
+                                <span id="battery-status" class=""></span>
+                            </div>
+                        </div>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Batterij percentage</span>
                         </div>
                     </section>
-                    <section id="graph">
-                        <h2 class="section-header">Grafiek (gram per maand)</h2>
-                        <canvas></canvas>
+                    <section id="graph" class="mdl-card mdl-shadow--2dp bin-card">
+                        <div class="bin-card-inner">
+                            <div>
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Grafiek (gram per maand)</span>
+                        </div>
                     </section>
-                    <section id="statistics" class="padding-section">
-                        <div class="centerab">
-                            <h2 class="section-header">Statistieken</h2>
-                            <span id="total-weight" class="bin-statistic">&nbsp;</span>
-                            <span id="average-weight" class="bin-statistic">&nbsp;</span>
+                    <section id="statistics" class="mdl-card mdl-shadow--2dp bin-card bin-card-content">
+                        <div class="bin-card-inner">
+                            <div class="centerab">
+                                <span id="total-weight" class="bin-statistic">&nbsp;</span>
+                                <span id="average-weight" class="bin-statistic">&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Statistieken</span>
                         </div>
                     </section>
                 </div>
