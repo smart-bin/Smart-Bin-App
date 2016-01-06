@@ -181,6 +181,12 @@ body.white-background .mdl-layout__content {
     padding-bottom: 4px;
 }
 
+.text-card.mdl-card .mdl-card__supporting-text {
+    position: absolute;
+    padding: 8px 16px;
+    width: calc(100% - 32px);
+}
+
 /* FIXED HEADER */
 .mdl-layout__drawer-button i {
     margin-top: 12px;
@@ -391,7 +397,7 @@ body.form.full-width .main-form .form-item:first-child {
 }
 
 #loader.spinner.hide, #loader.spinner.hidden {
-    top: -7px;
+    top: -64px;
 }
 
 #loader.spinner > div {

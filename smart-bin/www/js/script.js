@@ -23,15 +23,6 @@ function getUserId() {
     return 2;
 }
 
-function truncateText(t, l) {
-    if (t.length > l) return t.substring(0, l) + "...";
-    return t;
-}
-
-function drawerScroll(e) {
-    $("#drawer-footer").css("bottom", $(".mdl-layout__drawer").scrollTop() * (-1));
-}
-
 function getURLParameter(name) {
   return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
 } //Source: http://davidmles.com/blog/
@@ -105,10 +96,10 @@ function formatCard(card) {
                 "<h2 class=\"mdl-card__title-text ellipsis\">" + card.title + "</h2>" +
             "</div>";
     if (card.type == "timeline") {
-        html += "<div class=\"mdl-card__supporting-text card-content\">" + truncateText(card.subtitle, 20) + "</div>";
+        html += "<div class=\"mdl-card__supporting-text card-content ellipsis\">" + card.subtitle + "</div>";
     } else if (card.type == "bin") {
-        html += "<div class=\"mdl-card__supporting-text supporting-text1 card-content\">" + card.subtitle1 + "</div>" +
-                "<div class=\"mdl-card__supporting-text supporting-text2 card-content\">" + card.subtitle2 + "</div>";
+        html += "<div class=\"mdl-card__supporting-text supporting-text1 card-content ellipsis\">" + card.subtitle1 + "</div>" +
+                "<div class=\"mdl-card__supporting-text supporting-text2 card-content ellipsis\">" + card.subtitle2 + "</div>";
     }
     html += "<div class=\"mdl-card__actions mdl-card--border card-content\">" +
                 (card.button1?"<a href=\"" + card.button1Link + "\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--" + card.accentColor + " action1-button\">" + card.button1Text + "</a>":"") +
@@ -125,37 +116,6 @@ function formatCard(card) {
 
 function back() {
     window.history.back();
-}
-
-function getNameMonth(monthInt) {
-    switch (monthInt) {
-        case 1:
-            return "Januari";
-        case 2:
-            return "Februari";
-        case 3:
-            return "Maart";
-        case 4:
-            return "April";
-        case 5:
-            return "Mei";
-        case 6:
-            return "Juni";
-        case 7:
-            return "Juli";
-        case 8:
-            return "Augustus";
-        case 9:
-            return "September";
-        case 10:
-            return "Oktober";
-        case 11:
-            return "November";
-        case 12:
-            return "December";
-        default:
-            return "";
-    }
 }
 
 function showSnackbar(data) {
