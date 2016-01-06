@@ -31,9 +31,9 @@
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">Smart Bin</span>
                 <div class="mdl-layout-spacer"></div>
-                <span class="mdl-button mdl-js-button mdl-button--icon">
+                <button id="clear-cards" class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons">clear_all</i>
-                </span>
+                </button>
             </div>
         </header>
         <div class="mdl-layout__drawer dis-visible">
@@ -55,12 +55,18 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div id="timeline-cards">
+                    <section id="no-more-cards" class="mdl-card text-card mdl-shadow--2dp hidden">
+                        <div class="mdl-card__supporting-text valign">
+                            Geen berichten meer om te laten zien...
+                        </div>
+                    </section>
                 </div>
             </div>
             <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
         </main>
     </div>
     <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/jgestures.min.js"></script>
     <script src="js/lib/material.min.js"></script>
     <script src="js/lib/material.add.min.js"></script>
     <script src="js/lib/APIFunctions.js"></script>

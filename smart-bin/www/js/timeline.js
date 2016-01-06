@@ -1,6 +1,10 @@
 function initTimeline() {
     showLoader();
     getTimelineCards();
+    $("#clear-cards").on("click", swipeAllCards);
+    $("#timeline-cards").on("click", ".action2-button", function () {
+        swipeCard($(this).parents(".mdl-card").attr("id"));
+    });
 }
 
 function getTimelineCards() {
@@ -55,6 +59,7 @@ function getTimelineCards() {
             type: "timeline"
         }
     ];
+    showLoader(cards.length);
     printTimelineCards(cards);
 }
 
@@ -62,9 +67,19 @@ function printTimelineCards(cards) {
     var cardsHTML = "";
     $.each(cards, function (k, card) {
         cardsHTML += formatCard(card);
+        hideLoader();
     });
     $("#timeline-cards").append(cardsHTML);
-    hideLoader();
+    $(".mdl-card").on("swiperight swipeone", function (e) {
+        var el = $(e.target);
+        var id;
+        if (el.hasClass("mdl-card")) {
+            id = el.attr("id");
+        } else if (el.parents(".mdl-card").length > 0) {
+            id = el.parents(".mdl-card").attr("id");
+        }
+        swipeCard($(this).attr("id"));
+    });
 }
 
 

@@ -227,6 +227,36 @@ function hideLoader() {
     }
 }
 
+function swipeCard(id, multiple) {
+    if (typeof multiple === typeof undefined) multiple = false;
+    var card = $("#" + id);
+    card.css("transform", "translate3d(" + (card.width() + parseInt($(".page-content").css("padding"))) + "px, 0, 0)");
+    if (!multiple) {
+        setTimeout(function () {
+            card.css("height", card.height() + "px");
+            setTimeout(function () {
+                card.addClass("hide");
+                if ($(".mdl-card:not(.hide, #no-more-cards)").length == 0) $("#no-more-cards").removeClass("hidden");
+                setTimeout(function () {
+                    card.addClass("hidden");
+                }, 300);
+            }, 100);
+        }, 200);
+    }
+}
+
+function swipeAllCards() {
+    var timeout = 0;
+    var cards = $(".mdl-card").not("#no-more-cards");
+    $.each(cards, function (k, v) {
+        setTimeout(function () {
+            swipeCard($(v).attr("id"), true);
+            if (k == cards.length - 1) $("#no-more-cards").removeClass("hidden");
+        }, timeout);
+        timeout += 100;
+    });
+}
+
 function getBatteryStatus(batteryLevel) {
     var battery = {};
     battery.batteryStatusColor = "rgba(255, 255, 255, 1)";
