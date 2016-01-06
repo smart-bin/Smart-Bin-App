@@ -1,5 +1,5 @@
 function initStatistics() {
-    showLoader(2);
+    showLoader(3);
     initDatepickers();
     API.getUser(getUserId(), "bins", processBins);
     $(".filter-button").on("click", initSetFilters);
@@ -84,7 +84,7 @@ function initDatepickers() {
         if (moment(start.val(), "DD/MM/YYYY").unix() > moment(end.val(), "DD/MM/YYYY").unix()) end.val(start.val());
         end.bootstrapMaterialDatePicker("setMinDate", date);
     });
-    setRange(null, "thisyear");
+    setRange(null, "thismonth");
 }
 
 function setRange(e, r) {
@@ -134,7 +134,7 @@ function resetFilters() {
 }
 
 function applyFilters() {
-    showLoader(2);
+    showLoader(3);
     var showBins = $(".show-bin:not(.show-bin-controller) input:checked");
     var start = $("#date-start").val();
     var end = $("#date-end").val();
@@ -194,9 +194,8 @@ function processGraph(history, type) {
             break;
     }
     $("#per-text").html("&nbsp;" + perText);
-    var margin = (history.UnixTo - history.UnixFrom) / 4;
-    if ((history.UnixTo - history.UnixFrom) / 3600 / 24 / daysInType < 4) margin = 3600 * 24 * daysInType;
-    for (var i = history.UnixFrom - margin; i <= history.UnixTo; i += margin) {
+    var margin = (history.UnixTo - history.UnixFrom) / 6;
+    for (var i = history.UnixFrom; i < history.UnixTo + margin; i += margin) {
         var timestamp = moment(new Date(i * 1000));
         var label;
         if (i == history.UnixFrom || i == history.UnixTo) {
@@ -227,37 +226,50 @@ function processGraph(history, type) {
             pointColor: "rgba(220, 220, 220, 1)",
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220, 220, 220, 1)"
+            pointHighlightStroke: "rgba(220, 220, 220, 1)",
+            binTypeId: 0
         };
-        var binTypeColor = convertBinType($("#checkbox-" + binId).data("bin-type")).color;
-        graph.datasets[n].strokeColor = binTypeColor;
-        graph.datasets[n].pointColor = binTypeColor;
-        //graph.datasets[n].fillColor = convertColor(binTypeColor, 0.1);
+        graph.datasets[n].binTypeId = $("#checkbox-" + binId).data("bin-type");
+        var binType = convertBinType(graph.datasets[n].binTypeId);
+        graph.datasets[n].strokeColor = binType.color;
+        graph.datasets[n].pointColor = binType.color;
         graph.datasets[n].data = [0];
         for (var i = 0, lb = history.BinHistories.length; i < lb; i++) {
             var bin = history.BinHistories[i];
             if (bin.BinId == binId) {
-                graph.data = [0];
+                graph.data = [];
                 var dataByType = {};
                 $.each(bin.History, function (k, v) {
                     for (var i = 0, l = graph.labels.length; i < l; i++) {
-                        var unixStart = moment(graph.labels[i], "D/M/YY").unix();
-                        if (graph.labels[i].toString().length == 4) unixStart = moment(graph.labels[i], "YYYY").unix();
-                        if (v.UnixTimestamp >= unixStart && v.UnixTimestamp < unixStart + margin) {
-                            if (!dataByType.hasOwnProperty(graph.labels[i])) dataByType[graph.labels[i]] = 0;
-                            dataByType[graph.labels[i]] += v.Weight;
+                        var unixLabel = moment(graph.labels[i], "D/M/YY").unix();
+                        if (!dataByType.hasOwnProperty(unixLabel)) dataByType[unixLabel] = 0;
+                        if (graph.labels[i].toString().length == 4) unixLabel = moment(graph.labels[i], "YYYY").unix();
+                        if (v.UnixTimestamp >= unixLabel && v.UnixTimestamp < unixLabel + margin) {
+                            dataByType[unixLabel] += v.Weight;
                         }
                     }
                 });
                 $.each(dataByType, function (k, v) {
-                    graph.data.push(v);
+                    var weight = v;
+                    var now = new Date().getTime() / 1000;
+                    if (k > now && weight == 0) weight = null;
+                    graph.data.push(weight);
                 });
-                //graph.data.push(0);
                 graph.datasets[n].data = graph.data;
             }
         }
     }
     printGraph(graph);
+    processBarProportions(graph);
+}
+
+function printGraph(graph) {
+    var graphEl = $("#graph canvas")[0].getContext("2d");
+    var myLineChart = new Chart(graphEl).Line(graph, {
+        scaleFontColor: "rgba(255, 255, 255, 0.6)",
+        scaleGridLineColor : "rgba(255, 255, 255, 0.05)"
+    });
+    hideLoader();
 }
 
 function processPieTypes(history) {
@@ -281,19 +293,65 @@ function processPieTypes(history) {
     printPieTypes(pie);
 }
 
-function printGraph(graph) {
-    console.log(graph);
-    var graphEl = $("#graph canvas")[0].getContext("2d");
-    var myLineChart = new Chart(graphEl).Line(graph, {
-        scaleFontColor: "rgba(255, 255, 255, 0.6)"
+function printPieTypes(pie) {
+    var pieEl = $("#pie-types canvas")[0].getContext("2d");
+    var myDoughnutChart = new Chart(pieEl).Doughnut(pie, {
+        segmentStrokeColor : $("#pie-types .statistic-card-inner").css("background-color"),
+        segmentStrokeWidth : 3
     });
     hideLoader();
 }
 
-function printPieTypes(pie) {
-    console.log(pie);
-    var pieEl = $("#pie-types canvas")[0].getContext("2d");
-    var myDoughnutChart = new Chart(pieEl).Doughnut(pie);
+function processBarProportions(graph) {
+    console.log(graph);
+    var recycled = [];
+    var waste = [];
+    var labelCount = graph.labels.length;
+    while (labelCount--) {
+        recycled.push(0);
+        waste.push(0);
+    }
+    $.each(graph.datasets, function () {
+        var type = this.binTypeId == 3 ? "waste" : "recycled";
+        for (var i = 0, l = graph.labels.length; i < l; i++) {
+            var weight = this.data[i];
+            if (weight === null) weight = 0;
+            if (type === "waste") waste[i] += weight;
+            else if (type === "recycled") recycled[i] += weight;
+        }
+    });
+    var wasteColor = $("#view-show-bin-3 .bin-type-thumb").css("background-color");
+    var bar = {
+        labels: graph.labels,
+        datasets: [
+            {
+                label: "Gerecycled",
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data: recycled
+            },
+            {
+                label: "Restafval",
+                fillColor: convertColor(wasteColor, 0.5),
+                strokeColor: convertColor(wasteColor, 0.8),
+                highlightFill: convertColor(wasteColor, 0.75),
+                highlightStroke: convertColor(wasteColor, 1),
+                data: waste
+            }
+        ]
+    };
+    printBarProportions(bar);
+}
+
+function printBarProportions(bar) {
+    var barEl = $("#bar-proportions canvas")[0].getContext("2d");
+    var myBarChart = new Chart(barEl).Bar(bar, {
+        scaleFontColor: "rgba(255, 255, 255, 0.6)",
+        scaleGridLineColor : "rgba(255, 255, 255, 0.05)"
+    });
+    //console.log(myBarChart);
     hideLoader();
 }
 
