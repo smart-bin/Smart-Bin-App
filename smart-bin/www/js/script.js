@@ -196,7 +196,10 @@ function swipeCard(id, multiple) {
             card.css("height", card.height() + "px");
             setTimeout(function () {
                 card.addClass("hide");
-                if ($(".mdl-card:not(.hide, #no-more-cards)").length == 0) $("#no-more-cards").removeClass("hidden");
+                if ($(".mdl-card:not(.hide, #no-more-cards)").length == 0) {
+                    $("#no-more-cards").removeClass("hidden");
+                    $("#clear-cards").addClass("mdl-button--disabled");
+                }
                 setTimeout(function () {
                     card.addClass("hidden");
                 }, 300);
@@ -211,7 +214,10 @@ function swipeAllCards() {
     $.each(cards, function (k, v) {
         setTimeout(function () {
             swipeCard($(v).attr("id"), true);
-            if (k == cards.length - 1) $("#no-more-cards").removeClass("hidden");
+            if (k == cards.length - 1) {
+                $("#no-more-cards").removeClass("hidden");
+                $("#clear-cards").addClass("mdl-button--disabled");
+            }
         }, timeout);
         timeout += 100;
     });
