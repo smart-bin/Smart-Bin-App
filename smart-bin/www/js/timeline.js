@@ -70,7 +70,7 @@ function printTimelineCards(cards) {
         hideLoader();
     });
     $("#timeline-cards").append(cardsHTML);
-    $(".mdl-card").on("swiperight swipeone", function (e) {
+    $(".mdl-card").on("swiperight", function (e) {
         var el = $(e.target);
         var id;
         if (el.hasClass("mdl-card")) {
