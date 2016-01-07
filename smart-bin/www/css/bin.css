@@ -79,27 +79,15 @@ h2.section-header {
     cursor: pointer;
 }
 
-.bin-type-image {
-    margin-bottom: 24px;
 }
 
-.bin-type-image img {
-    width: 50px;
 }
 
-.bin-type-image span {
-    padding-left: 24px;
 }
 
-.bin-type-image i {
-    display: none;
-    left: 4px;
-    bottom: -4px;
     position: relative;
 }
 
-.bin-type-image.selected i {
-    display: initial;
 }
 
 
