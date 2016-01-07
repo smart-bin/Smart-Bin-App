@@ -62,6 +62,7 @@ function changeBinTypeClass() {
     $("body").removeClass(function (index, css) {
         return (css.match (/(^|\s)bin-type--\S+/g) || []).join(' ');
     }).addClass("bin-type--" + el.data("bintypeclass"));
+    checkFixedHeader();
 }
 
 
