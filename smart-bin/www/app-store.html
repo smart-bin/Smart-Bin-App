@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="css/lib/material-icons.css">
     <link rel="stylesheet" href="css/lib/roboto.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/app-store.css">
 </head>
-<body class="cards">
+<body class="cards" id="app-store-page">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <div id="loader" class="spinner hidden hide">
         <div class="mdl-shadow--4dp">
@@ -59,10 +60,71 @@
     </div>
     <main class="mdl-layout__content">
         <div class="page-content">
-            <div id="timeline-cards">
-                <section id="no-more-cards" class="mdl-card text-card mdl-shadow--2dp hidden">
-                    <div class="mdl-card__supporting-text valign">
-                        Geen berichten meer om te laten zien...
+            <div id="app-store">
+                <section class="app-store-section" id="populair-section">
+                    <h2 class="mdl-typography--headline">Populaire Apps + Games</h2>
+                    <div id="card-2gather" class="mdl-card mdl-shadow--2dp" data-href="2gather.html">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text">2Gather</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="app-price">
+                                <i class="material-icons">attach_money</i>
+                                <span>gratis</span>
+                            </span>
+                            <span class="app-rating">
+                                <i class="material-icons">star</i>
+                                <span>4.5 sterren</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="card-trash-maps" class="mdl-card mdl-shadow--2dp" data-href="trash-maps.html">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text">Trash Maps</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="app-price">
+                                <i class="material-icons">attach_money</i>
+                                <span>gratis</span>
+                            </span>
+                            <span class="app-rating">
+                                <i class="material-icons">star</i>
+                                <span>4.1 sterren</span>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section class="app-store-section" id="games-section">
+                    <h2 class="mdl-typography--headline">Games</h2>
+                    <div id="card-garbage-shooter" class="mdl-card mdl-shadow--2dp" data-href="garbage-shooter.html">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text">Garbage Shooter</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="app-price">
+                                <i class="material-icons">attach_money</i>
+                                <span>1.99 euro</span>
+                            </span>
+                            <span class="app-rating">
+                                <i class="material-icons">star</i>
+                                <span>4.6 sterren</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="card-recycle-farm" class="mdl-card mdl-shadow--2dp" data-href="recycle-farm.html">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text">Recycle Farm</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="app-price">
+                                <i class="material-icons">attach_money</i>
+                                <span>0.99 euro</span>
+                            </span>
+                            <span class="app-rating">
+                                <i class="material-icons">star</i>
+                                <span>4.2 sterren</span>
+                            </span>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -76,10 +138,10 @@
 <script src="js/lib/material.add.min.js"></script>
 <script src="js/lib/APIFunctions.js"></script>
 <script src="js/script.js"></script>
-<!--<script src="js/timeline.js"></script>-->
+<script src="js/app-store.js"></script>
 <script>
     $(initApp);
-//    $(initTimeline);
+    $(initAppStore);
 </script>
 </body>
 </html>
