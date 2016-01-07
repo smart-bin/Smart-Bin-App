@@ -109,6 +109,7 @@ function processStatistics(history) {
     var numberOfMonths = 1;
     if (history.BinHistories[0].History.length > 1) {
         numberOfMonths = Math.ceil(((new Date().getTime() - firstTimestamp) / 2635200000)); // ms since first weight / ms in one month
+        if (new Date().getTime() < firstTimestamp) numberOfMonths = 1;
     }
     var averageWeight = totalWeight / numberOfMonths;
     $("#total-weight").text("Totaal: " + totalWeight + " kg");
