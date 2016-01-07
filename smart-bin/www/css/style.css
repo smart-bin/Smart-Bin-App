@@ -111,7 +111,7 @@ body.white-background .mdl-layout__content {
     margin-bottom: 8px;
     width: 100%;
     min-height: 150px;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .two-to-one.mdl-card .card-content-container {
