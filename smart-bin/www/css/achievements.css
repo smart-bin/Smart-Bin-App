@@ -44,10 +44,12 @@
 }
 
 .card-achievement-graph-inner {
+    height: 100px;
 }
 
 #achievements canvas {
     position: absolute;
+    height: 100px;
 }
 
 .hallo-legend {
