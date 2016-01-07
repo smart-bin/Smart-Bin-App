@@ -12,11 +12,13 @@ function printBinTypes(bins) {
     var bintypes = "";
     var first = true;
     $.each(bins, function (k, v) {
-        bintypes += "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect form-item\" for=\"option-" + v.TypeId + "\">" +
-                        "<input data-bintypeclass=\"" + convertBinType(v.TypeId).class + "\" type=\"radio\" id=\"option-" + v.TypeId + "\" class=\"mdl-radio__button\" name=\"bintype\" value=\"" + v.TypeId + "\"" + (first?" checked=\"checked\"":"") + ">" +
-                        "<span class=\"mdl-radio__label\">" + v.TypeName + "</span>" +
-                    "</label>";
-        if (first) first = false;
+        if (v.TypeId != 2 && v.TypeId != 4 && v.TypeId != 6) {
+            bintypes += "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect form-item\" for=\"option-" + v.TypeId + "\">" +
+                "<input data-bintypeclass=\"" + convertBinType(v.TypeId).class + "\" type=\"radio\" id=\"option-" + v.TypeId + "\" class=\"mdl-radio__button\" name=\"bintype\" value=\"" + v.TypeId + "\"" + (first ? " checked=\"checked\"" : "") + ">" +
+                "<span class=\"mdl-radio__label\">" + v.TypeName + "</span>" +
+                "</label>";
+            if (first) first = false;
+        }
     });
     $(".main-form").append(bintypes);
     componentHandler.upgradeAllRegistered();
