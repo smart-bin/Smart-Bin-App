@@ -60,7 +60,7 @@ function getTimelineCards() {
         }
     ];
     showLoader(cards.length);
-    printTimelineCards(cards);
+    checkPlasticCard(cards);
 }
 
 function printTimelineCards(cards) {
@@ -70,18 +70,44 @@ function printTimelineCards(cards) {
         hideLoader();
     });
     $("#timeline-cards").append(cardsHTML);
-    $(".mdl-card").on("swiperight", function (e) {
-        var el = $(e.target);
-        var id;
-        if (el.hasClass("mdl-card")) {
-            id = el.attr("id");
-        } else if (el.parents(".mdl-card").length > 0) {
-            id = el.parents(".mdl-card").attr("id");
-        }
-        swipeCard($(this).attr("id"));
-    });
+    $(".mdl-card").on("swiperight", initSwipeCard);
 }
 
+function initSwipeCard(e) {
+    var el = $(e.currentTarget);
+    var id;
+    if (el.hasClass("mdl-card")) {
+        id = el.attr("id");
+    } else if (el.parents(".mdl-card").length > 0) {
+        id = el.parents(".mdl-card").attr("id");
+    }
+    swipeCard($(this).attr("id"));
+}
+
+function checkPlasticCard(cards) {
+    $.ajax({
+        url: "http://ianwensink.nl/dev/hr/internetfornature/checkachievement.php",
+        dataType: "text",
+        success: function (output) {
+            if (output == "true") {
+                cards.unshift({
+                    id: 5,
+                    time: "Nu net",
+                    title: "Achievement",
+                    subtitle: "Verzamel 10 kg Plastic",
+                    image: "style=\"background-image: url(img/types/trophy_square.png)\"",
+                    imageColor: "style=\"background-color: #99d5dd\"",
+                    notificationType: "achievement",
+                    icon: "check_circle",
+                    accentColor: "green",
+                    button1Link: "achievements.html",
+                    type: "timeline"
+                });
+            }
+            printTimelineCards(cards);
+        }
+    })
+}
 
 
 

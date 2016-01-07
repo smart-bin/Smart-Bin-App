@@ -1,4 +1,4 @@
-#achievements .mdl-card  {
+.achievements .mdl-card  {
     margin-bottom: 8px;
     width: 100%;
 }
@@ -13,7 +13,7 @@
     position: absolute;
 }
 
-#achievements .mdl-card__supporting-text {
+.achievements .mdl-card__supporting-text {
     display: -webkit-box;
     /* Fallback for non-webkit */
     -webkit-line-clamp: 4;
@@ -23,17 +23,9 @@
     padding-bottom: 0;
 }
 
-#achievements .value-text {
+.achievements .value-text {
     font-size: 13px;
 }
-
-/*.achievement-card .mdl-card__title {*/
-    /*padding: 16px;*/
-/*}*/
-
-/*.achievement-card .mdl-card__title-text {*/
-    /*font-size: 18px;*/
-/*}*/
 
 .card-achievement-graph-container {
     position: absolute;
@@ -47,11 +39,16 @@
     height: 100px;
 }
 
-#achievements canvas {
+.achievements canvas {
     position: absolute;
     height: 100px;
 }
 
-.hallo-legend {
+#achievements-page .mdl-layout__tab-bar {
+    width: 100%;
+    padding: 0;
+}
 
+#achievements-page .mdl-layout__tab {
+    flex-grow: 1;
 }

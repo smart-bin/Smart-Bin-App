@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/achievements.css">
 </head>
-<body class="cards">
+<body class="cards tab-page" id="achievements-page">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <div id="loader" class="spinner hidden hide">
         <div class="mdl-shadow--4dp">
@@ -42,6 +42,11 @@
                 </div>
             </div>
         </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a href="#achievements-in-progress" id="in-progress-button" class="mdl-layout__tab is-active">Bezig</a>
+            <a href="#achievements-done" id="done-button" class="mdl-layout__tab">Klaar</a>
+        </div>
     </header>
     <div class="mdl-layout__drawer dis-visible">
         <span class="mdl-layout-title" id="drawer-user-name"></span>
@@ -60,10 +65,18 @@
         </nav>
     </div>
     <main class="mdl-layout__content">
-        <div class="page-content">
-            <div id="achievements">
+        <section class="mdl-layout__tab-panel is-active" id="achievements-in-progress">
+            <div class="page-content">
+                <div class="achievements">
+                </div>
             </div>
-        </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="achievements-done">
+            <div class="page-content">
+                <div class="achievements">
+                </div>
+            </div>
+        </section>
         <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
     </main>
 </div>

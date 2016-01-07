@@ -396,6 +396,10 @@ body.form.full-width .main-form .form-item:first-child {
     transition: top 0.3s ease-in-out;
 }
 
+.tab-page #loader.spinner {
+    top: 94px;
+}
+
 #loader.spinner.hide, #loader.spinner.hidden {
     top: -64px;
 }

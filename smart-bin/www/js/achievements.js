@@ -15,25 +15,40 @@ function getAchievements() {
 }
 
 function formatAchievementsCards(achievements) {
-    var achievementCards = "";
+    var achievementCardsDone = "";
+    var achievementCardsInProgress = "";
     var generatedCardIds = [];
     $.each(achievements.achievements, function (k, v) {
         v.id = k + 1;
         var card = formatAchievementCard(v);
-        achievementCards += card;
+        if (v.value == 100) achievementCardsDone += card;
+        else achievementCardsInProgress += card;
         generatedCardIds.push(v.id);
     });
-    $("#achievements").append(achievementCards);
-    showLoader(achievements.achievements.length);
+    $("#achievements-done .achievements").append(achievementCardsDone);
+    $("#achievements-in-progress .achievements").append(achievementCardsInProgress);
+    hideLoader();
+    loadPies("#achievements-in-progress");
+    $("#in-progress-button").on("click", function () {
+        loadPies("#achievements-in-progress");
+    });
+    $("#done-button").on("click", function () {
+        loadPies("#achievements-done");
+    });
+}
+
+function loadPies(section) {
     var timeout = 0;
-    $.each(achievements.achievements, function (k, v) {
-        printAchievementGraph(k + 1, v.value, timeout);
+    $.each($(section + " .mdl-card:not(.init-done)"), function (k, v) {
+        var card = $(v);
+        printAchievementGraph("#" + card.attr("id"), card.data("pie-value"), timeout);
+        card.addClass("init-done");
         timeout += 500;
     });
 }
 
 function formatAchievementCard(card) {
-    var html = "<div id=\"card-" + card.id + "\" class=\"two-to-one card-achievement mdl-card mdl-shadow--2dp\">" +
+    var html = "<div id=\"card-" + card.id + "\" class=\"two-to-one card-achievement mdl-card mdl-shadow--2dp\" data-pie-value=\"" + card.value + "\">" +
                     "<div class=\"card-content-container valign\">" +
                         "<div class=\"mdl-card__title card-content\">" +
                             "<h2 class=\"mdl-card__title-text ellipsis\">" + card.title + "</h2>" +
@@ -52,8 +67,8 @@ function formatAchievementCard(card) {
 }
 
 function printAchievementGraph(id, value, timeout) {
-    var pieBgEl = $("#card-" + id + " canvas.pie-background")[0].getContext("2d");
-    var pieEl = $("#card-" + id + " canvas.pie-achievement")[0].getContext("2d");
+    var pieBgEl = $(id + " canvas.pie-background")[0].getContext("2d");
+    var pieEl = $(id + " canvas.pie-achievement")[0].getContext("2d");
     var backgroundColor = "rgba(0, 0, 0, 0.08)";
     var primaryColor = $(".mdl-layout__header").css("background-color");
     var pieBg = [{
@@ -76,12 +91,11 @@ function printAchievementGraph(id, value, timeout) {
         animateRotate: false,
         percentageInnerCutout: 80
     });
-    $("#card-" + id + " .card-achievement-graph-inner").height($("#card-" + id + " canvas.pie-background").height());
+    $(id + " .card-achievement-graph-inner").height($(id + " canvas.pie-background").height());
     setTimeout(function() {
         var myDoughnutChart = new Chart(pieEl).Doughnut(pie, {
             segmentShowStroke: false,
             percentageInnerCutout: 80
         });
     }, timeout);
-    hideLoader();
 }
