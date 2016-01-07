@@ -148,7 +148,11 @@ function applyFilters() {
         viewShowBins += "<span id=\"view-show-bin-" + id + "\" class=\"view-show-bin ellipsis\"><span class=\"bin-type-thumb bin-type-el bin-type--" + convertBinType($(this).data("bin-type")).class + "\"></span>" + $(this).siblings(".mdl-checkbox__label").text() + "</span>";
         ids.push(id);
     });
-    $("#view-show-bins").html(viewShowBins);
+    if (showBins.length > 0) {
+        $("#view-show-bins").html(viewShowBins).removeClass("hidden");
+    } else {
+        $("#view-show-bins").addClass("hidden");
+    }
     var startUnix = moment(start, "DD/MM/YYYY").unix();
     var endUnix = moment(end, "DD/MM/YYYY").unix();
     API.getHistory(ids, startUnix, endUnix, function (history) {
@@ -312,7 +316,7 @@ function processBarProportions(graph) {
         waste.push(0);
     }
     $.each(graph.datasets, function () {
-        var type = this.binTypeId == 3 ? "waste" : "recycled";
+        var type = this.binTypeId == 0 ? "waste" : "recycled";
         for (var i = 0, l = graph.labels.length; i < l; i++) {
             var weight = this.data[i];
             if (weight === null) weight = 0;
@@ -320,7 +324,7 @@ function processBarProportions(graph) {
             else if (type === "recycled") recycled[i] += weight;
         }
     });
-    var wasteColor = $("#view-show-bin-3 .bin-type-thumb").css("background-color");
+    var wasteColor = convertBinType(0).color;
     var bar = {
         labels: graph.labels,
         datasets: [
