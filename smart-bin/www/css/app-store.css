@@ -64,3 +64,30 @@
     margin-left: 32px;
 }
 
+/* APPS */
+#app img {
+    width: 100%;
+}
+#two-gather-page .scroll-header-container {
+    background-image: url("../img/apps/2Gather_360x180.png");
+    background-color: rgb(156, 203, 91);
+}
+
+#trash-maps-page .scroll-header-container {
+    background-image: url("../img/apps/trash_maps_360x180.png");
+    background-color: rgb(80, 196, 238);
+}
+
+#garbage-shooter-page .scroll-header-container {
+    background-image: url("../img/apps/trash_shooter_360x180.png");
+    background-color: rgb(156, 203, 91);
+    background-size: 100% 100%;
+}
+
+#recycle-farm-page .scroll-header-container {
+    background-image: url("../img/apps/recycle_farm_360x180.png");
+    background-color: rgb(156, 203, 91);
+    background-size: 100% 100%;
+}
+
+
