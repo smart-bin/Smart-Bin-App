@@ -429,6 +429,10 @@ body.form.full-width .main-form .form-item:first-child {
     opacity: 0;
 }
 
+.mdl-checkbox__tick-outline {
+    -webkit-mask: none;
+}
+
 /* BIN TYPES */ /* BLACK BOX TYPES: bin-type--glass bin-type--tin bin-type--chemical */
 /* BIN TYPES -> GENERIC */
 .bin-type--waste .scroll-header-container, .bin-type--waste .card-image-container, .bin-type--waste.bin-type-el {
