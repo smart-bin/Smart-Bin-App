@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title></title>
+    <title>Timeline</title>
     <meta name="description" content="">
 
     <!-- Mobile -->
@@ -14,20 +14,26 @@
     <meta name="theme-color" content="black">
     <link rel="icon" href="icon.png">
 
-    <link rel="stylesheet" href="css/lib/material.color.min.css" />
+    <link rel="stylesheet" href="css/lib/material.color.min.css">
+    <link rel="stylesheet" href="css/lib/material.min.css">
     <link rel="stylesheet" href="css/lib/material-icons.css">
     <link rel="stylesheet" href="css/lib/roboto.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="cards">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div id="loader" class="spinner hidden hide">
+            <div class="mdl-shadow--4dp">
+                <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+            </div>
+        </div>
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">Smart Bin</span>
                 <div class="mdl-layout-spacer"></div>
-                <span class="mdl-button mdl-js-button mdl-button--icon">
+                <button id="clear-cards" class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons">clear_all</i>
-                </span>
+                </button>
             </div>
         </header>
         <div class="mdl-layout__drawer dis-visible">
@@ -49,15 +55,20 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div id="timeline-cards">
-                    
+                    <section id="no-more-cards" class="mdl-card text-card mdl-shadow--2dp hidden">
+                        <div class="mdl-card__supporting-text valign">
+                            Geen berichten meer om te laten zien...
+                        </div>
+                    </section>
                 </div>
             </div>
             <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
         </main>
     </div>
     <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/jgestures.min.js"></script>
     <script src="js/lib/material.min.js"></script>
-    <script src="js/lib/snackbar.js"></script>
+    <script src="js/lib/material.add.min.js"></script>
     <script src="js/lib/APIFunctions.js"></script>
     <script src="js/script.js"></script>
     <script src="js/timeline.js"></script>

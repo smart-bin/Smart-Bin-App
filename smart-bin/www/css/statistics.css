@@ -1,0 +1,103 @@
+#statistics .mdl-card  {
+    margin-bottom: 8px;
+}
+
+.text-card.mdl-card .mdl-card__supporting-text {
+    position: relative;
+}
+
+#card-info #card-date > span {
+    position: absolute;
+}
+
+#card-info .action1-button {
+    float: right;
+}
+
+#card-info #view-show-bins {
+    padding: 0 16px 8px;
+}
+
+#card-info #view-show-bins .view-show-bin {
+    display: inline-block;
+    width: 30%;
+    margin-right: 2%;
+    font-size: 13px;
+}
+
+#card-info #view-show-bins .view-show-bin .bin-type-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+#filter-statistics-dialog .date-item {
+    width: 49%;
+    display: inline-block;
+}
+
+#filter-statistics-dialog .mdl-checkbox.show-bin {
+    width: 49%;
+    display: inline-block !important;
+}
+
+#filter-statistics-dialog .mdl-checkbox.show-bin:nth-child(odd) {
+    margin-right: 2%;
+}
+
+.statistic-card {
+    position: relative;
+    min-height: 200px;
+    box-sizing: border-box;
+}
+
+.statistic-card-inner {
+    padding: 8px;
+}
+
+#graph .statistic-card-inner {
+    background-color: rgb(97, 64, 199);
+}
+
+#pie-types .statistic-card-inner {
+    background-color: rgb(96, 125, 139);
+}
+
+#bar-proportions .statistic-card-inner {
+    background-color: rgb(233, 30, 99);
+}
+
+.statistic-card .mdl-card__title {
+    padding: 16px;
+}
+
+.statistic-card .mdl-card__title-text {
+    font-size: 18px;
+}
+
+#range-defaults {
+    margin-top: -12px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    text-align: center;
+}
+
+#range-defaults button {
+    min-width: 0;
+    width: 23%;
+    padding: 0 0px;
+}
+
+#show-bins-field > div {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+button.mdl-button--raised.mdl-button--disabled {
+    color: initial !important;
+}
+
+

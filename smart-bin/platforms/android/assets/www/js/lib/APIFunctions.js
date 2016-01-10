@@ -13,7 +13,7 @@ var API =
 	
 	registerNewUser: function (name, email, password, onSuccess)
 	{
-		$.post(this.apiBaseUrl + "users.php" + "?lang=" + this.language, {newUser:{Name:name, Email:email, Password:password}}).done(function(data){
+		$.post(this.apiBaseUrl + "users.php" + "?lang=" + this.language, {newUser:{Name:name, Email:email, Password:password}}, null, "JSON").done(function(data){
 			if (typeof onSuccess === "function")
 				onSuccess(data);
 		});
@@ -29,8 +29,7 @@ var API =
 	
 	registerNewBin: function (ownerId, name, type, onSuccess)
 	{
-        console.log({newBin:{Name:name, OwnerId:ownerId, Type:type}});
-		$.post(this.apiBaseUrl + "bins.php" + "?lang=" + this.language, {newBin:{Name:name, OwnerId:ownerId, Type:type}}).done(function(data){
+		$.post(this.apiBaseUrl + "bins.php" + "?lang=" + this.language, {newBin:{Name:name, OwnerId:ownerId, Type:type}}, null, "JSON").done(function(data){
 			if (typeof onSuccess === "function")
 				onSuccess(data);
 		});
@@ -112,16 +111,8 @@ var API =
 		});
 	},
 	
-	getEntireHistory: function(binId, onSuccess)
+	getGlobalHistory: function(unixFrom, unixTo, onSuccess)
 	{
-		return this.getHistory(binId, null, null, onSuccess);
-	},
-	
-	getHistory: function(binId, unixFrom, unixTo, onSuccess)
-	{
-		if(binId == null)
-			return null;
-	
 		if(unixFrom == null)
 			unixFrom = 0;
 		
@@ -131,7 +122,35 @@ var API =
 		return $.ajax({
 			dataType: "JSON",
 			method:"GET",
-			url: this.apiBaseUrl + "history.php?id=" + binId + "&from=" + unixFrom + "&to=" + unixTo,
+			url: this.apiBaseUrl + "history.php?from=" + unixFrom + "&to=" + unixTo,
+			success: function(data)
+			{
+				if (typeof onSuccess === "function")
+					onSuccess(data);
+			}	
+		});
+	},
+	
+	getEntireHistory: function(binIds, onSuccess)
+	{
+		return this.getHistory(binIds, null, null, onSuccess);
+	},
+	
+	getHistory: function(binIds, unixFrom, unixTo, onSuccess)
+	{
+		if(binIds == null)
+			return null;
+	
+		if(unixFrom == null)
+			unixFrom = 0;
+		
+		if(unixTo == null)
+			unixTo = 0;
+			
+		return $.ajax({
+			dataType: "JSON",
+			method:"GET",
+			url: this.apiBaseUrl + "history.php" + "?id[]=" + binIds.join("&id[]=") + "&from=" + unixFrom + "&to=" + unixTo,
 			success: function(data)
 			{
 				if (typeof onSuccess === "function")

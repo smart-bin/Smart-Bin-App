@@ -1,22 +1,62 @@
-#battery-level {
-    background-color: #89c0c7;
-    background-repeat: no-repeat;
-    background-size: 40%;
-    background-position: 100% 100%;
-    height: 200px;
-    padding: 60px;
+#bin .mdl-card  {
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.bin-card {
+    position: relative;
+    min-height: 200px;
     box-sizing: border-box;
 }
 
-#battery-level h2 {
+.bin-card-inner {
+    padding: 8px;
+    position: relative;
+}
+
+#battery-level .bin-card-inner {
+
+    background-color: rgb(137, 192, 199);
+}
+
+#statistics .bin-card-inner {
+    background-color: rgb(120, 143, 157);
+    background-image: url("/img/types/recycle_square.png");
+}
+
+#graph .bin-card-inner {
+    background-color: rgb(97, 64, 199);
+}
+
+.bin-card-content .bin-card-inner {
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    height: 147px;
+    background-size: 45%;
+}
+
+.bin-card .mdl-card__title {
+    padding: 16px;
+}
+
+.bin-card .mdl-card__title-text {
+    font-size: 18px;
+}
+
+.bin-card.bin-card-content .bin-card-inner > div {
+    width: calc(100% - 98px);
+}
+
+h2.section-header {
     color: #fff;
     font-size: 18px;
     margin: 0;
 }
 
-#battery-level span {
-    font-size: 18px;
-    font-weight: 400;
+#graph h2.section-header {
+    position: absolute;
+    left: 56px;
+    top: 30px;
 }
 
 #graph canvas {
@@ -24,7 +64,56 @@
     height: 200px;
 }
 
+.bin-card.bin-card-content .bin-card-inner span {
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 200;
+}
+
 /* ADD BIN */
+#select-bin h2 {
+    font-size: 18px;
+    margin: 0;
+    line-height: 2;
+}
+
+#select-bin p {
+    padding-bottom: 8px;
+}
+
+#add-bin .mdl-list {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#add-bin .mdl-list__item {
+    padding: 0;
+    background-color: rgb(219, 219, 219);
+}
+
+#add-bin .mdl-list__item:nth-child(odd) {
+    background-color: rgb(233, 233, 233);
+}
+
+
+#add-bin .mdl-list__item .mdl-list__item-icon {
+    font-size: 30px;
+    padding-left: 8px;
+}
+
+#add-bin .mdl-list__item .mdl-list__item-secondary-action {
+    position: relative;
+}
+
+#add-bin .mdl-list__item .mdl-list__item-secondary-action .mdl-js-radio {
+    position: absolute;
+    top: -11px;
+    right: 8px;
+}
+
+
 
 
 

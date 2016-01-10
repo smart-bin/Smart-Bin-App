@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Statistics</title>
+    <meta name="description" content="">
+
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Chrome / Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="black">
+    <link rel="icon" href="icon.png">
+
+    <link rel="stylesheet" href="css/lib/material.color.min.css">
+    <link rel="stylesheet" href="css/lib/material.min.css">
+    <link rel="stylesheet" href="css/lib/material-icons.css">
+    <link rel="stylesheet" href="css/lib/bootstrap-material-datetimepicker.css">
+    <link rel="stylesheet" href="css/lib/roboto.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/achievements.css">
+</head>
+<body class="cards tab-page" id="achievements-page">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div id="loader" class="spinner hidden hide">
+        <div class="mdl-shadow--4dp">
+            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+        </div>
+    </div>
+    <header class="mdl-layout__header fixed-header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Achievements</span>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+                    <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" name="search" id="fixed-header-drawer-exp">
+                </div>
+            </div>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a href="#achievements-in-progress" id="in-progress-button" class="mdl-layout__tab is-active">Bezig</a>
+            <a href="#achievements-done" id="done-button" class="mdl-layout__tab">Klaar</a>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer dis-visible">
+        <span class="mdl-layout-title" id="drawer-user-name"></span>
+        <span id="drawer-user-email"></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="index.html"><i class="material-icons">access_time</i><span>Tijdlijn</span></a>
+            <a class="mdl-navigation__link" href="bins.html"><i class="material-icons">delete</i><span>Mijn Bins</span></a>
+            <a class="mdl-navigation__link" href="app-store.html"><i class="material-icons">shopping_cart</i><span>App Store</span></a>
+            <a class="mdl-navigation__link" href="statistics.html"><i class="material-icons">insert_chart</i><span>Mijn Statistieken</span></a>
+            <a class="mdl-navigation__link active" href="achievements.html"><i class="material-icons">done_all</i><span>Mijn Achievements</span></a>
+            <!-- <div id="drawer-spacer"></div> -->
+            <div id="drawer-footer">
+                <a class="mdl-navigation__link drawer-footer-link" id="drawer-settings-link" href="settings.html"><i class="material-icons">settings</i><span>Instellingen</span></a>
+                <a class="mdl-navigation__link drawer-footer-link" id="drawer-help-link" href="help.html"><i class="material-icons">help</i><span>Help &amp; feedback</span></a>
+            </div>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="achievements-in-progress">
+            <div class="page-content">
+                <div class="achievements">
+                </div>
+            </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="achievements-done">
+            <div class="page-content">
+                <div class="achievements">
+                </div>
+            </div>
+        </section>
+        <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
+    </main>
+</div>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/material.min.js"></script>
+<script src="js/lib/material.add.min.js"></script>
+<script src="js/lib/chart.min.js"></script>
+<script src="js/lib/chart-settings.js"></script>
+<script src="js/lib/moment.min.js"></script>
+<script src="js/lib/moment.nl.js"></script>
+<script src="js/lib/bootstrap-material-datetimepicker.js"></script>
+<script src="js/lib/APIFunctions.js"></script>
+<script src="js/script.js"></script>
+<script src="js/achievements.js"></script>
+<script>
+    $(initApp);
+    $(initAchievements);
+</script>
+</body>
+</html>

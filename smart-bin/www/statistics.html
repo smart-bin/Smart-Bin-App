@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Statistics</title>
+    <meta name="description" content="">
+
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Chrome / Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="black">
+    <link rel="icon" href="icon.png">
+
+    <link rel="stylesheet" href="css/lib/material.color.min.css">
+    <link rel="stylesheet" href="css/lib/material.min.css">
+    <link rel="stylesheet" href="css/lib/material-icons.css">
+    <link rel="stylesheet" href="css/lib/bootstrap-material-datetimepicker.css">
+    <link rel="stylesheet" href="css/lib/roboto.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/statistics.css">
+</head>
+<body class="cards">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div id="loader" class="spinner hidden hide">
+            <div class="mdl-shadow--4dp">
+                <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+            </div>
+        </div>
+        <header class="mdl-layout__header fixed-header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Statistieken</span>
+                <div class="mdl-layout-spacer"></div>
+                <button class="filter-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">filter_list</i>
+                </button>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer dis-visible">
+            <span class="mdl-layout-title" id="drawer-user-name"></span>
+            <span id="drawer-user-email"></span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="index.html"><i class="material-icons">access_time</i><span>Tijdlijn</span></a>
+                <a class="mdl-navigation__link" href="bins.html"><i class="material-icons">delete</i><span>Mijn Bins</span></a>
+                <a class="mdl-navigation__link" href="app-store.html"><i class="material-icons">shopping_cart</i><span>App Store</span></a>
+                <a class="mdl-navigation__link active" href="statistics.html"><i class="material-icons">insert_chart</i><span>Mijn Statistieken</span></a>
+                <a class="mdl-navigation__link" href="achievements.html"><i class="material-icons">done_all</i><span>Mijn Achievements</span></a>
+                <!-- <div id="drawer-spacer"></div> -->
+                <div id="drawer-footer">
+                    <a class="mdl-navigation__link drawer-footer-link" id="drawer-settings-link" href="settings.html"><i class="material-icons">settings</i><span>Instellingen</span></a>
+                    <a class="mdl-navigation__link drawer-footer-link" id="drawer-help-link" href="help.html"><i class="material-icons">help</i><span>Help &amp; feedback</span></a>
+                </div>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div id="statistics">
+                    <section>
+                        <div id="card-info" class="mdl-card mdl-shadow--2dp text-card">
+                            <div id="card-date" class="mdl-card__supporting-text">
+                                <span class="valign">
+                                    Van: <span id="date-range-start"></span>
+                                    Tot: <span id="date-range-end"></span>
+                                </span>
+                                <button type="button" class="filter-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect action1-button">Bewerk</button>
+                            </div>
+                            <div id="view-show-bins">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="graph" class="mdl-card mdl-shadow--2dp statistic-card">
+                        <div class="statistic-card-inner">
+                            <div>
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Grafiek (gram per<span id="per-text"></span>)</span>
+                        </div>
+                    </section>
+                    <section id="pie-types" class="mdl-card mdl-shadow--2dp statistic-card">
+                        <div class="statistic-card-inner">
+                            <div>
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Verhouding soorten afval</span>
+                        </div>
+                    </section>
+                    <section id="bar-proportions" class="mdl-card mdl-shadow--2dp statistic-card">
+                        <div class="statistic-card-inner">
+                            <div>
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Verhouding recycling per maand</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
+        </main>
+    </div>
+    <div class="mdl-dialog mdl-js-dialog" id="filter-statistics-dialog">
+        <div class="mdl-dialog__title">
+            <h3>Filter statistieken</h3>
+        </div>
+        <div class="mdl-dialog__content">
+            <div id="date-start-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-item date-item">
+                <div id="date-start-field-container">
+                    <input class="mdl-textfield__input" type="text" id="date-start">
+                    <label class="mdl-textfield__label" for="date-start">Van</label>
+                </div>
+            </div>
+            <div id="date-end-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-item date-item">
+                <div id="date-end-field-container">
+                    <input class="mdl-textfield__input" type="text" id="date-end">
+                    <label class="mdl-textfield__label" for="date-start">Tot</label>
+                </div>
+            </div>
+            <div id="range-defaults">
+                <button data-range="lastyear" class="mdl-button mdl-js-button"></button>
+                <button data-range="thisyear" class="mdl-button mdl-js-button"></button>
+                <button data-range="thismonth" class="mdl-button mdl-js-button"></button>
+                <button data-range="thisweek" class="mdl-button mdl-js-button"></button>
+            </div>
+            <div id="show-bins-field">
+                <div>
+                    <button type="button" id="show-bin-all" class="mdl-button mdl-js-button show-bin-controller mdl-button--raised mdl-button--disabled">Alle</button>
+                    <button type="button" id="show-bin-none" class="mdl-button mdl-js-button show-bin-controller">Geen</button>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" id="save-filters-button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Opslaan</button>
+            <button type="button" id="reset-filters-button" class="mdl-button mdl-js-button mdl-js-ripple-effect">Reset</button>
+        </div>
+    </div>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/material.min.js"></script>
+    <script src="js/lib/material.add.min.js"></script>
+    <script src="js/lib/chart.min.js"></script>
+    <script src="js/lib/chart-settings.js"></script>
+    <script src="js/lib/moment.min.js"></script>
+    <script src="js/lib/moment.nl.js"></script>
+    <script src="js/lib/bootstrap-material-datetimepicker.js"></script>
+    <script src="js/lib/APIFunctions.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/statistics.js"></script>
+    <script>
+        $(initApp);
+        $(initStatistics);
+    </script>
+</body>
+</html>

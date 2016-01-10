@@ -3,6 +3,10 @@ body {
     font-weight: 300;
 }
 
+.mdl-layout {
+    transform: translate3d(0, 0, 0);
+}
+
 .mdl-layout__content {
     background-color: #eee;
 }
@@ -92,15 +96,26 @@ body.white-background .mdl-layout__content {
 
 /* CARD */
 
+.mdl-card {
+    min-height: 50px;
+    width: 100%;
+    transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.mdl-card.hide {
+    min-height: initial !important;
+    height: 0 !important;
+}
+
 .two-to-one.mdl-card {
     margin-bottom: 8px;
     width: 100%;
     min-height: 150px;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .two-to-one.mdl-card .card-content-container {
-    width: calc(60% - 32px);
+    width: 60%;
 }
 
 .two-to-one.mdl-card .card-time {
@@ -115,16 +130,34 @@ body.white-background .mdl-layout__content {
 }
 
 .two-to-one.mdl-card .mdl-card__title, .two-to-one.mdl-card .mdl-card__supporting-text {
-    padding: 0px 8px 8px 16px;
+    padding: 0 16px 8px 16px;
 }
 
 .two-to-one.mdl-card .mdl-card__title-text {
-    font-size: 18px;
+    font-size: 16px;
+}
+
+.two-to-one.mdl-card.two-supporting-texts .mdl-card__title-text {
+    padding-top: 16px;
+}
+
+.two-to-one.mdl-card .mdl-card__supporting-text i {
+    position: absolute;
+}
+
+.two-to-one.mdl-card.two-supporting-texts .mdl-card__supporting-text > span {
+    padding-left: 32px;
+    line-height: 24px;
 }
 
 .two-to-one.mdl-card .mdl-card__actions {
     position: absolute;
     bottom: 0;
+    width: 60%;
+}
+
+.two-to-one.mdl-card .mdl-card__actions .mdl-button {
+    padding: 0 14px;
 }
 
 .two-to-one.mdl-card .card-image-container {
@@ -148,6 +181,12 @@ body.white-background .mdl-layout__content {
     padding-bottom: 4px;
 }
 
+.text-card.mdl-card .mdl-card__supporting-text {
+    position: absolute;
+    padding: 8px 16px;
+    width: calc(100% - 32px);
+}
+
 /* FIXED HEADER */
 .mdl-layout__drawer-button i {
     margin-top: 12px;
@@ -161,10 +200,10 @@ body.white-background .mdl-layout__content {
 .scroll-header .scroll-header-container {
     height: 200px;
     background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 0 100%;
     width: 100%;
     position: relative;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
 }
 
 .scroll-header.fixed .fixed-header {
@@ -202,6 +241,7 @@ body.white-background .mdl-layout__content {
 }
 
 .scroll-header .scroll-header-container h1 {
+    position: absolute;
     font-size: 20px;
     line-height: 1;
     letter-spacing: .02em;
@@ -209,7 +249,9 @@ body.white-background .mdl-layout__content {
     color: #fff;
     margin: 0;
     bottom: 17px;
-    left: 72px;
+    left: 0;
+    transform: translate3d(16px, 0, 0);
+    width: 90%;
 }
 
 .scroll-header .scroll-header-container .form-item {
@@ -217,8 +259,9 @@ body.white-background .mdl-layout__content {
 }
 
 .scroll-header .scroll-header-container form {
-    width: 60%;
-    left: 60px;
+    width: 90%;
+    left: 0;
+    transform: translate3d(16px, 0, 0);
     bottom: -7px;
     position: absolute;
 }
@@ -262,7 +305,7 @@ body.white-background .mdl-layout__content {
 }
 
 .image-header {
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 
 .mdl-button--fab {
@@ -273,6 +316,10 @@ body.white-background .mdl-layout__content {
     z-index: 99999999;
 }
 
+.snackbar-visible .page-content {
+    padding-bottom: 56px;
+}
+
 .snackbar-visible .mdl-button--fab {
     bottom: 64px;
 }
@@ -281,84 +328,28 @@ body.white-background .mdl-layout__content {
     display: block;
 }
 
-.mdl-layout__header-row {
-    /*background-color: rgb(130, 186, 115);*/
-}
-
+/* MDL CORE ELEMENTS */
 /* SNACKBAR */
-
-.mdl-snackbar {
-    position: fixed;
-    bottom: 0;
-    width: 936px;
-    margin: 0 auto;
-    cursor: default;
-    background-color: #323232;
-    z-index: 10000;
-    border-radius: 2px;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    will-change: transform;
-    -webkit-transform: translate3d(0, 50px, 0) rotateZ(0deg);
-    transform: translate3d(0, 50px, 0) rotateZ(0deg);
-    transition: all 0.2s ease-in-out;
-    min-height: 48px;
-    max-height: 80px;
-}
-
-.mdl-snackbar.is-active {
-    max-height: 48px;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); 
-}
-
-.mdl-snackbar__text {
-    padding: 14px 33px;
-    vertical-align: middle;
-    color: white;
-}
-
 .mdl-snackbar__text i {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     left: 24px;
+    position: absolute;
 }
 
 .mdl-snackbar__text.has-icon span {
     padding-left: 24px;
 }
 
-.mdl-snackbar__action {
-    background: transparent;
-    border: none;
-    color: rgb(255,64,129);
-    text-transform: uppercase;
-    padding: 14px 24px;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    line-height: 1;
-    letter-spacing: 0;
-    overflow: hidden;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    vertical-align: middle; 
-}
-
-.mdl-snackbar__action::-moz-focus-inner {
-    border: 0; 
-}
-
+/* DIALOG */
+/*.mdl-js-dialog*/
 
 /* FORMS */
 body.form.full-width .main-form .form-item {
     padding-left: 36px;
-    height: 56px;
+    margin: 16px 0;
+}
+
+body.form.full-width .main-form .form-item:first-child {
+    margin-top: 8px;
 }
 
 .valign {
@@ -374,7 +365,129 @@ body.form.full-width .main-form .form-item {
     transform: translateX(-50%) translateY(-50%);
 }
 
+.no-bullets {
+    margin: 0;
+    padding: 0;
+}
 
+.no-bullets li {
+    list-style: none outside none;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.spinner {
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+#loader.spinner {
+    padding-top: 20px;
+    position: fixed;
+    z-index: 2;
+    top: 56px;
+    transition: top 0.3s ease-in-out;
+}
+
+.tab-page #loader.spinner {
+    top: 94px;
+}
+
+#loader.spinner.hide, #loader.spinner.hidden {
+    top: -64px;
+}
+
+#loader.spinner > div {
+    padding: 7px;
+    height: 23px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+#loader.spinner .mdl-spinner {
+    width: 23px;
+    height: 23px;
+}
+
+#loader.spinner .mdl-spinner__circle {
+    border-width: 2px;
+}
+
+.dtp {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+}
+
+.dtp.hide, .dtp.hidden {
+    opacity: 0;
+}
+
+.mdl-checkbox__tick-outline {
+    -webkit-mask: none;
+}
+
+/* BIN TYPES */ /* BLACK BOX TYPES: bin-type--glass bin-type--tin bin-type--chemical */
+/* BIN TYPES -> GENERIC */
+.bin-type--waste .scroll-header-container, .bin-type--waste .card-image-container, .bin-type--waste.bin-type-el {
+    background-color: rgba(239, 197, 30, 1);
+}
+
+.bin-type--plastic .scroll-header-container, .bin-type--plastic .card-image-container, .bin-type--plastic.bin-type-el  {
+    background-color: rgba(33, 150, 243, 1);
+}
+
+.bin-type--organic .scroll-header-container, .bin-type--organic .card-image-container, .bin-type--organic.bin-type-el  {
+    background-color: rgba(130, 186, 115, 1);
+}
+
+.bin-type--paper .scroll-header-container, .bin-type--paper .card-image-container, .bin-type--paper.bin-type-el  {
+    background-color: rgba(235, 81, 81, 1);
+}
+
+/* BIN TYPES -> DETAIL */
+.bin-type-detail.bin-type--waste .scroll-header-container {
+    background-image: url("../img/types/waste_360x180.png");
+}
+
+.bin-type-detail.bin-type--plastic .scroll-header-container {
+    background-image: url("../img/types/plastic_360x180.png");
+}
+
+.bin-type-detail.bin-type--organic .scroll-header-container {
+    background-image: url("../img/types/organic_360x180.png");
+}
+
+.bin-type-detail.bin-type--paper .scroll-header-container {
+    background-image: url("../img/types/paper_360x180.png");
+}
+
+.bin-type-detail.bin-type--none .header-position-container, .bin-type--none .scroll-header-container, .bin-type-card.bin-type--none .card-image {
+    background-color: initial;
+}
+
+/* BIN TYPES -> CARD */
+.bin-type-card.bin-type--waste .card-image {
+    background-image: url("../img/types/waste_square.png");
+}
+
+.bin-type-card.bin-type--plastic .card-image {
+    background-image: url("../img/types/plastic_square.png");
+}
+
+.bin-type-card.bin-type--organic .card-image {
+    background-image: url("../img/types/organic_square.png");
+}
+
+.bin-type-card.bin-type--paper .card-image {
+    background-image: url("../img/types/paper_square.png");
+}
 
 
 

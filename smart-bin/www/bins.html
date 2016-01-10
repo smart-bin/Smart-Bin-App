@@ -14,13 +14,20 @@
     <meta name="theme-color" content="black">
     <link rel="icon" href="icon.png">
 
-    <link rel="stylesheet" href="css/lib/material.color.min.css" />
+    <link rel="stylesheet" href="css/lib/material.color.min.css">
+    <link rel="stylesheet" href="css/lib/material.min.css">
     <link rel="stylesheet" href="css/lib/material-icons.css">
     <link rel="stylesheet" href="css/lib/roboto.css">
     <link rel="stylesheet" href="css/style.css">
+    <!--<link rel="stylesheet" href="css/bins.css">-->
 </head>
 <body class="cards">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div id="loader" class="spinner hidden hide">
+            <div class="mdl-shadow--4dp">
+                <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+            </div>
+        </div>
         <header class="mdl-layout__header fixed-header">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">Mijn bins</span>
@@ -54,10 +61,9 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div id="bins">
-                    
                 </div>
             </div>
-            <a href="add-bin.html" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--primary">
+            <a href="add-bin.html" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--primary mdl-shadow--16dp">
                 <i class="material-icons">add</i>
             </a>
             <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-js-snackbar"></div>
@@ -65,7 +71,7 @@
     </div>
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/material.min.js"></script>
-    <script src="js/lib/snackbar.js"></script>
+    <script src="js/lib/material.add.min.js"></script>
     <script src="js/lib/APIFunctions.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bins.js"></script>
