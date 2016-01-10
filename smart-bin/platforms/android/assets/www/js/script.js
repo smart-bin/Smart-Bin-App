@@ -1,5 +1,7 @@
 var user;
 var reload = true;
+var loaderTimeout;
+var loaderCount = 0;
 
 function initApp() {
     $.support.cors = true;
@@ -19,15 +21,6 @@ function saveUser(output) {
 
 function getUserId() {
     return 2;
-}
-
-function truncateText(t, l) {
-    if (t.length > l) return t.substring(0, l) + "...";
-    return t;
-}
-
-function drawerScroll(e) {
-    $("#drawer-footer").css("bottom", $(".mdl-layout__drawer").scrollTop() * (-1));
 }
 
 function getURLParameter(name) {
@@ -103,10 +96,10 @@ function formatCard(card) {
                 "<h2 class=\"mdl-card__title-text ellipsis\">" + card.title + "</h2>" +
             "</div>";
     if (card.type == "timeline") {
-        html += "<div class=\"mdl-card__supporting-text card-content\">" + truncateText(card.subtitle, 20) + "</div>";
+        html += "<div class=\"mdl-card__supporting-text card-content ellipsis\">" + card.subtitle + "</div>";
     } else if (card.type == "bin") {
-        html += "<div class=\"mdl-card__supporting-text supporting-text1 card-content\">" + card.subtitle1 + "</div>" +
-                "<div class=\"mdl-card__supporting-text supporting-text2 card-content\">" + card.subtitle2 + "</div>";
+        html += "<div class=\"mdl-card__supporting-text supporting-text1 card-content ellipsis\">" + card.subtitle1 + "</div>" +
+                "<div class=\"mdl-card__supporting-text supporting-text2 card-content ellipsis\">" + card.subtitle2 + "</div>";
     }
     html += "<div class=\"mdl-card__actions mdl-card--border card-content\">" +
                 (card.button1?"<a href=\"" + card.button1Link + "\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--" + card.accentColor + " action1-button\">" + card.button1Text + "</a>":"") +
@@ -123,37 +116,6 @@ function formatCard(card) {
 
 function back() {
     window.history.back();
-}
-
-function getNameMonth(monthInt) {
-    switch (monthInt) {
-        case 1:
-            return "Januari";
-        case 2:
-            return "Februari";
-        case 3:
-            return "Maart";
-        case 4:
-            return "April";
-        case 5:
-            return "Mei";
-        case 6:
-            return "Juni";
-        case 7:
-            return "Juli";
-        case 8:
-            return "Augustus";
-        case 9:
-            return "September";
-        case 10:
-            return "Oktober";
-        case 11:
-            return "November";
-        case 12:
-            return "December";
-        default:
-            return "";
-    }
 }
 
 function showSnackbar(data) {
@@ -184,25 +146,81 @@ function convertColor(color, opacity) {
     return "rgba(" + r + "," + g + "," + b + "," + opacity + ")";
 }
 
-function convertBinTypeToClass(type) {
+function convertBinType(type) {
     switch (type) {
         case 0:
-            return "waste";
+            return {class: "waste", color: "rgba(239, 197, 30, 1)"};
         case 1:
-            return "plastic";
-        case 2:
-            return "glass";
+            return {class: "plastic", color: "rgba(33, 150, 243, 1)"};
         case 3:
-            return "organic";
-        case 4:
-            return "tin";
+            return {class: "organic", color: "rgba(130, 186, 115, 1)"};
         case 5:
-            return "paper";
-        case 6:
-            return "chemical";
+            return {class: "paper", color: "rgba(235, 81, 81, 1)"};
         default:
-            return "none";
+            return {class: "none", color: "transparent"};
     }
+}
+
+function showLoader(count) {
+    clearTimeout(loaderTimeout);
+    if (typeof count === typeof undefined) count = 1;
+    loaderCount = count;
+    var spinner = $("#loader.spinner");
+    spinner.addClass("show");
+    spinner.removeClass("hidden");
+    loaderTimeout = setTimeout(function () {
+        spinner.removeClass("show");
+        spinner.removeClass("hide");
+    }, 300);
+}
+
+function hideLoader() {
+    if (loaderCount === 1) {
+        clearTimeout(loaderTimeout);
+        var spinner = $("#loader.spinner");
+        spinner.addClass("hide");
+        loaderTimeout = setTimeout(function () {
+            spinner.addClass("hidden");
+        }, 300);
+    } else {
+        loaderCount--;
+    }
+}
+
+function swipeCard(id, multiple) {
+    if (typeof multiple === typeof undefined) multiple = false;
+    var card = $("#" + id);
+    card.css("transform", "translate3d(" + (card.width() + parseInt($(".page-content").css("padding"))) + "px, 0, 0)");
+    if (!multiple) {
+        setTimeout(function () {
+            card.css("height", card.height() + "px");
+            setTimeout(function () {
+                card.addClass("hide");
+                if ($(".mdl-card:not(.hide, #no-more-cards)").length == 0) {
+                    $("#no-more-cards").removeClass("hidden");
+                    $("#clear-cards").addClass("mdl-button--disabled");
+                }
+                setTimeout(function () {
+                    card.addClass("hidden");
+                }, 300);
+            }, 100);
+        }, 200);
+    }
+}
+
+function swipeAllCards() {
+    var timeout = 0;
+    var cards = $(".mdl-card").not("#no-more-cards");
+    $.each(cards, function (k, v) {
+        setTimeout(function () {
+            swipeCard($(v).attr("id"), true);
+            if (k == cards.length - 1) {
+                $("#no-more-cards").removeClass("hidden");
+                $("#clear-cards").addClass("mdl-button--disabled");
+            }
+        }, timeout);
+        timeout += 100;
+    });
 }
 
 function getBatteryStatus(batteryLevel) {

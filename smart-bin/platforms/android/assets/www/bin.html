@@ -20,8 +20,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bin.css">
 </head>
-<body id="bin-detail" class="scroll-header scroll full-width bin-type-detail">
+<body id="bin-detail" class="scroll-header scroll cards bin-type-detail">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div id="loader" class="spinner hidden hide">
+            <div class="mdl-shadow--4dp">
+                <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+            </div>
+        </div>
         <header class="mdl-layout__header mdl-layout__header--seamed fixed-header">
             <div class="mdl-layout__header-row">
                 <button class="back-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -57,26 +62,35 @@
             </header>
             <div class="page-content">
                 <div id="bin">
-                    <div id="loader" class="spinner">
-                        <div>
-                            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+                    <section id="battery-level" class="mdl-card mdl-shadow--2dp bin-card bin-card-content">
+                        <div class="bin-card-inner">
+                            <div class="centerab">
+                                <span id="battery-status" class=""></span>
+                            </div>
                         </div>
-                    </div>
-                    <section id="battery-level" class="padding-section">
-                        <div class="centerab">
-                            <h2 class="section-header">Battery Level</h2>
-                            <span id="battery-status">&nbsp;</span>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Batterij percentage</span>
                         </div>
                     </section>
-                    <section id="graph">
-                        <h2 class="section-header">Grafiek (gram per maand)</h2>
-                        <canvas></canvas>
+                    <section id="graph" class="mdl-card mdl-shadow--2dp bin-card">
+                        <div class="bin-card-inner">
+                            <div>
+                                <canvas></canvas>
+                            </div>
+                        </div>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Grafiek (gram per maand)</span>
+                        </div>
                     </section>
-                    <section id="statistics" class="padding-section">
-                        <div class="centerab">
-                            <h2 class="section-header">Statistieken</h2>
-                            <span id="total-weight" class="bin-statistic">&nbsp;</span>
-                            <span id="average-weight" class="bin-statistic">&nbsp;</span>
+                    <section id="statistics" class="mdl-card mdl-shadow--2dp bin-card bin-card-content">
+                        <div class="bin-card-inner">
+                            <div class="centerab">
+                                <span id="total-weight" class="bin-statistic">&nbsp;</span>
+                                <span id="average-weight" class="bin-statistic">&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="mdl-card__title">
+                            <span class="mdl-card__title-text">Statistieken</span>
                         </div>
                     </section>
                 </div>
@@ -89,6 +103,8 @@
     <script src="js/lib/material.add.min.js"></script>
     <script src="js/lib/chart.min.js"></script>
     <script src="js/lib/chart-settings.js"></script>
+    <script src="js/lib/moment.min.js"></script>
+    <script src="js/lib/moment.nl.js"></script>
     <script src="js/lib/APIFunctions.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bin.js"></script>

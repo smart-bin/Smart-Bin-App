@@ -1,5 +1,10 @@
 function initTimeline() {
+    showLoader();
     getTimelineCards();
+    $("#clear-cards").on("click", swipeAllCards);
+    $("#timeline-cards").on("click", ".action2-button", function () {
+        swipeCard($(this).parents(".mdl-card").attr("id"));
+    });
 }
 
 function getTimelineCards() {
@@ -8,13 +13,12 @@ function getTimelineCards() {
             id: 1,
             time: "Nu net",
             title: "Batterij leeg",
-            subtitle: "Glas",
-            image: "style=\"background-image: url(img/types/glass_square.png)\"",
-            imageColor: "style=\"background-color: #82ba73\"",
-            type: "warning",
+            subtitle: "GFT bak",
+            notificationType: "warning",
             icon: "warning",
             accentColor: "orange",
-            button1Link: "bin.html?id=5",
+            button1Link: "bin.html?id=9",
+            cardClasses: "bin-type-card bin-type--organic",
             type: "timeline"
         },
         {
@@ -24,7 +28,7 @@ function getTimelineCards() {
             subtitle: "Recycle minstens 35% van al je afval",
             image: "style=\"background-image: url(img/types/trophy_square.png)\"",
             imageColor: "style=\"background-color: #99d5dd\"",
-            type: "achievement",
+            notificationType: "achievement",
             icon: "check_circle",
             accentColor: "green",
             button1Link: "achievements.html",
@@ -34,13 +38,12 @@ function getTimelineCards() {
             id: 3,
             time: "10 dagen geleden",
             title: "Bin toegevoegd",
-            subtitle: "Papier",
-            image: "style=\"background-image: url(img/types/paper_square.png)\"",
-            imageColor: "style=\"background-color: #eb5151\"",
-            type: "added",
+            subtitle: "Papierbak",
+            notificationType: "added",
             icon: "add_circle",
             accentColor: "green",
-            button1Link: "bin.html?id=2",
+            button1Link: "bin.html?id=11",
+            cardClasses: "bin-type-card bin-type--paper",
             type: "timeline"
         },
         {
@@ -48,27 +51,63 @@ function getTimelineCards() {
             time: "28 dagen geleden",
             title: "Bin toegevoegd",
             subtitle: "Restafval",
-            image: "style=\"background-image: url(img/types/waste_square.png)\"",
-            imageColor: "style=\"background-color: #efc51e\"",
-            type: "added",
+            notificationType: "added",
             icon: "add_circle",
             accentColor: "green",
             button1Link: "bin.html?id=3",
+            cardClasses: "bin-type-card bin-type--waste",
             type: "timeline"
-        },
+        }
     ];
-    printTimelineCards(cards);
+    showLoader(cards.length);
+    checkPlasticCard(cards);
 }
 
 function printTimelineCards(cards) {
-    $("#loader.spinner").hide();
     var cardsHTML = "";
     $.each(cards, function (k, card) {
         cardsHTML += formatCard(card);
+        hideLoader();
     });
     $("#timeline-cards").append(cardsHTML);
+    $(".mdl-card").on("swiperight", initSwipeCard);
 }
 
+function initSwipeCard(e) {
+    var el = $(e.currentTarget);
+    var id;
+    if (el.hasClass("mdl-card")) {
+        id = el.attr("id");
+    } else if (el.parents(".mdl-card").length > 0) {
+        id = el.parents(".mdl-card").attr("id");
+    }
+    swipeCard($(this).attr("id"));
+}
+
+function checkPlasticCard(cards) {
+    $.ajax({
+        url: "http://ianwensink.nl/dev/hr/internetfornature/checkachievement.php",
+        dataType: "text",
+        success: function (output) {
+            if (output == "true") {
+                cards.unshift({
+                    id: 5,
+                    time: "Nu net",
+                    title: "Achievement",
+                    subtitle: "Verzamel 10 kg Plastic",
+                    image: "style=\"background-image: url(img/types/trophy_square.png)\"",
+                    imageColor: "style=\"background-color: #99d5dd\"",
+                    notificationType: "achievement",
+                    icon: "check_circle",
+                    accentColor: "green",
+                    button1Link: "achievements.html",
+                    type: "timeline"
+                });
+            }
+            printTimelineCards(cards);
+        }
+    })
+}
 
 
 
