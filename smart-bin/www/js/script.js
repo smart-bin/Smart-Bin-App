@@ -2,13 +2,14 @@ var user;
 var reload = true;
 var loaderTimeout;
 var loaderCount = 0;
+var dev = false;
 
 function initApp() {
     $.support.cors = true;
     initSnackbar(showSnackbar);
     API.language = "nl";
     API.getUser(getUserId(), "info", saveUser);
-    autoreload();
+    if (dev) autoreload();
 }
 
 function saveUser(output) {
@@ -20,7 +21,8 @@ function saveUser(output) {
 }
 
 function getUserId() {
-    return 2;
+    if (typeof localStorage.userId === typeof undefined) return 2;
+    else return localStorage.userId;
 }
 
 function getURLParameter(name) {
