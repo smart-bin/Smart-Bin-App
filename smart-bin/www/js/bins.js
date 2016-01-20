@@ -20,6 +20,7 @@ function processBins(output) {
         cards += formatCard(card);
     });
     $("#bins").append(cards);
+    if (output.Bins.length > 0) $("#no-bins-text").addClass("hidden");
     var ids = [];
     $.each($(".card-bin"), function () {
         var binId = $(this).attr("id");
@@ -31,7 +32,6 @@ function processBins(output) {
 
 function processTotalWeightThisMonth(history) {
     $(".weight-this-month").text(0);
-    console.log(history.BinHistories);
     $.each(history.BinHistories, function () {
         var totalWeight = 0;
         var thisMonth = new Date();

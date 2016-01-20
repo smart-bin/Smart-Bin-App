@@ -1,0 +1,8 @@
+.text-card .mdl-card__supporting-text {
+    height: 100%;
+    padding: 0 16px !important;
+}
+
+.text-card .mdl-card__supporting-text .valign {
+    position: absolute;
+}
