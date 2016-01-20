@@ -317,7 +317,7 @@ body.white-background .mdl-layout__content {
 }
 
 .snackbar-visible .page-content {
-    padding-bottom: 56px;
+    padding-bottom: 56px !important;
 }
 
 .snackbar-visible .mdl-button--fab {

@@ -21,7 +21,7 @@
 
 #statistics .bin-card-inner {
     background-color: rgb(120, 143, 157);
-    background-image: url("/img/types/recycle_square.png");
+    background-image: url("../img/types/recycle_square.png");
 }
 
 #graph .bin-card-inner {

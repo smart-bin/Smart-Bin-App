@@ -63,27 +63,6 @@ function getTimelineCards() {
     checkPlasticCard(cards);
 }
 
-function printTimelineCards(cards) {
-    var cardsHTML = "";
-    $.each(cards, function (k, card) {
-        cardsHTML += formatCard(card);
-        hideLoader();
-    });
-    $("#timeline-cards").append(cardsHTML);
-    $(".mdl-card").on("swiperight", initSwipeCard);
-}
-
-function initSwipeCard(e) {
-    var el = $(e.currentTarget);
-    var id;
-    if (el.hasClass("mdl-card")) {
-        id = el.attr("id");
-    } else if (el.parents(".mdl-card").length > 0) {
-        id = el.parents(".mdl-card").attr("id");
-    }
-    swipeCard($(this).attr("id"));
-}
-
 function checkPlasticCard(cards) {
     $.ajax({
         url: "http://ianwensink.nl/dev/hr/internetfornature/checkachievement.php",
@@ -107,6 +86,27 @@ function checkPlasticCard(cards) {
             printTimelineCards(cards);
         }
     })
+}
+
+function printTimelineCards(cards) {
+    var cardsHTML = "";
+    $.each(cards, function (k, card) {
+        cardsHTML += formatCard(card);
+        hideLoader();
+    });
+    $("#timeline-cards").append(cardsHTML);
+    $(".mdl-card").on("swiperight", initSwipeCard);
+}
+
+function initSwipeCard(e) {
+    var el = $(e.currentTarget);
+    var id;
+    if (el.hasClass("mdl-card")) {
+        id = el.attr("id");
+    } else if (el.parents(".mdl-card").length > 0) {
+        id = el.parents(".mdl-card").attr("id");
+    }
+    swipeCard($(this).attr("id"));
 }
 
 

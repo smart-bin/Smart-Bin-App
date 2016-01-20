@@ -100,7 +100,8 @@ function printGraph(graph) {
 
 function processStatistics(history) {
     var totalWeight = 0;
-    var firstTimestamp = history.BinHistories[0].History[0].UnixTimestamp * 1000;
+    var firstTimestamp;
+    if (history.BinHistories[0].History.length != 0) firstTimestamp = history.BinHistories[0].History[0].UnixTimestamp * 1000;
     $.each(history.BinHistories[0].History, function () {
         var timestamp = this.UnixTimestamp * 1000;
         if (timestamp < firstTimestamp) firstTimestamp = timestamp;

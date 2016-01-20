@@ -243,6 +243,8 @@ function processGraph(history, type) {
             if (bin.BinId == binId) {
                 graph.data = [];
                 var dataByType = {};
+                var nol = graph.labels.length;
+                if (bin.History.length == 0) while (nol--) dataByType[nol] = null;
                 $.each(bin.History, function (k, v) {
                     for (var i = 0, l = graph.labels.length; i < l; i++) {
                         var unixLabel = moment(graph.labels[i], "D/M/YY").unix();
@@ -307,7 +309,6 @@ function printPieTypes(pie) {
 }
 
 function processBarProportions(graph) {
-    console.log(graph);
     var recycled = [];
     var waste = [];
     var labelCount = graph.labels.length;
@@ -316,6 +317,7 @@ function processBarProportions(graph) {
         waste.push(0);
     }
     $.each(graph.datasets, function () {
+        console.log(this);
         var type = this.binTypeId == 0 ? "waste" : "recycled";
         for (var i = 0, l = graph.labels.length; i < l; i++) {
             var weight = this.data[i];
@@ -355,7 +357,6 @@ function printBarProportions(bar) {
         scaleFontColor: "rgba(255, 255, 255, 0.6)",
         scaleGridLineColor : "rgba(255, 255, 255, 0.05)"
     });
-    //console.log(myBarChart);
     hideLoader();
 }
 
