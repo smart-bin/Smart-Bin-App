@@ -76,7 +76,7 @@ function processGraph(history) {
         for (var i = 0, l = graph.labels.length; i < l; i++) {
             var unixLabel = moment(graph.labels[i], "D/M/YY").unix();
             var nextLabel = moment(graph.labels[i + 1], "D/M/YY").unix();
-            if (i == l - 1) nextLabel = unixLabel;
+            if (i == l - 1) nextLabel = unixLabel + unixLabel - previousLabel;
             if (v.UnixTimestamp >= unixLabel - ((unixLabel - previousLabel) / 2) && v.UnixTimestamp < unixLabel + ((nextLabel - unixLabel) / 2)) {
                 dataByType[unixLabel] += v.Weight;
             }
