@@ -12,6 +12,7 @@
 .bin-card-inner {
     padding: 8px;
     position: relative;
+    transform: translate3d(0, 0, 0);
 }
 
 #battery-level .bin-card-inner {

@@ -4,7 +4,7 @@ function initBinDetails() {
     API.getBin(binId, processBinAPI);
     API.getEntireHistory([binId], processBinHistory);
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
-    $(".back-button").on("click", back);
+    $(".back-button").on("click", {url: "bins.html"}, back);
 }
 
 function processBinAPI(bin) {

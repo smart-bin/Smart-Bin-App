@@ -116,8 +116,9 @@ function formatCard(card) {
     return html;
 }
 
-function back() {
-    window.history.back();
+function back(e) {
+    if (typeof e.data.url != "undefined") location.href = e.data.url;
+    else History.back();
 }
 
 function showSnackbar(data) {

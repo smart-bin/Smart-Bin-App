@@ -1,7 +1,7 @@
 function initAddBin() {
     showLoader();
     $(".mdl-layout__content").on("scroll", checkFixedHeader);
-    $(".back-button").on("click", back);
+    $(".back-button").on("click", {url: "bins.html"}, back);
     //$("#select-picture-click").on("click", initSelectPicture);
     $(".save-bin").on("click", saveBin);
     API.getBinTypes(printBinTypes);
@@ -44,7 +44,6 @@ function binSuccess(binId) {
     saveSnackbar({
         message: "<i class=\"material-icons mdl-color-text--green valign\">check_circle</i><span>Bin succesvol toegevoegd</span>"
     });
-    history.pushState({}, "bins", "bins.html");
     location.href = "bin.html?id=" + binId;
 }
 
