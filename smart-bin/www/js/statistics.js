@@ -5,8 +5,8 @@ function initStatistics() {
     $(".filter-button").on("click", initSetFilters);
     $("#date-start").on("change", removeActiveRangeClasses);
     $("#date-end").on("change", removeActiveRangeClasses);
-    $("#show-bin-all").on("click", checkAllBins);
-    $("#show-bin-none").on("click", checkNoBins);
+    $("#show-bin-all").on("click", {bool: true}, checkSelectBins);
+    $("#show-bin-none").on("click", {bool: false}, checkSelectBins);
     $("#show-bins-field").on("change", ".show-bin input", onChangeShowBins);
     $("#reset-filters-button").on("click", resetFilters);
     $("#save-filters-button").on("click", applyFilters);
@@ -14,7 +14,7 @@ function initStatistics() {
 }
 
 function initDefaultRangeButtons() {
-    $("[data-range=lastyear]").text(moment(new Date()).add(-1, "year").format("YYYY"));
+    $("[data-range=lastyear]").text(moment(new Date()).add(-1, "year").year());
     $("[data-range=thisyear]").text(moment(new Date()).year());
     $("[data-range=thismonth]").text(moment(new Date()).format("MMM"));
     $("[data-range=thisweek]").text("week " + moment(new Date()).week());
@@ -37,14 +37,11 @@ function onChangeShowBins() {
     }
 }
 
-function checkAllBins() {
-    $(".show-bin input").prop("checked", true).change();
-    $(".show-bin").addClass("is-checked");
-}
-
-function checkNoBins() {
-    $(".show-bin input").prop("checked", false).change();
-    $(".show-bin").removeClass("is-checked");
+function checkSelectBins(bool) {
+    if (typeof bool.data.bool != "undefined") bool = bool.data.bool;
+    $(".show-bin input").prop("checked", bool).change();
+    if (bool) $(".show-bin").addClass("is-checked");
+    else $(".show-bin").removeClass("is-checked");
 }
 
 function processBins(bins) {
@@ -130,7 +127,7 @@ function setRange(e, r) {
 
 function resetFilters() {
     setRange(null, "thisyear");
-    checkAllBins();
+    checkSelectBins(true);
 }
 
 function applyFilters() {
@@ -148,11 +145,8 @@ function applyFilters() {
         viewShowBins += "<span id=\"view-show-bin-" + id + "\" class=\"view-show-bin ellipsis\"><span class=\"bin-type-thumb bin-type-el bin-type--" + convertBinType($(this).data("bin-type")).class + "\"></span>" + $(this).siblings(".mdl-checkbox__label").text() + "</span>";
         ids.push(id);
     });
-    if (showBins.length > 0) {
-        $("#view-show-bins").html(viewShowBins).removeClass("hidden");
-    } else {
-        $("#view-show-bins").addClass("hidden");
-    }
+    if (showBins.length > 0) $("#view-show-bins").html(viewShowBins).removeClass("hidden");
+    else $("#view-show-bins").addClass("hidden");
     var startUnix = moment(start, "DD/MM/YYYY").unix();
     var endUnix = moment(end, "DD/MM/YYYY").unix();
     API.getHistory(ids, startUnix, endUnix, function (history) {
