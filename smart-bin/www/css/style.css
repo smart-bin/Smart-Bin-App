@@ -1,5 +1,5 @@
 body {
-    font-family: "Roboto";
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 300;
 }
 
@@ -9,6 +9,11 @@ body {
 
 .mdl-layout__content {
     background-color: #eee;
+    -ms-overflow-style: none;
+}
+
+.mdl-layout__content::-webkit-scrollbar {
+    width: 0 !important;
 }
 
 @media screen and (max-width: 1024px) {
@@ -101,6 +106,7 @@ body.white-background .mdl-layout__content {
     width: 100%;
     transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
     margin-bottom: 8px;
+    transform: translate3d(0, 0, 0);
 }
 
 .mdl-card.hide {
@@ -204,6 +210,7 @@ body.white-background .mdl-layout__content {
     position: relative;
     background-repeat: no-repeat;
     background-position: 0 100%;
+    transform: translate3d(0px, 0px, 0px);
 }
 
 .scroll-header.fixed .fixed-header {
