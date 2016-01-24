@@ -1,6 +1,9 @@
 function initBins() {
     showLoader();
     API.getUser(getUserId(), "bins", processBins);
+    if (getUserId() == 2) {
+        $(".mdl-button--fab").addClass("mdl-button--disabled").attr("href", "#");
+    }
 }
 
 function processBins(output) {
