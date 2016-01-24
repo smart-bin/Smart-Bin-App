@@ -98,7 +98,7 @@ function setRange(e, r) {
     var end;
     $("[data-range].mdl-button--raised.mdl-button--disabled:not([data-range=" + range +"])").removeClass("mdl-button--raised mdl-button--disabled");
     setTimeout(function () {
-        $("[data-range=" + range).addClass("mdl-button--raised mdl-button--disabled");
+        $("[data-range=" + range + "]").addClass("mdl-button--raised mdl-button--disabled");
     }, 100);
     switch (range) {
         case "lastyear":
