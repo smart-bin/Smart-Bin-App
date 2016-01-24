@@ -117,7 +117,7 @@ function formatCard(card) {
 }
 
 function back(e) {
-    if (typeof e.data.url != "undefined") location.href = e.data.url;
+    if (typeof e.data != "undefined" && typeof e.data.url != "undefined") location.href = e.data.url;
     else History.back();
 }
 
